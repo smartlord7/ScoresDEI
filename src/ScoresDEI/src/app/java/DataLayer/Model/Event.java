@@ -6,7 +6,7 @@ import java.util.Date;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Event extends AbstractAuditable<Long, User> {
+public abstract class Event extends AbstractAuditable<User, Long> {
     @Column(insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date occurrenceTime;

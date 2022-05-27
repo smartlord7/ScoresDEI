@@ -4,9 +4,9 @@ import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity(name = "User")
-@Table(name = "User")
-public class User extends AbstractAuditable<Long, User> implements Serializable {
+@Entity(name = "User_")
+@Table(name = "User_")
+public class User extends AbstractAuditable<User, Long> implements Serializable {
     @Column(length = 1024, nullable = false)
     private String userName;
 
@@ -16,7 +16,7 @@ public class User extends AbstractAuditable<Long, User> implements Serializable 
     @Column(length = 1024, nullable = false, unique = true)
     private String phoneNumber;
 
-    @Column(length = 512, nullable = false)
+    @Column(length = 256, nullable = false)
     private String passwordHash;
 
     public String getUserName() {

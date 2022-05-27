@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity(name = "Role")
 @Table(name = "Role")
-public class Role extends AbstractAuditable<Long, User> {
+public class Role extends AbstractAuditable<User, Long> {
     @Column(length = 1024, nullable = false)
     private String userName;
 

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity(name = "Attachment")
 @Table(name = "Attachment")
-public class Attachment extends AbstractAuditable<Long, User> {
+public class Attachment extends AbstractAuditable<User, Long> {
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private StorageTypeEnum storageType;

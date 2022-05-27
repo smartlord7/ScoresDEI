@@ -5,12 +5,12 @@ import javax.persistence.*;
 
 @Entity(name = "Team")
 @Table(name = "Team")
-public class Team extends AbstractAuditable<Long, User> {
+public class Team extends AbstractAuditable<User, Long> {
     @Column(length = 1024, nullable = false)
     private String teamName;
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="logo")
     private Attachment logo;
 
     public String getTeamName() {

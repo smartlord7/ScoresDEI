@@ -9,6 +9,6 @@ import javax.persistence.Table;
 @Table(name = "EventGoal")
 public class EventGoal extends Event{
     @OneToOne
-    @JoinColumn("id")
+    @JoinColumn(name = "id")
     private Player player;
 }

@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity(name = "Player")
 @Table(name = "Player")
-public class Player extends AbstractAuditable<Long, User> {
+public class Player extends AbstractAuditable<User, Long> {
     @Column(length = 1024, nullable = false)
     private String playerName;
 
