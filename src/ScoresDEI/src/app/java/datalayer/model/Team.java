@@ -11,7 +11,7 @@ public class Team {
     @Column(length = 1024, nullable = false)
     private String teamName;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="attachmentId")
     private Attachment logo;
 
