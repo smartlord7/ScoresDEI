@@ -17,5 +17,5 @@ public enum PlayerPositionEnum {
     RF,
     LF,
     CF,
-    ST;
+    ST
 }

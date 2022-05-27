@@ -1,27 +1,17 @@
 package DataLayer.Model;
 
+import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 
-public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="teamId", updatable = false, nullable = false)
-    private Long id;
-
+@Entity(name = "Team")
+@Table(name = "Team")
+public class Team extends AbstractAuditable<Long, User> {
     @Column(length = 1024, nullable = false)
     private String teamName;
 
     @ManyToOne
-    @JoinColumn(name="attachmentId")
+    @JoinColumn(name="id")
     private Attachment logo;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTeamName() {
         return teamName;

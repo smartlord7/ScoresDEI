@@ -1,28 +1,18 @@
 package DataLayer.Model;
 
 import DataLayer.Enum.StorageTypeEnum;
+import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 
-public class Attachment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="attachmentId", updatable = false, nullable = false)
-    private Long id;
-
+@Entity(name = "Attachment")
+@Table(name = "Attachment")
+public class Attachment extends AbstractAuditable<Long, User> {
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private StorageTypeEnum storageType;
 
     @Column(length = 4096, nullable = false)
     private String path;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public StorageTypeEnum getStorageType() {
         return storageType;

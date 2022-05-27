@@ -1,14 +1,12 @@
 package DataLayer.Model;
 
+import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "User")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="userId", updatable = false, nullable = false)
-    private Long id;
-
+@Table(name = "User")
+public class User extends AbstractAuditable<Long, User> implements Serializable {
     @Column(length = 1024, nullable = false)
     private String userName;
 
@@ -20,15 +18,6 @@ public class User {
 
     @Column(length = 512, nullable = false)
     private String passwordHash;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
-    public Long getId() {
-        return id;
-    }
 
     public String getUserName() {
         return userName;

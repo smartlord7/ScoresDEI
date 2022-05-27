@@ -1,31 +1,18 @@
 package DataLayer.Model;
 
+import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="eventId", updatable = false, nullable = false)
-    private Long id;
-
-    @Column(insertable = false, updatable = false,  columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+public abstract class Event extends AbstractAuditable<Long, User> {
+    @Column(insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date occurrenceTime;
 
     @Column(length = 4096)
-    private String Description;
-
-    @Id
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String description;
 
     public Date getOccurrenceTime() {
         return occurrenceTime;
@@ -36,10 +23,10 @@ public abstract class Event {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 }

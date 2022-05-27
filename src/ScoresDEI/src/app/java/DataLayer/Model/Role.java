@@ -1,29 +1,16 @@
 package DataLayer.Model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.jpa.domain.AbstractAuditable;
+import javax.persistence.*;
 
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="roleId", updatable = false, nullable = false)
-    private Long id;
-
+@Entity(name = "Role")
+@Table(name = "Role")
+public class Role extends AbstractAuditable<Long, User> {
     @Column(length = 1024, nullable = false)
     private String userName;
 
     @Column(length = 4096)
-    private String Description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String description;
 
     public String getUserName() {
         return userName;
@@ -34,10 +21,10 @@ public class Role {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 }

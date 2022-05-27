@@ -1,15 +1,13 @@
 package DataLayer.Model;
 
 import DataLayer.Enum.PlayerPositionEnum;
+import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 import java.util.Date;
 
-public class Player {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="playerId", updatable = false, nullable = false)
-    private Long id;
-
+@Entity(name = "Player")
+@Table(name = "Player")
+public class Player extends AbstractAuditable<Long, User> {
     @Column(length = 1024, nullable = false)
     private String playerName;
 
@@ -20,14 +18,6 @@ public class Player {
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private PlayerPositionEnum position;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getPlayerName() {
         return playerName;

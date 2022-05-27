@@ -1,14 +1,13 @@
 package DataLayer.Model;
 
+import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
-public class Game {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="gameId", updatable = false, nullable = false)
-    private Long id;
-
+@Entity(name = "Game")
+@Table(name = "Game")
+public class Game extends AbstractAuditable<Long, User> {
     @Column(length = 1024, nullable = false)
     private String place;
 
@@ -18,13 +17,28 @@ public class Game {
     @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToOne
+    @JoinColumn(name="id", nullable = true)
+    private EventStartGame eventStartGame;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @OneToOne
+    @JoinColumn(name="id", nullable = true)
+    private EventStartGame eventEndGame;
+
+    @OneToMany
+    Collection<EventInterruptGame> eventsInterruptGame;
+
+    @OneToMany
+    Collection<EventResumeGame> eventsResumeGame;
+
+    @OneToMany
+    Collection<EventYellowCard> eventsYellowCard;
+
+    @OneToMany
+    Collection<EventRedCard> eventsRedCards;
+
+    @OneToMany
+    Collection<EventGoal> eventsGoals;
 
     public String getPlace() {
         return place;
