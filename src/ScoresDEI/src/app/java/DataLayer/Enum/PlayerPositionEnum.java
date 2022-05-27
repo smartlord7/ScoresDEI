@@ -1,4 +1,4 @@
-package datalayer.enumeration;
+package DataLayer.Enum;
 
 public enum PlayerPositionEnum {
     GK,

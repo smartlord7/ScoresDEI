@@ -1,6 +1,6 @@
-package datalayer.model;
+package DataLayer.Model;
 
-import datalayer.enumeration.PlayerPositionEnum;
+import DataLayer.Enum.PlayerPositionEnum;
 import javax.persistence.*;
 import java.util.Date;
 

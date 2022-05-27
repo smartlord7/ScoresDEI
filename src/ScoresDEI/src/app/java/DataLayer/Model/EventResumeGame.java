@@ -1,4 +1,4 @@
-package datalayer.model;
+package DataLayer.Model;
 
 public class EventResumeGame extends Event{
 }

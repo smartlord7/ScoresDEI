@@ -1,4 +1,4 @@
-package datalayer.model;
+package DataLayer.Model;
 
 import javax.persistence.*;
 import java.util.Date;

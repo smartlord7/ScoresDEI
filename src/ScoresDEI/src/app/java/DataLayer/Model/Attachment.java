@@ -1,6 +1,6 @@
-package datalayer.model;
+package DataLayer.Model;
 
-import datalayer.enumeration.StorageTypeEnum;
+import DataLayer.Enum.StorageTypeEnum;
 import javax.persistence.*;
 
 public class Attachment {
