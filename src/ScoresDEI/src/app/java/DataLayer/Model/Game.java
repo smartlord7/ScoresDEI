@@ -26,19 +26,19 @@ public class Game extends AbstractAuditable<User, Long> {
     private EventStartGame eventEndGame;
 
     @OneToMany
-    Collection<EventInterruptGame> eventsInterruptGame;
+    Collection<EventInterruptGame> eventInterruptGame;
 
     @OneToMany
-    Collection<EventResumeGame> eventsResumeGame;
+    Collection<EventResumeGame> eventResumeGame;
 
     @OneToMany
-    Collection<EventYellowCard> eventsYellowCard;
+    Collection<EventYellowCard> eventYellowCard;
 
     @OneToMany
-    Collection<EventRedCard> eventsRedCards;
+    Collection<EventRedCard> eventRedCards;
 
     @OneToMany
-    Collection<EventGoal> eventsGoals;
+    Collection<EventGoal> eventGoals;
 
     public String getPlace() {
         return place;

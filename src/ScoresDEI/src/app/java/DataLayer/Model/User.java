@@ -3,6 +3,7 @@ package DataLayer.Model;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 @Entity(name = "User_")
 @Table(name = "User_")
@@ -18,6 +19,9 @@ public class User extends AbstractAuditable<User, Long> implements Serializable 
 
     @Column(length = 256, nullable = false)
     private String passwordHash;
+
+    @ManyToMany
+    private Collection<Role> role;
 
     public String getUserName() {
         return userName;
