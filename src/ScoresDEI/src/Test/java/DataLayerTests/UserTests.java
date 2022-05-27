@@ -22,13 +22,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UserTests {
-
     @Autowired
-    private TestEntityManager em = null;
+    private UserRepository users = null;
 
     @Test
     public void contextLoads() {
-        Assertions.assertNotNull(em);
+        Assertions.assertNotNull(users);
     }
 
     @Test
@@ -41,6 +40,6 @@ public class UserTests {
         u.setUserName("testuser");
         u.setPhoneNumber("111111111");
         u.setEmail("testuser@gmail.com");
-        em.persist(u);
+        users.save(u);
     }
 }
