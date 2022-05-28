@@ -1,11 +1,12 @@
 package DataLayer.Model;
 
+import DataLayer.Base.BaseEntityModel;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 
 @Entity(name = "Role")
 @Table(name = "Role")
-public class Role extends AbstractAuditable<User, Long> {
+public class Role extends AbstractAuditable<User, Long> implements BaseEntityModel {
     @Column(length = 1024, nullable = false)
     private String userName;
 

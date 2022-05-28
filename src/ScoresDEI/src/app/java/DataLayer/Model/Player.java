@@ -1,5 +1,6 @@
 package DataLayer.Model;
 
+import DataLayer.Base.BaseEntityModel;
 import DataLayer.Enum.PlayerPositionEnum;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import java.util.Date;
 
 @Entity(name = "Player")
 @Table(name = "Player")
-public class Player extends AbstractAuditable<User, Long> {
+public class Player extends AbstractAuditable<User, Long> implements BaseEntityModel {
     @Column(length = 1024, nullable = false)
     private String playerName;
 

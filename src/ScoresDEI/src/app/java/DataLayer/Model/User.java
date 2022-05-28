@@ -1,5 +1,6 @@
 package DataLayer.Model;
 
+import DataLayer.Base.BaseEntityModel;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -7,7 +8,7 @@ import java.util.Collection;
 
 @Entity(name = "User_")
 @Table(name = "User_")
-public class User extends AbstractAuditable<User, Long> implements Serializable {
+public class User extends AbstractAuditable<User, Long> implements Serializable, BaseEntityModel {
     @Column(length = 1024, nullable = false)
     private String userName;
 

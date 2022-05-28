@@ -1,12 +1,13 @@
 package DataLayer.Model;
 
+import DataLayer.Base.BaseEntityModel;
 import DataLayer.Enum.StorageTypeEnum;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 
 @Entity(name = "Attachment")
 @Table(name = "Attachment")
-public class Attachment extends AbstractAuditable<User, Long> {
+public class Attachment extends AbstractAuditable<User, Long> implements BaseEntityModel {
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private StorageTypeEnum storageType;

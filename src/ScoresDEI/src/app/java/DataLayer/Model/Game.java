@@ -1,5 +1,6 @@
 package DataLayer.Model;
 
+import DataLayer.Base.BaseEntityModel;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 import java.util.Collection;
@@ -7,7 +8,7 @@ import java.util.Date;
 
 @Entity(name = "Game")
 @Table(name = "Game")
-public class Game extends AbstractAuditable<User, Long> {
+public class Game extends AbstractAuditable<User, Long> implements BaseEntityModel {
     @Column(length = 1024, nullable = false)
     private String place;
 

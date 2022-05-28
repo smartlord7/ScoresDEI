@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -23,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UserTests {
     @Autowired
-    private UserRepository users = null;
+    private UserRepository users;
 
     @Test
     public void contextLoads() {
@@ -40,6 +39,6 @@ public class UserTests {
         u.setUserName("testuser");
         u.setPhoneNumber("111111111");
         u.setEmail("testuser@gmail.com");
-        users.save(u);
+        System.out.println(users.save(u));
     }
 }
