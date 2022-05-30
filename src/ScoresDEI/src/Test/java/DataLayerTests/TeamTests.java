@@ -51,4 +51,9 @@ public class TeamTests {
 
         System.out.println(list);
     }
+
+    @Test
+    public void deletebyId() {
+        System.out.println(writer.deleteById(0));
+    }
 }

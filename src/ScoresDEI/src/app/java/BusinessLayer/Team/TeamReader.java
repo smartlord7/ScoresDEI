@@ -1,6 +1,7 @@
 package BusinessLayer.Team;
 
 import BusinessLayer.Team.DTO.TeamListDTO;
+import BusinessLayer.Team.DTO.TeamUpdateDTO;
 import DataLayer.Repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class TeamReader {
     public List<TeamListDTO> readAll() {
         return teams.findAll()
                 .stream()
-                .map(team -> new TeamListDTO(team.getTeamName()))
+                .map(TeamTranslator::toListDTO)
                 .collect(Collectors.toList());
     }
 }

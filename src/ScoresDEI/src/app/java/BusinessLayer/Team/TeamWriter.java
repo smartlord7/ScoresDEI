@@ -1,6 +1,7 @@
 package BusinessLayer.Team;
 
 import BusinessLayer.Team.DTO.TeamCreateDTO;
+import BusinessLayer.Team.DTO.TeamUpdateDTO;
 import DataLayer.Model.Team;
 import DataLayer.Repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,11 @@ public class TeamWriter {
         dto.setId(t.getId());
 
         return dto;
+    }
+
+    @Transactional
+    public TeamUpdateDTO deleteById(long id) {
+        teams.deleteById(id);
+        return TeamTranslator.toUpdateDTO(id);
     }
 }
