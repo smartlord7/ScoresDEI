@@ -14,6 +14,9 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
     @JoinColumn(name="logo")
     private Attachment logo;
 
+    public Team() {
+    }
+
     public Team(String teamName, Attachment logo) {
         this.teamName = teamName;
         this.logo = logo;
