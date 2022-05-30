@@ -8,8 +8,7 @@ import DataLayer.Model.Team;
 
 public class TeamTranslator {
     public static Team toModel(TeamCreateDTO dto) {
-        return new Team(dto.getTeamName(),
-                new Attachment(dto.getId()));
+        return new Team(dto.getTeamName());
     }
 
     public static TeamListDTO toListDTO(Team model) {
@@ -22,5 +21,9 @@ public class TeamTranslator {
 
     public static TeamUpdateDTO toUpdateDTO(long id) {
         return new TeamUpdateDTO(id);
+    }
+
+    public static void applyChanges(Team model, TeamUpdateDTO dto) {
+        model.setTeamName(dto.getTeamName());
     }
 }

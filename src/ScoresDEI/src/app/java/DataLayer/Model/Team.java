@@ -17,9 +17,8 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
     public Team() {
     }
 
-    public Team(String teamName, Attachment logo) {
+    public Team(String teamName) {
         this.teamName = teamName;
-        this.logo = logo;
     }
 
     public String getTeamName() {
