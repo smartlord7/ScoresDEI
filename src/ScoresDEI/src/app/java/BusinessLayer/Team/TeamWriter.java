@@ -37,6 +37,7 @@ public class TeamWriter {
     @Transactional
     public TeamUpdateDTO deleteById(long id) {
         teams.deleteById(id);
+
         return TeamTranslator.toUpdateDTO(id);
     }
 

@@ -1,6 +1,7 @@
 package BusinessLayer.Game;
 
 import BusinessLayer.Game.DTO.GameListDTO;
+import BusinessLayer.Game.DTO.GameUpdateDTO;
 import BusinessLayer.Team.DTO.TeamListDTO;
 import DataLayer.Repository.GameRepository;
 import DataLayer.Repository.TeamRepository;

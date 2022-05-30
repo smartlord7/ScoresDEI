@@ -47,6 +47,15 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
     @OneToMany
     Collection<EventGoal> eventGoals;
 
+    public Game() {
+    }
+
+    public Game(String place, Date startTime, Date endTime) {
+        this.place = place;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     public String getPlace() {
         return place;
     }
@@ -61,6 +70,22 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
+    }
+
+    public Team getTeamA() {
+        return teamA;
+    }
+
+    public void setTeamA(Team teamA) {
+        this.teamA = teamA;
+    }
+
+    public Team getTeamB() {
+        return teamB;
+    }
+
+    public void setTeamB(Team teamB) {
+        this.teamB = teamB;
     }
 
     public Date getEndTime() {

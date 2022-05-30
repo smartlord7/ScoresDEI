@@ -5,7 +5,6 @@ import BusinessLayer.Team.DTO.TeamListDTO;
 import BusinessLayer.Team.DTO.TeamUpdateDTO;
 import BusinessLayer.Team.TeamReader;
 import BusinessLayer.Team.TeamWriter;
-import DataLayer.Model.Team;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -17,7 +16,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.util.List;
 
 @DataJpaTest
@@ -40,7 +38,7 @@ public class TeamTests {
 
     @Test
     @Rollback(false)
-    public void writeTeam() {
+    public void createTeam() {
         TeamCreateDTO t;
 
         t = new TeamCreateDTO("Team " + (int) (Math.random() * (7675 - 1)), (long) 0);
