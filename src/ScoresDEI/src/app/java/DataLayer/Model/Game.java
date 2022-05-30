@@ -19,6 +19,12 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
     private Date endTime;
 
     @OneToOne
+    private Team teamA;
+
+    @OneToOne
+    private Team teamB;
+
+    @OneToOne
     @JoinColumn(name="id", nullable = true)
     private EventStartGame eventStartGame;
 
