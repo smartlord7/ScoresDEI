@@ -4,7 +4,6 @@ import BusinessLayer.Game.DTO.GameCreateDTO;
 import BusinessLayer.Game.DTO.GameListDTO;
 import BusinessLayer.Game.DTO.GameUpdateDTO;
 import DataLayer.Model.Game;
-import DataLayer.Model.Team;
 
 public class GameTranslator {
     public static Game toModel(GameCreateDTO dto) {
@@ -31,7 +30,9 @@ public class GameTranslator {
                 model.getTeamA().getId(),
                 model.getTeamA().getTeamName(),
                 model.getTeamB().getId(),
-                model.getTeamB().getTeamName());
+                model.getTeamB().getTeamName(),
+                model.getScoreA(),
+                model.getScoreB());
     }
 
     public static GameUpdateDTO toUpdateDTO(Long id) {

@@ -1,6 +1,7 @@
 package BusinessLayer.Game;
 
 import BusinessLayer.Event.DTO.EventListDTO;
+import BusinessLayer.Event.EventReader;
 import BusinessLayer.Event.EventTranslator;
 import BusinessLayer.Game.DTO.GameListDTO;
 import BusinessLayer.Game.DTO.GameUpdateDTO;
@@ -28,6 +29,13 @@ public class GameReader {
                 .toList();
     }
 
+    public GameUpdateDTO getById(long id) {
+        Game model = games.getById(id);
+        GameUpdateDTO dto = GameTranslator.toUpdateDTO(model);
+        dto.setEvents(getEvents(id));
+
+        return dto;
+    }
 
     public List<EventListDTO> getEvents(long id) {
         var game = games.getById(id);

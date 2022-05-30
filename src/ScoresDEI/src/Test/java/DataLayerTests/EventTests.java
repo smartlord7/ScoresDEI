@@ -45,7 +45,7 @@ public class EventTests {
         EventCreateDTO goal = new EventCreateDTO(EventTypeEnum.GOAL,
                 new Date(),
                 "Test event",
-                (long) 41,
+                (long) 40,
                 (long) 1);
         writer.create(goal);
     }

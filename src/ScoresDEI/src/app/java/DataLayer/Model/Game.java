@@ -12,11 +12,19 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
     @Column(length = 1024, nullable = false)
     private String place;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
+
+    @Column(columnDefinition = "INTEGER DEFAULT 0")
+    private Integer scoreA;
+
+    @Column(columnDefinition = "INTEGER DEFAULT 0")
+    private Integer scoreB;
 
     @OneToOne
     private Team teamA;
@@ -70,6 +78,22 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
+    }
+
+    public Integer getScoreA() {
+        return scoreA;
+    }
+
+    public void setScoreA(Integer scoreA) {
+        this.scoreA = scoreA;
+    }
+
+    public Integer getScoreB() {
+        return scoreB;
+    }
+
+    public void setScoreB(Integer scoreB) {
+        this.scoreB = scoreB;
     }
 
     public Team getTeamA() {

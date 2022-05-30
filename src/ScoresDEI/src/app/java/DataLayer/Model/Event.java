@@ -20,6 +20,9 @@ public class Event extends AbstractAuditable<User, Long> implements BaseEntityMo
 
     private boolean approved;
 
+    public Event() {
+    }
+
     public Event(Date occurrenceTime, String description) {
         this.occurrenceTime = occurrenceTime;
         this.description = description;

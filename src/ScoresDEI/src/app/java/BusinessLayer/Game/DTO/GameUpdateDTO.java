@@ -1,7 +1,9 @@
 package BusinessLayer.Game.DTO;
 
 import BusinessLayer.Base.DTO.BaseEntityUpdateDTO;
+import BusinessLayer.Event.DTO.EventListDTO;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.StringJoiner;
 
@@ -14,8 +16,9 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
     private String teamAName;
     private Long teamBId;
     private String teamBName;
-    private Integer goalsTeamA;
-    private Integer goalsTeamB;
+    private Integer scoreTeamA;
+    private Integer scoreTeamB;
+    private Collection<EventListDTO> events;
 
 
     public GameUpdateDTO(Long id) {
@@ -31,7 +34,17 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
         this.teamBId = teamBId;
     }
 
-    public GameUpdateDTO(Long id, String place, Date startTime, Date endTime, Long teamAId, String teamAName, Long teamBId, String teamBName) {
+    public GameUpdateDTO(Long id,
+                         String place,
+                         Date startTime,
+                         Date endTime,
+                         Long teamAId,
+                         String teamAName,
+                         Long teamBId,
+                         String teamBName,
+                         Integer scoreTeamA,
+                         Integer scoreTeamB) {
+        this.id = id;
         this.place = place;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -39,6 +52,8 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
         this.teamAName = teamAName;
         this.teamBId = teamBId;
         this.teamBName = teamBName;
+        this.scoreTeamA = scoreTeamA;
+        this.scoreTeamB = scoreTeamB;
     }
 
     public String getPlace() {
@@ -85,20 +100,28 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
         return id;
     }
 
-    public Integer getGoalsTeamA() {
-        return goalsTeamA;
+    public Collection<EventListDTO> getEvents() {
+        return events;
     }
 
-    public void setGoalsTeamA(Integer goalsTeamA) {
-        this.goalsTeamA = goalsTeamA;
+    public void setEvents(Collection<EventListDTO> events) {
+        this.events = events;
     }
 
-    public Integer getGoalsTeamB() {
-        return goalsTeamB;
+    public Integer getScoreTeamA() {
+        return scoreTeamA;
     }
 
-    public void setGoalsTeamB(Integer goalsTeamB) {
-        this.goalsTeamB = goalsTeamB;
+    public void setScoreTeamA(Integer scoreTeamA) {
+        this.scoreTeamA = scoreTeamA;
+    }
+
+    public Integer getScoreTeamB() {
+        return scoreTeamB;
+    }
+
+    public void setScoreTeamB(Integer scoreTeamB) {
+        this.scoreTeamB = scoreTeamB;
     }
 
     public void setId(Long id) {
@@ -132,9 +155,9 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
                 .add("teamAName='" + teamAName + "'")
                 .add("teamBId=" + teamBId)
                 .add("teamBName='" + teamBName + "'")
-                .add("goalsTeamA=" + goalsTeamA)
-                .add("goalsTeamB=" + goalsTeamB)
+                .add("goalsTeamA=" + scoreTeamA)
+                .add("goalsTeamB=" + scoreTeamB)
+                .add("events=" + events)
                 .toString();
     }
-
 }

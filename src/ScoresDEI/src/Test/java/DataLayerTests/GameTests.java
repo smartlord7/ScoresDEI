@@ -38,13 +38,13 @@ public class GameTests {
 
 
     @Test
-    public void readAllGames() {
+    public void getAll() {
         System.out.println(reader.getAll());
     }
 
     @Test
     @Rollback(false)
-    public void createGame() {
+    public void create() {
         GameCreateDTO g;
 
         g = new GameCreateDTO("Place " + (int) (Math.random() * (321 - 1)),
@@ -58,10 +58,10 @@ public class GameTests {
 
     @Test
     @Rollback(false)
-    public void updateGame() {
+    public void update() {
         GameUpdateDTO g;
 
-        g = new GameUpdateDTO((long) 0,
+        g = new GameUpdateDTO((long) 40,
                 "Not here",
                 new Date(),
                 new Date(),
@@ -72,12 +72,17 @@ public class GameTests {
     }
 
     @Test
-    public void deleteGame() {
-        System.out.println(writer.deleteById(0));
+    public void delete() {
+        System.out.println(writer.deleteById(40));
     }
 
     @Test
-    public void readEvents() {
+    public void getEvents() {
         System.out.println(reader.getEvents(40));
+    }
+
+    @Test
+    public void getById() {
+        System.out.println(reader.getById(40));
     }
 }
