@@ -15,6 +15,10 @@ public class Attachment extends AbstractAuditable<User, Long> implements BaseEnt
     @Column(length = 4096, nullable = false)
     private String path;
 
+    public Attachment(Long id) {
+        setId(id);
+    }
+
     public StorageTypeEnum getStorageType() {
         return storageType;
     }

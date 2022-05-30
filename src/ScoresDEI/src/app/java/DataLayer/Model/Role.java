@@ -13,6 +13,12 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
     @Column(length = 4096)
     private String description;
 
+    public Role(Long id) {
+        setId(id);
+    }
+
+
+
     public String getUserName() {
         return userName;
     }

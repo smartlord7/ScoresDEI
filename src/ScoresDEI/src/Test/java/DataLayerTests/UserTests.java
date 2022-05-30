@@ -1,5 +1,7 @@
 package DataLayerTests;
 
+import BusinessLayer.User.DTO.UserCreateDTO;
+import BusinessLayer.User.UserWriter;
 import DataLayer.Model.User;
 import DataLayer.Repository.UserRepository;
 import Util.PasswordHasher;
@@ -17,16 +19,33 @@ import org.springframework.test.context.junit4.SpringRunner;
 @DataJpaTest
 @RunWith(SpringRunner.class)
 @EntityScan(basePackages = "DataLayer.Model")
-@ContextConfiguration(classes = {UserRepository.class})
+@ContextConfiguration(classes = {UserRepository.class, UserWriter.class})
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UserTests {
     @Autowired
     private UserRepository users;
 
+    @Autowired
+    private UserWriter writer;
+
     @Test
     public void contextLoads() {
         Assertions.assertNotNull(users);
+    }
+
+    @Test
+    public void writeUser() {
+        UserCreateDTO u;
+
+        u = new UserCreateDTO();
+        u.setUserName("testuser");
+        u.setPassword("testuser123#");
+        u.setUserName("testuser");
+        u.setPhoneNumber("111111111");
+        u.setEmail("testuser@gmail.com");
+
+        writer.create(u);
     }
 
     @Test
