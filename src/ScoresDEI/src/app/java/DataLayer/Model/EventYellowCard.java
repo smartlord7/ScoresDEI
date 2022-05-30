@@ -7,7 +7,7 @@ import java.util.Date;
 @Table(name = "EventYellowCard")
 public class EventYellowCard extends Event{
     @ManyToOne
-    @JoinColumn(name = "playerId")
+    @JoinColumn(name = "playerId", nullable = false)
     private Player player;
 
     public EventYellowCard(Date occurrenceTime, String description) {

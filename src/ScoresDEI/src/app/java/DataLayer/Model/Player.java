@@ -2,6 +2,7 @@ package DataLayer.Model;
 
 import DataLayer.Base.BaseEntityModel;
 import DataLayer.Enum.PlayerPositionEnum;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 import java.util.Date;
@@ -19,6 +20,9 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private PlayerPositionEnum position;
+
+    @Transient
+    private Integer goals;
 
     public String getPlayerName() {
         return playerName;
@@ -42,5 +46,13 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
 
     public void setPosition(PlayerPositionEnum position) {
         this.position = position;
+    }
+
+    public Integer getGoals() {
+        return goals;
+    }
+
+    public void setGoals(Integer goals) {
+        this.goals = goals;
     }
 }

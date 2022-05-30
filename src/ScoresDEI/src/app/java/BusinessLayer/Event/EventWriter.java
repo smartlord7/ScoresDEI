@@ -28,10 +28,9 @@ public class EventWriter {
 
     @Transactional
     public EventCreateDTO create(EventCreateDTO dto) {
+        dto.setPlayer(players.getById(dto.getPlayerId()));
         Event e = EventTranslator.toModel(dto);
         e.setGame(games.getById(dto.getGameId()));
-        EventTypeEnum type = dto.getEventType();
-
         events.save(e);
         dto.setId(e.getId());
 
