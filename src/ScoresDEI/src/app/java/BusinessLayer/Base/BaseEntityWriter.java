@@ -1,5 +1,8 @@
 package BusinessLayer.Base;
 
+import BusinessLayer.Base.DTO.BaseEntityCreateDTO;
+import BusinessLayer.Base.DTO.BaseEntityListDTO;
+import BusinessLayer.Base.DTO.BaseEntityUpdateDTO;
 import DataLayer.Base.BaseEntityModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;

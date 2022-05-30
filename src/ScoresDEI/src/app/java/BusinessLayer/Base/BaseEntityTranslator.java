@@ -1,5 +1,9 @@
 package BusinessLayer.Base;
 
+import BusinessLayer.Base.DTO.BaseEntityCreateDTO;
+import BusinessLayer.Base.DTO.BaseEntityDTO;
+import BusinessLayer.Base.DTO.BaseEntityListDTO;
+import BusinessLayer.Base.DTO.BaseEntityUpdateDTO;
 import DataLayer.Base.BaseEntityModel;
 import org.springframework.stereotype.Service;
 
