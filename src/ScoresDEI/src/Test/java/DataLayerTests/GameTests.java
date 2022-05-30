@@ -2,7 +2,6 @@ package DataLayerTests;
 
 import BusinessLayer.Game.DTO.GameCreateDTO;
 import BusinessLayer.Game.DTO.GameUpdateDTO;
-import BusinessLayer.Team.DTO.TeamCreateDTO;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -40,7 +39,7 @@ public class GameTests {
 
     @Test
     public void readAllGames() {
-        System.out.println(reader.readAll());
+        System.out.println(reader.getAll());
     }
 
     @Test

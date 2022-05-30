@@ -14,6 +14,9 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
     private String teamAName;
     private Long teamBId;
     private String teamBName;
+    private Integer goalsTeamA;
+    private Integer goalsTeamB;
+
 
     public GameUpdateDTO(Long id) {
         this.id = id;
@@ -82,6 +85,22 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
         return id;
     }
 
+    public Integer getGoalsTeamA() {
+        return goalsTeamA;
+    }
+
+    public void setGoalsTeamA(Integer goalsTeamA) {
+        this.goalsTeamA = goalsTeamA;
+    }
+
+    public Integer getGoalsTeamB() {
+        return goalsTeamB;
+    }
+
+    public void setGoalsTeamB(Integer goalsTeamB) {
+        this.goalsTeamB = goalsTeamB;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -104,7 +123,8 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", GameListDTO.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", GameUpdateDTO.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
                 .add("place='" + place + "'")
                 .add("startTime=" + startTime)
                 .add("endTime=" + endTime)
@@ -112,6 +132,8 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
                 .add("teamAName='" + teamAName + "'")
                 .add("teamBId=" + teamBId)
                 .add("teamBName='" + teamBName + "'")
+                .add("goalsTeamA=" + goalsTeamA)
+                .add("goalsTeamB=" + goalsTeamB)
                 .toString();
     }
 
