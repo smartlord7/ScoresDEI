@@ -32,20 +32,20 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
     @JoinColumn(name="id", nullable = true)
     private EventStartGame eventEndGame;
 
-    @OneToMany
+    @OneToMany(mappedBy = "game")
     Collection<EventInterruptGame> eventInterruptGame;
 
-    @OneToMany
+    @OneToMany(mappedBy = "game")
     Collection<EventResumeGame> eventResumeGame;
 
-    @OneToMany
+    @OneToMany(mappedBy = "game")
     Collection<EventYellowCard> eventYellowCard;
 
-    @OneToMany
-    Collection<EventRedCard> eventRedCards;
+    @OneToMany(mappedBy = "game")
+    Collection<EventRedCard> eventRedCard;
 
-    @OneToMany
-    Collection<EventGoal> eventGoals;
+    @OneToMany(mappedBy = "game")
+    Collection<EventGoal> eventGoal;
 
     public Game() {
     }
@@ -90,6 +90,62 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     public Date getEndTime() {
         return endTime;
+    }
+
+    public EventStartGame getEventStartGame() {
+        return eventStartGame;
+    }
+
+    public void setEventStartGame(EventStartGame eventStartGame) {
+        this.eventStartGame = eventStartGame;
+    }
+
+    public EventStartGame getEventEndGame() {
+        return eventEndGame;
+    }
+
+    public void setEventEndGame(EventStartGame eventEndGame) {
+        this.eventEndGame = eventEndGame;
+    }
+
+    public Collection<EventInterruptGame> getEventInterruptGame() {
+        return eventInterruptGame;
+    }
+
+    public void setEventInterruptGame(Collection<EventInterruptGame> eventInterruptGame) {
+        this.eventInterruptGame = eventInterruptGame;
+    }
+
+    public Collection<EventResumeGame> getEventResumeGame() {
+        return eventResumeGame;
+    }
+
+    public void setEventResumeGame(Collection<EventResumeGame> eventResumeGame) {
+        this.eventResumeGame = eventResumeGame;
+    }
+
+    public Collection<EventYellowCard> getEventYellowCard() {
+        return eventYellowCard;
+    }
+
+    public void setEventYellowCard(Collection<EventYellowCard> eventYellowCard) {
+        this.eventYellowCard = eventYellowCard;
+    }
+
+    public Collection<EventRedCard> getEventRedCard() {
+        return eventRedCard;
+    }
+
+    public void setEventRedCard(Collection<EventRedCard> eventRedCards) {
+        this.eventRedCard = eventRedCards;
+    }
+
+    public Collection<EventGoal> getEventGoal() {
+        return eventGoal;
+    }
+
+    public void setEventGoal(Collection<EventGoal> eventGoals) {
+        this.eventGoal = eventGoals;
     }
 
     public void setEndTime(Date endTime) {

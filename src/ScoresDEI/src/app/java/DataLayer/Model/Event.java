@@ -7,7 +7,7 @@ import java.util.Date;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Event extends AbstractAuditable<User, Long> implements BaseEntityModel {
+public class Event extends AbstractAuditable<User, Long> implements BaseEntityModel {
     @Column(insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date occurrenceTime;
@@ -15,12 +15,28 @@ public abstract class Event extends AbstractAuditable<User, Long> implements Bas
     @Column(length = 4096)
     private String description;
 
+    @ManyToOne
+    private Game game;
+
+    public Event(Date occurrenceTime, String description) {
+        this.occurrenceTime = occurrenceTime;
+        this.description = description;
+    }
+
     public Date getOccurrenceTime() {
         return occurrenceTime;
     }
 
     public void setOccurrenceTime(Date occurrenceTime) {
         this.occurrenceTime = occurrenceTime;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public String getDescription() {

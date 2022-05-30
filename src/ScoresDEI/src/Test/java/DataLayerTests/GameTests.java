@@ -4,6 +4,7 @@ import BusinessLayer.Game.DTO.GameCreateDTO;
 import BusinessLayer.Game.DTO.GameUpdateDTO;
 import BusinessLayer.Team.DTO.TeamCreateDTO;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import BusinessLayer.Game.GameReader;
 import BusinessLayer.Game.GameWriter;
@@ -30,6 +31,12 @@ public class GameTests {
 
     @Autowired
     private GameWriter writer;
+
+    @Test
+    public void contextLoads() {
+        Assertions.assertNotNull(writer);
+    }
+
 
     @Test
     public void readAllGames() {
@@ -68,5 +75,10 @@ public class GameTests {
     @Test
     public void deleteGame() {
         System.out.println(writer.deleteById(0));
+    }
+
+    @Test
+    public void readEvents() {
+        System.out.println(reader.getEvents(40));
     }
 }

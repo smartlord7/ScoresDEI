@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventReader {
     @Autowired
-    private EventRepository repository;
+    private EventRepository events;
 }
