@@ -18,9 +18,19 @@ public class Event extends AbstractAuditable<User, Long> implements BaseEntityMo
     @ManyToOne
     private Game game;
 
+    private boolean approved;
+
     public Event(Date occurrenceTime, String description) {
         this.occurrenceTime = occurrenceTime;
         this.description = description;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 
     public Date getOccurrenceTime() {
