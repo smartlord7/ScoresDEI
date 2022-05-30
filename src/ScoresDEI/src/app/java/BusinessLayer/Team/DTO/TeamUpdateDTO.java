@@ -1,6 +1,7 @@
 package BusinessLayer.Team.DTO;
 
 import BusinessLayer.Base.DTO.BaseEntityUpdateDTO;
+import DataLayer.Model.Attachment;
 
 import java.util.StringJoiner;
 
@@ -8,6 +9,7 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
     private Long id;
     private String teamName;
     private Long logoId;
+    private Attachment logo;
 
     public TeamUpdateDTO(Long id) {
         this.id = id;
@@ -21,6 +23,12 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
         this.id = id;
         this.teamName = teamName;
         this.logoId = logoId;
+    }
+
+    public TeamUpdateDTO(Long id, String teamName, Attachment logo) {
+        this.id = id;
+        this.teamName = teamName;
+        this.logo = logo;
     }
 
     public Long getId() {
@@ -45,6 +53,14 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
 
     public void setLogoId(Long logoId) {
         this.logoId = logoId;
+    }
+
+    public Attachment getLogo() {
+        return logo;
+    }
+
+    public void setLogo(Attachment logo) {
+        this.logo = logo;
     }
 
     @Override

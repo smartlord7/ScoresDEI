@@ -12,15 +12,17 @@ public class TeamTranslator {
     }
 
     public static TeamListDTO toListDTO(Team model) {
-        return new TeamListDTO(model.getTeamName());
-    }
-
-    public static TeamUpdateDTO toUpdateDTO(Team model) {
-        return new TeamUpdateDTO(model.getTeamName());
+        return new TeamListDTO(model.getId(), model.getTeamName());
     }
 
     public static TeamUpdateDTO toUpdateDTO(long id) {
         return new TeamUpdateDTO(id);
+    }
+
+    public static TeamUpdateDTO toUpdateDTO(Team model) {
+        return new TeamUpdateDTO(model.getId(),
+                model.getTeamName(),
+                model.getLogo());
     }
 
     public static void applyChanges(Team model, TeamUpdateDTO dto) {
