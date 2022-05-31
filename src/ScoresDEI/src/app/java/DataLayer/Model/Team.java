@@ -3,7 +3,8 @@ package DataLayer.Model;
 import DataLayer.Base.BaseEntityModel;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Team")
 @Table(name = "Team")
@@ -16,7 +17,7 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
     private Attachment logo;
 
     @OneToMany
-    private Collection<Player> player;
+    private List<Player> player = new ArrayList<Player>();
 
     public Team() {
     }
@@ -41,11 +42,11 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.logo = logo;
     }
 
-    public Collection<Player> getPlayer() {
+    public List<Player> getPlayer() {
         return player;
     }
 
-    public void setPlayers(Collection<Player> player) {
+    public void setPlayers(List<Player> player) {
         this.player = player;
     }
 }

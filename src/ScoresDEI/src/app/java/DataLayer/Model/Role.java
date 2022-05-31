@@ -8,23 +8,29 @@ import javax.persistence.*;
 @Table(name = "Role")
 public class Role extends AbstractAuditable<User, Long> implements BaseEntityModel {
     @Column(length = 1024, nullable = false)
-    private String userName;
+    private String roleName;
 
     @Column(length = 4096)
     private String description;
+
+    public Role() {
+    }
+
+    public Role(String roleName, String description) {
+        this.roleName = roleName;
+        this.description = description;
+    }
 
     public Role(Long id) {
         setId(id);
     }
 
-
-
-    public String getUserName() {
-        return userName;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setRoleName(String userName) {
+        this.roleName = userName;
     }
 
     public String getDescription() {

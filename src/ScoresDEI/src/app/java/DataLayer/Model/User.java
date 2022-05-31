@@ -5,7 +5,7 @@ import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 @Entity(name = "User_")
 @Table(name = "User_")
@@ -23,19 +23,16 @@ public class User extends AbstractAuditable<User, Long> implements Serializable,
     private String passwordHash;
 
     @ManyToMany
-    private Collection<Role> role;
+    private List<Role> role = new ArrayList<Role>();
 
     public User() {
-        role = new ArrayList<Role>();
     }
 
-    public User(String userName, String email, String phoneNumber, String passwordHash, Long roleId) {
-        this();
+    public User(String userName, String email, String phoneNumber, String passwordHash) {
         this.userName = userName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.passwordHash = passwordHash;
-        role.add(new Role(roleId));
     }
 
     public String getUserName() {
@@ -70,11 +67,11 @@ public class User extends AbstractAuditable<User, Long> implements Serializable,
         this.passwordHash = passwordHash;
     }
 
-    public Collection<Role> getRole() {
+    public List<Role> getRole() {
         return role;
     }
 
-    public void setRole(Collection<Role> role) {
+    public void setRole(List<Role> role) {
         this.role = role;
     }
 }

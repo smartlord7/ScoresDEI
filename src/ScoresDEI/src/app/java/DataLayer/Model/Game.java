@@ -3,7 +3,8 @@ package DataLayer.Model;
 import DataLayer.Base.BaseEntityModel;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 @Entity(name = "Game")
@@ -41,19 +42,19 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
     private EventStartGame eventEndGame;
 
     @OneToMany(mappedBy = "game")
-    Collection<EventInterruptGame> eventInterruptGame;
+    List<EventInterruptGame> eventInterruptGame = new ArrayList<EventInterruptGame>();
 
     @OneToMany(mappedBy = "game")
-    Collection<EventResumeGame> eventResumeGame;
+    List<EventResumeGame> eventResumeGame = new ArrayList<EventResumeGame>();
 
     @OneToMany(mappedBy = "game")
-    Collection<EventYellowCard> eventYellowCard;
+    List<EventYellowCard> eventYellowCard = new ArrayList<EventYellowCard>();
 
     @OneToMany(mappedBy = "game")
-    Collection<EventRedCard> eventRedCard;
+    List<EventRedCard> eventRedCard = new ArrayList<EventRedCard>();
 
     @OneToMany(mappedBy = "game")
-    Collection<EventGoal> eventGoal;
+    List<EventGoal> eventGoal = new ArrayList<EventGoal>();
 
     public Game() {
     }
@@ -132,43 +133,43 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.eventEndGame = eventEndGame;
     }
 
-    public Collection<EventInterruptGame> getEventInterruptGame() {
+    public List<EventInterruptGame> getEventInterruptGame() {
         return eventInterruptGame;
     }
 
-    public void setEventInterruptGame(Collection<EventInterruptGame> eventInterruptGame) {
+    public void setEventInterruptGame(List<EventInterruptGame> eventInterruptGame) {
         this.eventInterruptGame = eventInterruptGame;
     }
 
-    public Collection<EventResumeGame> getEventResumeGame() {
+    public List<EventResumeGame> getEventResumeGame() {
         return eventResumeGame;
     }
 
-    public void setEventResumeGame(Collection<EventResumeGame> eventResumeGame) {
+    public void setEventResumeGame(List<EventResumeGame> eventResumeGame) {
         this.eventResumeGame = eventResumeGame;
     }
 
-    public Collection<EventYellowCard> getEventYellowCard() {
+    public List<EventYellowCard> getEventYellowCard() {
         return eventYellowCard;
     }
 
-    public void setEventYellowCard(Collection<EventYellowCard> eventYellowCard) {
+    public void setEventYellowCard(List<EventYellowCard> eventYellowCard) {
         this.eventYellowCard = eventYellowCard;
     }
 
-    public Collection<EventRedCard> getEventRedCard() {
+    public List<EventRedCard> getEventRedCard() {
         return eventRedCard;
     }
 
-    public void setEventRedCard(Collection<EventRedCard> eventRedCards) {
+    public void setEventRedCard(List<EventRedCard> eventRedCards) {
         this.eventRedCard = eventRedCards;
     }
 
-    public Collection<EventGoal> getEventGoal() {
+    public List<EventGoal> getEventGoal() {
         return eventGoal;
     }
 
-    public void setEventGoal(Collection<EventGoal> eventGoals) {
+    public void setEventGoal(List<EventGoal> eventGoals) {
         this.eventGoal = eventGoals;
     }
 

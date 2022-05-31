@@ -1,10 +1,12 @@
 package BusinessLayer.Event;
 
 import BusinessLayer.Event.DTO.EventCreateDTO;
+import BusinessLayer.Event.DTO.EventUpdateDTO;
 import DataLayer.Model.Event;
 import DataLayer.Repository.EventRepository;
 import DataLayer.Repository.GameRepository;
 import DataLayer.Repository.PlayerRepository;
+import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,5 +31,10 @@ public class EventWriter {
         dto.setId(e.getId());
 
         return dto;
+    }
+
+    @Transactional
+    public EventUpdateDTO toggleApprove(long id) {
+        throw new NotYetImplementedException();
     }
 }
