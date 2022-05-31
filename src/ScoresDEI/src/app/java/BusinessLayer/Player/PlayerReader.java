@@ -22,6 +22,12 @@ public class PlayerReader {
                 .collect(Collectors.toList());
     }
 
+    public PlayerUpdateDTO getById(long id) {
+        Player p = players.getById(id);
+
+        return PlayerTranslator.toUpdateDTO_(p);
+    }
+
     public PlayerUpdateDTO getBestScorer() {
         List<Object>[] results = players.getBestScorer();
         Player p = (Player) results[0].get(0);

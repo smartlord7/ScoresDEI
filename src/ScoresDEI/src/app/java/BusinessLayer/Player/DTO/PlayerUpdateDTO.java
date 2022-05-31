@@ -12,6 +12,7 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
     private PlayerPositionEnum position;
     private Long goals;
     private Long teamId;
+    private String teamName;
 
     public PlayerUpdateDTO() {
     }
@@ -33,6 +34,15 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         this.position = position;
         this.birthDate = birthDate;
         this.teamId = teamId;
+    }
+
+    public PlayerUpdateDTO(Long id, String playerName, PlayerPositionEnum position, Date birthDate, Long teamId, String teamName) {
+        this.id = id;
+        this.playerName = playerName;
+        this.position = position;
+        this.birthDate = birthDate;
+        this.teamId = teamId;
+        this.teamName = teamName;
     }
 
     public String getPlayerName() {
@@ -75,6 +85,26 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         this.goals = goals;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", PlayerUpdateDTO.class.getSimpleName() + "[", "]")
@@ -83,14 +113,9 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
                 .add("birthDate=" + birthDate)
                 .add("position=" + position)
                 .add("goals=" + goals)
+                .add("teamId=" + teamId)
+                .add("teamName='" + teamName + "'")
                 .toString();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

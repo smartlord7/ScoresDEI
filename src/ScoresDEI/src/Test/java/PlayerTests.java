@@ -73,4 +73,9 @@ public class PlayerTests {
     public void getAll() {
         System.out.println(reader.getAll());
     }
+
+    @Test
+    public void getById() {
+        System.out.println(reader.getById(68));
+    }
 }
