@@ -1,5 +1,3 @@
-package DataLayerTests;
-
 import BusinessLayer.Game.DTO.GameCreateDTO;
 import BusinessLayer.Game.DTO.GameUpdateDTO;
 import org.junit.Test;

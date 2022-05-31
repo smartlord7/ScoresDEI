@@ -1,5 +1,3 @@
-package DataLayerTests;
-
 import BusinessLayer.User.DTO.UserCreateDTO;
 import BusinessLayer.User.UserWriter;
 import DataLayer.Model.User;

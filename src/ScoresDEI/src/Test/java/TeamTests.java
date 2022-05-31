@@ -1,5 +1,3 @@
-package DataLayerTests;
-
 import BusinessLayer.Team.DTO.TeamCreateDTO;
 import BusinessLayer.Team.DTO.TeamListDTO;
 import BusinessLayer.Team.DTO.TeamUpdateDTO;
@@ -71,7 +69,7 @@ public class TeamTests {
      * Method to delete using the ID.
      */
     @Test
-    public void deletebyId() {
+    public void deleteById() {
         System.out.println(writer.deleteById(0));
     }
 

@@ -9,19 +9,19 @@ import java.util.List;
 
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Long> {
-    @Query("SELECT p, (SELECT eg " +
+    @Query("SELECT p, (SELECT COUNT(eg) " +
             "FROM EventGoal eg " +
             "WHERE p.id = eg.player.id AND " +
-            "eg.approved IS TRUE) AS score " +
+            "eg.approved IS TRUE) AS goals " +
             "FROM Player p " +
             "WHERE " +
-            "(SELECT eg " +
+            "(SELECT COUNT(eg) " +
             "FROM EventGoal eg " +
             "WHERE p.id = eg.player.id AND " +
-            "eg.approved IS TRUE) >= ALL (SELECT eg2 " +
+            "eg.approved IS TRUE) >= ALL (SELECT COUNT(eg2) " +
             "FROM EventGoal eg2 " +
             "WHERE eg2.approved IS TRUE " +
             "GROUP BY eg2.player.id)")
-    Player getBestScorer();
+    List<Object>[] getBestScorer();
 
 }

@@ -1,5 +1,3 @@
-package DataLayerTests;
-
 import BusinessLayer.Event.DTO.EventCreateDTO;
 import BusinessLayer.Event.EventReader;
 import BusinessLayer.Event.EventWriter;

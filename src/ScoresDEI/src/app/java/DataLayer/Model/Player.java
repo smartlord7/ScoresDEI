@@ -22,7 +22,16 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     private PlayerPositionEnum position;
 
     @Transient
-    private Integer goals;
+    private Long goals;
+
+    public Player(String playerName, Date birthDate, PlayerPositionEnum position) {
+        this.playerName = playerName;
+        this.birthDate = birthDate;
+        this.position = position;
+    }
+
+    public Player() {
+    }
 
     public String getPlayerName() {
         return playerName;
@@ -48,11 +57,11 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
         this.position = position;
     }
 
-    public Integer getGoals() {
+    public Long getGoals() {
         return goals;
     }
 
-    public void setGoals(Integer goals) {
+    public void setGoals(Long goals) {
         this.goals = goals;
     }
 }
