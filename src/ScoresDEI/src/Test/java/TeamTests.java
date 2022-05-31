@@ -85,6 +85,11 @@ public class TeamTests {
         writer.update(dto);
     }
 
+    @Test
+    public void getById() {
+        System.out.println(reader.getById(0));
+    }
+
     // endregion Public methods
 
 }

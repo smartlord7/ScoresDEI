@@ -69,6 +69,7 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
                 .add("id=" + id)
                 .add("teamName='" + teamName + "'")
                 .add("logoId=" + logoId)
+                .add("logo=" + logo)
                 .toString();
     }
 }
