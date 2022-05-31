@@ -6,9 +6,16 @@ import java.util.Date;
 @Entity(name = "EventGoal")
 @Table(name = "EventGoal")
 public class EventGoal extends Event{
+
+    // region Private Properties
+
     @ManyToOne
     @JoinColumn(name = "playerId", nullable = false)
     private Player player;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public EventGoal() {
         super();
@@ -26,6 +33,13 @@ public class EventGoal extends Event{
         this.player = player;
     }
 
+    // endregion Getters,Setters and Constructors
+
+    // region Public Methods
+
+    /**
+     * Method to change the game score.
+     */
     @PostPersist
     public void changeGameScore() {
         Game g = getGame();
@@ -36,4 +50,7 @@ public class EventGoal extends Event{
             g.setScoreB(g.getScoreB() + 1);
         }
     }
+
+    // endregion Public Methods
+
 }

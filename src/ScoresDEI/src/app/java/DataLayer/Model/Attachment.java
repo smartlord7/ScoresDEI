@@ -8,12 +8,19 @@ import javax.persistence.*;
 @Entity(name = "Attachment")
 @Table(name = "Attachment")
 public class Attachment extends AbstractAuditable<User, Long> implements BaseEntityModel {
+
+    // region Private Properties
+
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private StorageTypeEnum storageType;
 
     @Column(length = 4096, nullable = false)
     private String path;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public Attachment() {
     }
@@ -33,4 +40,7 @@ public class Attachment extends AbstractAuditable<User, Long> implements BaseEnt
     public void setPath(String path) {
         this.path = path;
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

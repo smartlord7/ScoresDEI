@@ -8,6 +8,9 @@ import Util.PasswordHasher;
 import java.util.stream.Collectors;
 
 public class UserTranslator {
+
+    // region Public Methods
+
     public static User toModel(UserCreateDTO dto) {
         return new User(
                 dto.getUserName(),
@@ -25,4 +28,7 @@ public class UserTranslator {
                 model.getRole().stream().toList().get(0).getRoleName()
         );
     }
+
+    // endregion Public Methods
+
 }

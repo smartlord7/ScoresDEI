@@ -24,6 +24,9 @@ import java.util.Date;
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class PlayerTests {
+
+    // region Private properties
+
     @Autowired
     private PlayerRepository players;
 
@@ -33,17 +36,30 @@ public class PlayerTests {
     @Autowired
     private PlayerWriter writer;
 
+    // endregion Private Properties
+
+    // region Public methods
+
+    /**
+     * Test for the retrieval of the best scorer.
+     */
     @Test
     public void getBestScorer() {
         var bestScorer = players.getBestScorer();
         System.out.println(Arrays.toString(bestScorer));
     }
 
+    /**
+     * Test for the retrieval of the best scorer.
+     */
     @Test
     public void getBestScorer2() {
         System.out.println(reader.getBestScorer());
     }
 
+    /**
+     * Test for the player creation.
+     */
     @Test
     @Rollback(false)
     public void create() {
@@ -54,11 +70,17 @@ public class PlayerTests {
                         (long) 0)));
     }
 
+    /**
+     * Test for deleting by the id.
+     */
     @Test
     public void deleteById() {
         System.out.println(writer.deleteById(68));
     }
 
+    /**
+     * Test for the player update.
+     */
     @Test
     @Rollback(false)
     public void update() {
@@ -69,6 +91,8 @@ public class PlayerTests {
                         (long) 1)));
     }
 
+    // region Getters
+
     @Test
     public void getAll() {
         System.out.println(reader.getAll());
@@ -78,4 +102,9 @@ public class PlayerTests {
     public void getById() {
         System.out.println(reader.getById(68));
     }
+
+    //endregion Getters
+
+    // endregion Public methods
+
 }

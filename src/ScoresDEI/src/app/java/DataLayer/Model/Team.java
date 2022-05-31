@@ -9,6 +9,9 @@ import java.util.List;
 @Entity(name = "Team")
 @Table(name = "Team")
 public class Team extends AbstractAuditable<User, Long> implements BaseEntityModel {
+
+    // region Private Properties
+
     @Column(length = 1024, nullable = false)
     private String teamName;
 
@@ -18,6 +21,10 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     @OneToMany
     private List<Player> player = new ArrayList<Player>();
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructor
 
     public Team() {
     }
@@ -49,4 +56,7 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
     public void setPlayers(List<Player> player) {
         this.player = player;
     }
+
+    // region Getters,Setters and Constructor
+
 }

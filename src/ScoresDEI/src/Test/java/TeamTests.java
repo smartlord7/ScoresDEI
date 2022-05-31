@@ -48,7 +48,7 @@ public class TeamTests {
     }
 
     /**
-     * Method to create the teams.
+     * Test for the creation of the teams.
      */
     @Test
     @Rollback(false)
@@ -61,7 +61,7 @@ public class TeamTests {
     }
 
     /**
-     * Method to read the teams.
+     * Test for reading the teams.
      */
     @Test
     public void readAllTeams() {
@@ -72,7 +72,7 @@ public class TeamTests {
     }
 
     /**
-     * Method to delete using the ID.
+     * Test to delete using the ID.
      */
     @Test
     public void deleteById() {
@@ -80,7 +80,7 @@ public class TeamTests {
     }
 
     /**
-     * Method that updates a team.
+     * Test that updates a team.
      */
     @Test
     @Rollback(false)

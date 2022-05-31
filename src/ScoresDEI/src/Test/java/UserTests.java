@@ -45,7 +45,7 @@ public class UserTests {
     }
 
     /**
-     * Method to create a user.
+     * Test for the creation of a user.
      */
     @Test
     @Rollback(false)
@@ -63,7 +63,7 @@ public class UserTests {
     }
 
     /**
-     * Method used to enable the user.
+     * Test for the insertion of the user.
      */
     @Test
     public void create_() {

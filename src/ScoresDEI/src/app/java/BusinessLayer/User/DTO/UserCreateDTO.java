@@ -5,12 +5,19 @@ import BusinessLayer.Base.DTO.BaseEntityCreateDTO;
 import java.util.StringJoiner;
 
 public class UserCreateDTO implements BaseEntityCreateDTO {
+
+    // region Private Properties
+
     private Long id;
     private String userName;
     private String email;
     private String phoneNumber;
     private String password;
     private Long roleId;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public UserCreateDTO() {
     }
@@ -81,4 +88,7 @@ public class UserCreateDTO implements BaseEntityCreateDTO {
                 .add("roleId=" + roleId)
                 .toString();
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

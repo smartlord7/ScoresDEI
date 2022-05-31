@@ -8,6 +8,9 @@ import java.util.Date;
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Event extends AbstractAuditable<User, Long> implements BaseEntityModel {
+
+    // region Private Properties
+
     @Column(insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date occurrenceTime;
@@ -19,6 +22,10 @@ public class Event extends AbstractAuditable<User, Long> implements BaseEntityMo
     private Game game;
 
     private boolean approved;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public Event() {
     }
@@ -59,4 +66,7 @@ public class Event extends AbstractAuditable<User, Long> implements BaseEntityMo
     public void setDescription(String description) {
         this.description = description;
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

@@ -10,6 +10,9 @@ import java.util.Date;
 @Entity(name = "Game")
 @Table(name = "Game")
 public class Game extends AbstractAuditable<User, Long> implements BaseEntityModel {
+
+    // region Private Properties
+
     @Column(length = 1024, nullable = false)
     private String place;
 
@@ -55,6 +58,10 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     @OneToMany(mappedBy = "game")
     List<EventGoal> eventGoal = new ArrayList<EventGoal>();
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructor
 
     public Game() {
     }
@@ -176,4 +183,7 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
+
+    // endregion Getters,Setters and Constructor
+
 }

@@ -10,6 +10,9 @@ import java.util.List;
 @Entity(name = "User_")
 @Table(name = "User_")
 public class User extends AbstractAuditable<User, Long> implements Serializable, BaseEntityModel {
+
+    // region Private Properties
+
     @Column(length = 1024, nullable = false)
     private String userName;
 
@@ -25,8 +28,16 @@ public class User extends AbstractAuditable<User, Long> implements Serializable,
     @ManyToMany
     private List<Role> role = new ArrayList<Role>();
 
+    // endregion Private Properties
+
+    // region Public Properties
+
     public User() {
     }
+
+    // endregion Public Properties
+
+    // region Getters,Setters and Constructor
 
     public User(String userName, String email, String phoneNumber, String passwordHash) {
         this.userName = userName;
@@ -74,4 +85,7 @@ public class User extends AbstractAuditable<User, Long> implements Serializable,
     public void setRole(List<Role> role) {
         this.role = role;
     }
+
+    // endregion Getters,Setters and Constructor
+
 }

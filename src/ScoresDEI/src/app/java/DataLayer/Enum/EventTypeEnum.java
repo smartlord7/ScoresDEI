@@ -1,5 +1,8 @@
 package DataLayer.Enum;
 
+/**
+ * Enum that has all the Event types.
+ */
 public enum EventTypeEnum {
     START_GAME,
     END_GAME,

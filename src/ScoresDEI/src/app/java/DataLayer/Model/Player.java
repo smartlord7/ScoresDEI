@@ -10,6 +10,9 @@ import java.util.Date;
 @Entity(name = "Player")
 @Table(name = "Player")
 public class Player extends AbstractAuditable<User, Long> implements BaseEntityModel {
+
+    // region Private Properties
+
     @Column(length = 1024, nullable = false)
     private String playerName;
 
@@ -23,6 +26,10 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
 
     @ManyToOne
     private Team team;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Construtors
 
     public Team getTeam() {
         return team;
@@ -76,4 +83,7 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     public void setGoals(Long goals) {
         this.goals = goals;
     }
+
+    // endregion Getters,Setters and Construtors
+
 }

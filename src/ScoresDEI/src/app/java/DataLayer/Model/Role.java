@@ -7,6 +7,9 @@ import javax.persistence.*;
 @Entity(name = "Role")
 @Table(name = "Role")
 public class Role extends AbstractAuditable<User, Long> implements BaseEntityModel {
+
+    // region Private Properties
+
     @Column(length = 1024, nullable = false)
     private String roleName;
 
@@ -21,6 +24,10 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.description = description;
     }
 
+    // endregion Private Properties
+
+    // region Public Properties
+
     public Role(Long id) {
         setId(id);
     }
@@ -28,6 +35,9 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
     public String getRoleName() {
         return roleName;
     }
+    // endregion Public Properties
+
+    // region Getters and Setters
 
     public void setRoleName(String userName) {
         this.roleName = userName;
@@ -40,4 +50,7 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
     public void setDescription(String description) {
         this.description = description;
     }
+
+    // endregion Getters and Setters
+
 }

@@ -1,5 +1,8 @@
 package DataLayer.Enum;
 
+/**
+ * Enum that has all the player avaliable positions.
+ */
 public enum PlayerPositionEnum {
     GK,
     RB,

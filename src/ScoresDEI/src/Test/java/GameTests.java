@@ -42,7 +42,7 @@ public class GameTests {
     }
 
     /**
-     * Method used to get all the games.
+     * Test for getting all the games.
      */
     @Test
     public void getAll() {
@@ -50,7 +50,7 @@ public class GameTests {
     }
 
     /**
-     * Method used to create a game.
+     * Test for creating a game.
      */
     @Test
     @Rollback(false)
@@ -67,7 +67,7 @@ public class GameTests {
     }
 
     /**
-     * Method used to update the games.
+     * Test for updating the games.
      */
     @Test
     @Rollback(false)
@@ -85,7 +85,7 @@ public class GameTests {
     }
 
     /**
-     * Method used to delete the game by Id.
+     * Test for deleting the game by Id.
      */
     @Test
     public void delete() {
@@ -95,7 +95,7 @@ public class GameTests {
     // region Getters
 
     /**
-     * Method used to get the events.
+     * Test for getting the events.
      */
     @Test
     public void getEvents() {
@@ -103,7 +103,7 @@ public class GameTests {
     }
 
     /**
-     * Method used to get the game by Id.
+     * Test for getting the game by Id.
      */
     @Test
     public void getById() {

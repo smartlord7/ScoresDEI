@@ -41,7 +41,7 @@ public class EventTests {
     }
 
     /**
-     * Method used to create goal events.
+     * Test for the creation of events.
      */
     @Test
     @Rollback(false)
