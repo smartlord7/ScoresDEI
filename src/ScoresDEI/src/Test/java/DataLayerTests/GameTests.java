@@ -25,23 +25,35 @@ import java.util.Date;
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class GameTests {
+
+    // region Private properties
+
     @Autowired
     private GameReader reader;
 
     @Autowired
     private GameWriter writer;
 
+    // endregion Private Properties
+
+    // region Public methods
+
     @Test
     public void contextLoads() {
         Assertions.assertNotNull(writer);
     }
 
-
+    /**
+     * Method used to get all the games.
+     */
     @Test
     public void getAll() {
         System.out.println(reader.getAll());
     }
 
+    /**
+     * Method used to create a game.
+     */
     @Test
     @Rollback(false)
     public void create() {
@@ -56,6 +68,9 @@ public class GameTests {
         System.out.println(g);
     }
 
+    /**
+     * Method used to update the games.
+     */
     @Test
     @Rollback(false)
     public void update() {
@@ -71,18 +86,34 @@ public class GameTests {
         System.out.println(g);
     }
 
+    /**
+     * Method used to delete the game by Id.
+     */
     @Test
     public void delete() {
         System.out.println(writer.deleteById(40));
     }
 
+    // region Getters
+
+    /**
+     * Method used to get the events.
+     */
     @Test
     public void getEvents() {
         System.out.println(reader.getEvents(40));
     }
 
+    /**
+     * Method used to get the game by Id.
+     */
     @Test
     public void getById() {
         System.out.println(reader.getById(40));
     }
+
+    // endregion Getters
+
+    // endregion Public methods
+
 }

@@ -25,17 +25,27 @@ import java.util.List;
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class TeamTests {
+
+    // region Private properties
+
     @Autowired
     private TeamWriter writer;
 
     @Autowired
     private TeamReader reader;
 
+    // endregion Private Properties
+
+    // region Public methods
+
     @Test
     public void contextLoads() {
         Assertions.assertNotNull(writer);
     }
 
+    /**
+     * Method to create the teams.
+     */
     @Test
     @Rollback(false)
     public void createTeam() {
@@ -46,6 +56,9 @@ public class TeamTests {
         System.out.println(t);
     }
 
+    /**
+     * Method to read the teams.
+     */
     @Test
     public void readAllTeams() {
         List<TeamListDTO> list;
@@ -54,11 +67,17 @@ public class TeamTests {
         System.out.println(list);
     }
 
+    /**
+     * Method to delete using the ID.
+     */
     @Test
     public void deletebyId() {
         System.out.println(writer.deleteById(0));
     }
 
+    /**
+     * Method that updates a team.
+     */
     @Test
     @Rollback(false)
     public void update() {
@@ -67,4 +86,7 @@ public class TeamTests {
         dto = new TeamUpdateDTO((long) 0, "New team", (long) 0);
         writer.update(dto);
     }
+
+    // endregion Public methods
+
 }

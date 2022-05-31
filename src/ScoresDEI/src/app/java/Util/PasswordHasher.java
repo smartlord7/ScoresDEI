@@ -5,6 +5,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class PasswordHasher {
+
+    // region Public methods
+
+    /**
+     * Method used to encrypt the password.
+     * @param password the password to encrypt.
+     * @return the encrypted password.
+     */
     public static String encrypt(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -21,4 +29,7 @@ public class PasswordHasher {
             throw new RuntimeException(e);
         }
     }
+
+    // endregion Public methods
+
 }

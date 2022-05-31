@@ -23,17 +23,28 @@ import org.springframework.test.context.junit4.SpringRunner;
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UserTests {
+
+    // region Private properties
+
+
     @Autowired
     private UserRepository users;
 
     @Autowired
     private UserWriter writer;
 
+    // endregion Private Properties
+
+    // region Public methods
+
     @Test
     public void contextLoads() {
         Assertions.assertNotNull(users);
     }
 
+    /**
+     * Method to create a user.
+     */
     @Test
     public void writeUser() {
         UserCreateDTO u;
@@ -48,6 +59,9 @@ public class UserTests {
         writer.create(u);
     }
 
+    /**
+     * Method used to enable the user.
+     */
     @Test
     public void insertUser() {
         User u;
@@ -60,4 +74,7 @@ public class UserTests {
         u.setEmail("testuser@gmail.com");
         System.out.println(users.save(u));
     }
+
+    // endregion Public methods
+
 }

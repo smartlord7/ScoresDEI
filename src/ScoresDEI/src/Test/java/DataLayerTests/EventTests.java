@@ -28,17 +28,27 @@ import java.util.Date;
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class EventTests {
+
+    // region Private properties
+
     @Autowired
     private EventReader reader;
 
     @Autowired
     private EventWriter writer;
 
+    // endregion Private Properties
+
+    // region Public methods
+
     @Test
     public void contextLoads() {
         Assertions.assertNotNull(writer);
     }
 
+    /**
+     * Method used to create events.
+     */
     @Test
     @Rollback(false)
     public void createEvent() {
@@ -49,4 +59,7 @@ public class EventTests {
                 (long) 1);
         writer.create(goal);
     }
+
+    // endregion Public methods
+
 }
