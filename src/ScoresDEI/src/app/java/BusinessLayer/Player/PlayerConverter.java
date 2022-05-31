@@ -17,7 +17,8 @@ public class PlayerConverter {
         return new Player(
                 dto.getPlayerName(),
                 dto.getBirthDate(),
-                dto.getPosition()
+                dto.getPosition(),
+                dto.getTeam()
         );
     }
 }

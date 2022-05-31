@@ -21,13 +21,25 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     @Column(nullable = false)
     private PlayerPositionEnum position;
 
+    @ManyToOne
+    private Team team;
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
     @Transient
     private Long goals;
 
-    public Player(String playerName, Date birthDate, PlayerPositionEnum position) {
+    public Player(String playerName, Date birthDate, PlayerPositionEnum position, Team team) {
         this.playerName = playerName;
         this.birthDate = birthDate;
         this.position = position;
+        this.team = team;
     }
 
     public Player() {

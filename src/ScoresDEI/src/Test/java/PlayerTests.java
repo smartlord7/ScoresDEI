@@ -49,6 +49,7 @@ public class PlayerTests {
         System.out.println(writer.create(
                 new PlayerCreateDTO("Sancho Simões",
                         new Date(),
-                        PlayerPositionEnum.GK)));
+                        PlayerPositionEnum.GK,
+                        (long) 0)));
     }
 }
