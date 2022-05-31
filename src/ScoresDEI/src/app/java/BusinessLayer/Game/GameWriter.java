@@ -23,15 +23,15 @@ public class GameWriter {
 
     @Transactional
     public GameCreateDTO create(GameCreateDTO dto) {
-        Game g;
-        g = new Game(dto.getPlace(),
+        Game g = new Game(dto.getPlace(),
                 dto.getStartTime(),
                 dto.getEndTime());
-        g.setTeamA(teams.getById(dto.getTeamAId()));
-        g.setTeamB(teams.getById(dto.getTeamBId()));
+        Team tA = teams.getById(dto.getTeamAId());
+        Team tB = teams.getById(dto.getTeamBId());
+        g.setTeamA(tA);
+        g.setTeamB(tB);
 
         games.save(g);
-
         dto.setId(g.getId());
 
         return dto;
