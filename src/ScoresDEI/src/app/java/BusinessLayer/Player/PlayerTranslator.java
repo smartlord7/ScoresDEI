@@ -1,10 +1,26 @@
 package BusinessLayer.Player;
 
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
+import BusinessLayer.Player.DTO.PlayerListDTO;
 import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import DataLayer.Model.Player;
+import DataLayer.Model.Team;
 
 public class PlayerTranslator {
+    public static PlayerListDTO toListDTO(Player model) {
+        Team t = model.getTeam();
+        Long teamId = t != null ? t.getId() : null;
+        String teamName = t != null ? t.getTeamName() : null;
+
+        return new PlayerListDTO(
+                model.getId(),
+                model.getPlayerName(),
+                model.getPosition(),
+                teamId,
+                teamName
+        );
+    }
+
     public static PlayerUpdateDTO toUpdateDTO(Player model) {
         return new PlayerUpdateDTO(
                 model.getId(),

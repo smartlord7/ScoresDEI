@@ -15,14 +15,14 @@ public class TeamReader {
     @Autowired
     private TeamRepository teams;
 
-    public List<TeamListDTO> readAll() {
+    public List<TeamListDTO> getAll() {
         return teams.findAll()
                 .stream()
                 .map(TeamTranslator::toListDTO)
                 .collect(Collectors.toList());
     }
 
-    public TeamUpdateDTO readById(long id) {
+    public TeamUpdateDTO getById(long id) {
         Team t;
 
         t = teams.getById(id);

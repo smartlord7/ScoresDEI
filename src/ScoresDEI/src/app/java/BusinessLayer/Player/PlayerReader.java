@@ -1,5 +1,6 @@
 package BusinessLayer.Player;
 
+import BusinessLayer.Player.DTO.PlayerListDTO;
 import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import DataLayer.Model.Player;
 import DataLayer.Repository.PlayerRepository;
@@ -7,11 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PlayerReader {
     @Autowired
     private PlayerRepository players;
+
+    public List<PlayerListDTO> getAll() {
+        return players.findAll()
+                .stream()
+                .map(PlayerTranslator::toListDTO)
+                .collect(Collectors.toList());
+    }
 
     public PlayerUpdateDTO getBestScorer() {
         List<Object>[] results = players.getBestScorer();

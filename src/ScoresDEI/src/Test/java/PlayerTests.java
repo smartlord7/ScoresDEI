@@ -68,4 +68,9 @@ public class PlayerTests {
                         new Date(),
                         (long) 1)));
     }
+
+    @Test
+    public void getAll() {
+        System.out.println(reader.getAll());
+    }
 }

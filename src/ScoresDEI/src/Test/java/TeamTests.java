@@ -60,7 +60,7 @@ public class TeamTests {
     @Test
     public void readAllTeams() {
         List<TeamListDTO> list;
-        list = reader.readAll();
+        list = reader.getAll();
 
         System.out.println(list);
     }
