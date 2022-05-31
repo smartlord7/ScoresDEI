@@ -1,6 +1,7 @@
 package BusinessLayer.Player;
 
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
+import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import DataLayer.Model.Player;
 import DataLayer.Repository.PlayerRepository;
 import DataLayer.Repository.TeamRepository;
@@ -25,5 +26,12 @@ public class PlayerWriter {
         dto.setId(p.getId());
 
         return dto;
+    }
+
+    @Transactional
+    public PlayerUpdateDTO deleteById(long id) {
+        players.deleteById(id);
+
+        return PlayerConverter.toUpdateDTO(id);
     }
 }

@@ -52,4 +52,9 @@ public class PlayerTests {
                         PlayerPositionEnum.GK,
                         (long) 0)));
     }
+
+    @Test
+    public void deleteById() {
+        System.out.println(writer.deleteById(68));
+    }
 }

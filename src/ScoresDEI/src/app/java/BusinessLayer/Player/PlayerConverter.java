@@ -13,6 +13,12 @@ public class PlayerConverter {
         );
     }
 
+    public static PlayerUpdateDTO toUpdateDTO(long id) {
+        return new PlayerUpdateDTO(
+                id
+        );
+    }
+
     public static Player toModel(PlayerCreateDTO dto) {
         return new Player(
                 dto.getPlayerName(),
