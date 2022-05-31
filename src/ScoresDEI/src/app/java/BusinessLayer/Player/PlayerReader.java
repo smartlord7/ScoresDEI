@@ -19,6 +19,6 @@ public class PlayerReader {
         long goals = (long) results[0].get(1);
         p.setGoals(goals);
 
-        return PlayerConverter.toUpdateDTO(p);
+        return PlayerTranslator.toUpdateDTO(p);
     }
 }

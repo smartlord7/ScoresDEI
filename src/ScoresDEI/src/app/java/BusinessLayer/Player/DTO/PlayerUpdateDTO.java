@@ -2,14 +2,16 @@ package BusinessLayer.Player.DTO;
 
 import BusinessLayer.Base.DTO.BaseEntityUpdateDTO;
 import DataLayer.Enum.PlayerPositionEnum;
-
+import java.util.Date;
 import java.util.StringJoiner;
 
 public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
     private Long id;
     private String playerName;
+    private Date birthDate;
     private PlayerPositionEnum position;
     private Long goals;
+    private Long teamId;
 
     public PlayerUpdateDTO() {
     }
@@ -18,10 +20,19 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         this.id = id;
     }
 
-    public PlayerUpdateDTO(String playerName, PlayerPositionEnum position, Long goals) {
+    public PlayerUpdateDTO(Long id, String playerName, PlayerPositionEnum position, long goals) {
+        this.id = id;
         this.playerName = playerName;
         this.position = position;
         this.goals = goals;
+    }
+
+    public PlayerUpdateDTO(Long id, String playerName, PlayerPositionEnum position, Date birthDate, Long teamId) {
+        this.id = id;
+        this.playerName = playerName;
+        this.position = position;
+        this.birthDate = birthDate;
+        this.teamId = teamId;
     }
 
     public String getPlayerName() {
@@ -36,12 +47,20 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         return position;
     }
 
-    public Long getId() {
-        return id;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeam(Long teamId) {
+        this.teamId = teamId;
     }
 
     public void setPosition(PlayerPositionEnum position) {
@@ -61,8 +80,17 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         return new StringJoiner(", ", PlayerUpdateDTO.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("playerName='" + playerName + "'")
+                .add("birthDate=" + birthDate)
                 .add("position=" + position)
                 .add("goals=" + goals)
                 .toString();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

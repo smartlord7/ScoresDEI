@@ -4,9 +4,10 @@ import BusinessLayer.Player.DTO.PlayerCreateDTO;
 import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import DataLayer.Model.Player;
 
-public class PlayerConverter {
+public class PlayerTranslator {
     public static PlayerUpdateDTO toUpdateDTO(Player model) {
         return new PlayerUpdateDTO(
+                model.getId(),
                 model.getPlayerName(),
                 model.getPosition(),
                 model.getGoals()
@@ -26,5 +27,9 @@ public class PlayerConverter {
                 dto.getPosition(),
                 dto.getTeam()
         );
+    }
+
+    public static void applyChanges(Player model, PlayerUpdateDTO dto) {
+        model.setPosition(dto.getPosition());
     }
 }

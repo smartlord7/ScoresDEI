@@ -1,4 +1,5 @@
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
+import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import BusinessLayer.Player.PlayerReader;
 import BusinessLayer.Player.PlayerWriter;
 import DataLayer.Enum.PlayerPositionEnum;
@@ -56,5 +57,15 @@ public class PlayerTests {
     @Test
     public void deleteById() {
         System.out.println(writer.deleteById(68));
+    }
+
+    @Test
+    @Rollback(false)
+    public void update() {
+        System.out.println(writer.update(
+                new PlayerUpdateDTO((long) 68, "Sancho Simões",
+                        PlayerPositionEnum.GK,
+                        new Date(),
+                        (long) 1)));
     }
 }
