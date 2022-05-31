@@ -1,12 +1,13 @@
 package BusinessLayer.Team;
 
 import BusinessLayer.Team.DTO.TeamListDTO;
+import BusinessLayer.Team.DTO.TeamListDetailedDTO;
 import BusinessLayer.Team.DTO.TeamUpdateDTO;
 import DataLayer.Model.Team;
 import DataLayer.Repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +21,18 @@ public class TeamReader {
                 .stream()
                 .map(TeamTranslator::toListDTO)
                 .collect(Collectors.toList());
+    }
+
+    public List<TeamListDetailedDTO> getAllDetailed() {
+        return Arrays.stream(teams.getAllDetailed())
+                .map(cols -> new TeamListDetailedDTO(
+                    (long) cols.get(0),
+                    (String) cols.get(1),
+                    (long) cols.get(2),
+                    (long) cols.get(3),
+                    (long) cols.get(4),
+                    (long) cols.get(5)
+        )).toList();
     }
 
     public TeamUpdateDTO getById(long id) {

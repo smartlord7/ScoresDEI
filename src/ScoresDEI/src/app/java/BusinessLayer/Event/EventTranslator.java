@@ -61,8 +61,23 @@ public class EventTranslator {
             e.setPlayer(dto.getPlayer());
 
             return e;
+        } else if (type == EventTypeEnum.END_GAME){
+            return new EventEndGame(
+                    dto.getOccurrenceTime(),
+                    dto.getDescription()
+            );
+        } else if (type == EventTypeEnum.START_GAME) {
+            return new EventStartGame(
+                    dto.getOccurrenceTime(),
+                    dto.getDescription()
+            );
+        } else if (type == EventTypeEnum.INTERRUPT_GAME) {
+            return new EventInterruptGame(
+                    dto.getOccurrenceTime(),
+                    dto.getDescription()
+            );
         } else {
-            return new Event(
+            return new EventResumeGame(
                     dto.getOccurrenceTime(),
                     dto.getDescription()
             );

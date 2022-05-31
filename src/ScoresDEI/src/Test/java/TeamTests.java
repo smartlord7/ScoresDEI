@@ -3,6 +3,7 @@ import BusinessLayer.Team.DTO.TeamListDTO;
 import BusinessLayer.Team.DTO.TeamUpdateDTO;
 import BusinessLayer.Team.TeamReader;
 import BusinessLayer.Team.TeamWriter;
+import DataLayer.Repository.TeamRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -14,6 +15,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Arrays;
 import java.util.List;
 
 @DataJpaTest
@@ -25,6 +28,9 @@ import java.util.List;
 public class TeamTests {
 
     // region Private properties
+
+    @Autowired
+    private TeamRepository teams;
 
     @Autowired
     private TeamWriter writer;
@@ -88,6 +94,16 @@ public class TeamTests {
     @Test
     public void getById() {
         System.out.println(reader.getById(0));
+    }
+
+    @Test
+    public void getAllDetailed() {
+        System.out.println(Arrays.toString(teams.getAllDetailed()));
+    }
+
+    @Test
+    public void getAllDetailed2() {
+        System.out.println(reader.getAllDetailed());
     }
 
     // endregion Public methods

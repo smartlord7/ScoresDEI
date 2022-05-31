@@ -1,10 +1,7 @@
 import BusinessLayer.Event.DTO.EventCreateDTO;
 import BusinessLayer.Event.EventReader;
 import BusinessLayer.Event.EventWriter;
-import BusinessLayer.Game.GameReader;
-import BusinessLayer.Game.GameWriter;
 import DataLayer.Enum.EventTypeEnum;
-import DataLayer.Model.EventGoal;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -16,7 +13,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.util.Date;
 
 @DataJpaTest
@@ -45,17 +41,31 @@ public class EventTests {
     }
 
     /**
-     * Method used to create events.
+     * Method used to create goal events.
      */
     @Test
     @Rollback(false)
-    public void createEvent() {
+    public void createGoalEvent() {
         EventCreateDTO goal = new EventCreateDTO(EventTypeEnum.GOAL,
                 new Date(),
                 "Test event",
                 (long) 40,
                 (long) 1);
-        writer.create(goal);
+        System.out.println(writer.create(goal));
+    }
+
+    /**
+     * Method used to create end game events.
+     */
+    @Test
+    @Rollback(false)
+    public void createEndGameEvent() {
+        EventCreateDTO end = new EventCreateDTO(EventTypeEnum.END_GAME,
+                new Date(),
+                "Test event",
+                (long) 40,
+                (long) 1);
+        System.out.println(writer.create(end));
     }
 
     // endregion Public methods

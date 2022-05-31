@@ -3,7 +3,6 @@ package BusinessLayer.Team;
 import BusinessLayer.Team.DTO.TeamCreateDTO;
 import BusinessLayer.Team.DTO.TeamListDTO;
 import BusinessLayer.Team.DTO.TeamUpdateDTO;
-import DataLayer.Model.Attachment;
 import DataLayer.Model.Team;
 
 public class TeamTranslator {
