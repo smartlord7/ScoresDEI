@@ -3,6 +3,7 @@ package BusinessLayer.Player.DTO;
 import BusinessLayer.Base.DTO.BaseEntityCreateDTO;
 import DataLayer.Enum.PlayerPositionEnum;
 import DataLayer.Model.Team;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 import java.util.StringJoiner;
@@ -16,7 +17,6 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
     private Date birthDate;
     private PlayerPositionEnum position;
     private Long teamId;
-    private Team team;
 
     // endregion Private Properties
 
@@ -70,14 +70,6 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
 
     public void setTeamId(Long teamId) {
         this.teamId = teamId;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
     }
 
     @Override
