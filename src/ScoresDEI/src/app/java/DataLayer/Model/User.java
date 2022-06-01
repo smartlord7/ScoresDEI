@@ -25,7 +25,7 @@ public class User extends AbstractAuditable<User, Long> implements Serializable,
     @Column(length = 256, nullable = false)
     private String passwordHash;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> role = new ArrayList<Role>();
 
     // endregion Private Properties
