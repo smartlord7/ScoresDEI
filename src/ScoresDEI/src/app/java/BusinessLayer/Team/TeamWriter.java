@@ -1,14 +1,10 @@
 package BusinessLayer.Team;
 
-import BusinessLayer.Player.Import.PlayerImportResultDTO;
-import BusinessLayer.Player.Import.PlayerSportsAPIImport;
-import BusinessLayer.Player.PlayerTranslator;
 import BusinessLayer.Team.DTO.TeamCreateDTO;
 import BusinessLayer.Team.DTO.TeamUpdateDTO;
 import BusinessLayer.Team.Import.TeamImportResultDTO;
 import BusinessLayer.Team.Import.TeamSportsAPIImport;
 import DataLayer.Model.Attachment;
-import DataLayer.Model.Player;
 import DataLayer.Model.Team;
 import DataLayer.Repository.AttachmentRepository;
 import DataLayer.Repository.TeamRepository;
