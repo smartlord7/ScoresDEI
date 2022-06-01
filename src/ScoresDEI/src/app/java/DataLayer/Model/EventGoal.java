@@ -33,7 +33,7 @@ public class EventGoal extends Event{
         this.player = player;
     }
 
-    // endregion Getters,Setters and Constructors
+    @PostUpdate
 
     // region Public Methods
 
@@ -43,14 +43,14 @@ public class EventGoal extends Event{
     @PostPersist
     public void changeGameScore() {
         Game g = getGame();
-
-        if (g.getTeamA().getPlayer().contains(player)) {
-            g.setScoreA(g.getScoreA() + 1);
-        } else {
-            g.setScoreB(g.getScoreB() + 1);
+        if (isApproved()) {
+            if (g.getTeamA().getPlayer().contains(player)) {
+                g.setScoreA(g.getScoreA() + 1);
+            } else {
+                g.setScoreB(g.getScoreB() + 1);
+            }
         }
     }
-
     // endregion Public Methods
 
 }
