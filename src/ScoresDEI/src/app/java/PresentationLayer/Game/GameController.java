@@ -16,11 +16,18 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/game")
 public class GameController {
+
+    // region Private Properties
+
     @Autowired
     private GameReader reader;
 
     @Autowired
     private GameWriter writer;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @GetMapping("/")
     public List<GameListDTO> getAll() {
@@ -46,4 +53,7 @@ public class GameController {
     public GameUpdateDTO update(@RequestBody GameUpdateDTO dto) {
         return writer.update(dto);
     }
+
+    // endregion Public Methods
+
 }

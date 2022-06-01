@@ -15,11 +15,18 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/team")
 public class TeamController {
+
+    // region Private Properties
+
     @Autowired
     private TeamReader reader;
 
     @Autowired
     private TeamWriter writer;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @GetMapping("/")
     public List<TeamListDTO> getAll() {
@@ -45,4 +52,7 @@ public class TeamController {
     public TeamUpdateDTO update(@RequestBody TeamUpdateDTO dto) {
         return writer.update(dto);
     }
+
+    // endregion Public Methods
+
 }

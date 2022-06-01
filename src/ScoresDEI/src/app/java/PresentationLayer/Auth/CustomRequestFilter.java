@@ -18,6 +18,8 @@ import java.io.IOException;
 @Component
 public class CustomRequestFilter extends OncePerRequestFilter {
 
+    // region Private Properties
+
     @Autowired
     private UserAuthDetailsProvider jwtUserDetailsProvider;
 
@@ -25,6 +27,10 @@ public class CustomRequestFilter extends OncePerRequestFilter {
     private JWTProvider jwtProvider;
 
     private final String TOKEN_PREFIX = " Bearer";
+
+    // endregion Private Properties
+
+    // region Protected Methods
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -64,4 +70,7 @@ public class CustomRequestFilter extends OncePerRequestFilter {
 
         chain.doFilter(request, response);
     }
+
+    // endregion Protected Methods
+
 }

@@ -14,11 +14,18 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/player")
 public class PlayerController {
+
+    // region Private Properties
+
     @Autowired
     private PlayerReader reader;
 
     @Autowired
     private PlayerWriter writer;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @GetMapping("/")
     public List<PlayerListDTO> getAll() {
@@ -49,4 +56,7 @@ public class PlayerController {
     public PlayerUpdateDTO update(@RequestBody PlayerUpdateDTO dto) {
         return writer.update(dto);
     }
+
+    // endregion Public Methods
+
 }

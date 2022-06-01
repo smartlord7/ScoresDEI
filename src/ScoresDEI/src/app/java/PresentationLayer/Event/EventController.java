@@ -12,14 +12,24 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/event")
 public class EventController {
+
+    // region Private Properties
+
     @Autowired
     private EventReader reader;
 
     @Autowired
     private EventWriter writer;
 
+    // endregion Private Properties
+
+    // region Public Methods
+
     @PostMapping("/")
     public EventCreateDTO create(@RequestBody EventCreateDTO dto) {
         return writer.create(dto);
     }
+
+    // endregion Public Methods
+
 }

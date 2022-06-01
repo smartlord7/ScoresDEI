@@ -80,7 +80,7 @@ public class TeamTests {
     }
 
     /**
-     * Test that updates a team.
+     * Test for updating a team.
      */
     @Test
     @Rollback(false)

@@ -21,6 +21,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    // region Private Properties
+
     private final String API_PREFIX = "/scoresDEI/api";
 
     @Autowired
@@ -32,6 +35,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomRequestFilter requestFilter;
 
+    // endregion Private Properties
+
+    // region Public Methods
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -42,6 +49,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception{
         return super.authenticationManagerBean();
     }
+
+    // endregion Public Methods
+
+    // region Protected Methods
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -56,6 +67,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
+    // endregion Protected Methods
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {

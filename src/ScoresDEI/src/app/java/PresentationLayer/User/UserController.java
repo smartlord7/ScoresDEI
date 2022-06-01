@@ -22,6 +22,9 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/user")
 public class UserController {
+
+    // region Private Properties
+
     @Autowired
     private AuthenticationManager authManager;
 
@@ -36,6 +39,10 @@ public class UserController {
 
     @Autowired
     private UserWriter writer;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @PostMapping("/")
     public UserCreateDTO create(@RequestBody UserCreateDTO dto) {
@@ -58,6 +65,12 @@ public class UserController {
         return new JWTGrantDTO(token);
     }
 
+    /**
+     * Method to authenticate a user.
+     * @param username is the user login.
+     * @param password is the user password.
+     * @throws Exception
+     */
     private void authenticate(String username, String password) throws Exception {
         try {
             authManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
@@ -67,4 +80,7 @@ public class UserController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
+
+    // endregion Public Methods
+
 }

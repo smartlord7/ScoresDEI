@@ -12,9 +12,22 @@ import java.util.ArrayList;
 
 @Component
 public class UserAuthDetailsProvider implements UserDetailsService {
+
+    // region Private Properties
+
     @Autowired
     private UserRepository users;
 
+    // endregion Private Properties
+
+    // region Public Methods
+
+    /**
+     * Method that gives user details
+     * @param userName is the username.
+     * @return the details of the user.
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User u = users.findByUserName(userName);
@@ -27,4 +40,7 @@ public class UserAuthDetailsProvider implements UserDetailsService {
             throw new UsernameNotFoundException("User not found with username: " + userName);
         }
     }
+
+    // endregion Public Methods
+
 }

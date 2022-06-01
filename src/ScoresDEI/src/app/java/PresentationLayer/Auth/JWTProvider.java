@@ -17,6 +17,8 @@ import java.util.function.Function;
 @Service
 public class JWTProvider implements Serializable {
 
+    // region Private Properties
+
     @Serial
     private static final long serialVersionUID = -2550185165626007488L;
 
@@ -25,6 +27,10 @@ public class JWTProvider implements Serializable {
 
     @Value("${jwt.secret}")
     private String secret;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     public String getUserNameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
@@ -38,6 +44,21 @@ public class JWTProvider implements Serializable {
         final Claims claims = getAllClaimsFromToken(token);
         return claimsResolver.apply(claims);
     }
+
+    public String generateToken(@NonNull UserDetails user) {
+        Map<String, Object> claims = new HashMap<>();
+        return doGenerateToken(claims, user.getUsername());
+    }
+
+    public boolean isValidToken(String token, @NonNull UserDetails user) {
+        String username = getUserNameFromToken(token);
+        return (username.equals(user.getUsername()) && !isTokenExpired(token));
+    }
+
+    // endregion Public Methods
+
+    // region Private Methods
+
     private Claims getAllClaimsFromToken(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
@@ -47,10 +68,6 @@ public class JWTProvider implements Serializable {
         return expiration.before(new Date());
     }
 
-    public String generateToken(@NonNull UserDetails user) {
-        Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, user.getUsername());
-    }
 
     private String doGenerateToken(Map<String, Object> claims, String subject) {
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
@@ -58,8 +75,6 @@ public class JWTProvider implements Serializable {
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 
-    public boolean isValidToken(String token, @NonNull UserDetails user) {
-        String username = getUserNameFromToken(token);
-        return (username.equals(user.getUsername()) && !isTokenExpired(token));
-    }
+    // endregion Private Methods
+
 }
