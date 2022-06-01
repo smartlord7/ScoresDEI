@@ -4,6 +4,7 @@ import BusinessLayer.Team.DTO.TeamCreateDTO;
 import BusinessLayer.Team.DTO.TeamListDTO;
 import BusinessLayer.Team.DTO.TeamListDetailedDTO;
 import BusinessLayer.Team.DTO.TeamUpdateDTO;
+import BusinessLayer.Team.Import.TeamImportResultDTO;
 import BusinessLayer.Team.TeamReader;
 import BusinessLayer.Team.TeamWriter;
 import Util.ApplicationConst;
@@ -51,6 +52,13 @@ public class TeamController {
     @PutMapping("/")
     public TeamUpdateDTO update(@RequestBody TeamUpdateDTO dto) {
         return writer.update(dto);
+    }
+
+    @GetMapping("/import")
+    public TeamImportResultDTO importViaSportsAPI(@RequestHeader(value="x-apisports-key") String keyAPI,
+                                                  @RequestParam long league,
+                                                  @RequestParam long season) {
+        return writer.importViaSportsAPI(keyAPI, league, season);
     }
 
     // endregion Public Methods
