@@ -87,10 +87,15 @@ public class PlayerTranslator {
         return new PlayerUpdateDTO(
                 model.getId(),
                 model.getPlayerName(),
-                model.getPosition(),
                 model.getBirthDate(),
+                model.getPosition(),
                 teamId,
-                teamName
+                teamName,
+                model.getFirstName(),
+                model.getLastName(),
+                model.getNationality(),
+                model.getHeight(),
+                model.getWeight()
         );
     }
 

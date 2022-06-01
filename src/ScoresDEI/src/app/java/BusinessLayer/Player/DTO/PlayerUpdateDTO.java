@@ -16,6 +16,11 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
     private Long goals;
     private Long teamId;
     private String teamName;
+    private String firstName;
+    private String lastName;
+    private String nationality;
+    private Double height;
+    private Double weight;
 
     // endregion Private Properties
 
@@ -43,13 +48,18 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         this.teamId = teamId;
     }
 
-    public PlayerUpdateDTO(Long id, String playerName, PlayerPositionEnum position, Date birthDate, Long teamId, String teamName) {
+    public PlayerUpdateDTO(Long id, String playerName, Date birthDate, PlayerPositionEnum position, Long teamId, String teamName, String firstName, String lastName, String nationality, Double height, Double weight) {
         this.id = id;
         this.playerName = playerName;
-        this.position = position;
         this.birthDate = birthDate;
+        this.position = position;
         this.teamId = teamId;
         this.teamName = teamName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationality = nationality;
+        this.height = height;
+        this.weight = weight;
     }
 
     public String getPlayerName() {
@@ -112,6 +122,46 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         this.id = id;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public Double getHeight() {
+        return height;
+    }
+
+    public void setHeight(Double height) {
+        this.height = height;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", PlayerUpdateDTO.class.getSimpleName() + "[", "]")
@@ -122,6 +172,11 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
                 .add("goals=" + goals)
                 .add("teamId=" + teamId)
                 .add("teamName='" + teamName + "'")
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
+                .add("nationality='" + nationality + "'")
+                .add("height=" + height)
+                .add("weight=" + weight)
                 .toString();
     }
 
