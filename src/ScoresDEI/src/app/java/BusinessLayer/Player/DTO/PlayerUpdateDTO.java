@@ -33,11 +33,14 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         this.id = id;
     }
 
-    public PlayerUpdateDTO(Long id, String playerName, PlayerPositionEnum position, long goals) {
+    public PlayerUpdateDTO(Long id, String playerName, PlayerPositionEnum position, long goals, Long teamId, String teamName, String nationality) {
         this.id = id;
         this.playerName = playerName;
         this.position = position;
         this.goals = goals;
+        this.teamId = teamId;
+        this.teamName = teamName;
+        this.nationality = nationality;
     }
 
     public PlayerUpdateDTO(Long id, String playerName, PlayerPositionEnum position, Date birthDate, Long teamId) {

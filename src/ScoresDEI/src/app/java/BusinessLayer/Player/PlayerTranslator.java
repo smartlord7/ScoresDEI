@@ -71,11 +71,18 @@ public class PlayerTranslator {
     }
 
     public static PlayerUpdateDTO toUpdateDTO(Player model) {
+        Team t = model.getTeam();
+        Long teamId = t != null ? t.getId() : null;
+        String teamName = t != null ? t.getTeamName() : null;
+
         return new PlayerUpdateDTO(
                 model.getId(),
                 model.getPlayerName(),
                 model.getPosition(),
-                model.getGoals()
+                model.getGoals(),
+                teamId,
+                teamName,
+                model.getNationality()
         );
     }
 
