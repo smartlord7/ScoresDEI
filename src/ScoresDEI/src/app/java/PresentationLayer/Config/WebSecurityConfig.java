@@ -4,8 +4,10 @@ import PresentationLayer.Auth.CustomAuthEntryPoint;
 import PresentationLayer.Auth.CustomRequestFilter;
 import PresentationLayer.Auth.UserAuthDetailsProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -23,8 +25,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // region Private Properties
-
-    private final String API_PREFIX = "/scoresDEI/api";
+    @Value("${api.prefix}")
+    private String API_PREFIX;
 
     @Autowired
     private CustomAuthEntryPoint authEntryPoint;
@@ -58,7 +60,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
                 .authorizeRequests()
-                .anyRequest()
+                .antMatchers(HttpMethod.POST, API_PREFIX + "/user").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage(API_PREFIX + "/user/login")
+                .permitAll()
+                .and()
+                .logout()
                 .permitAll()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(authEntryPoint)

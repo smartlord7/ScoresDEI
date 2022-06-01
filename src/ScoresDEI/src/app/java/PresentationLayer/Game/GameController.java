@@ -29,7 +29,7 @@ public class GameController {
 
     // region Public Methods
 
-    @GetMapping("/")
+    @GetMapping
     public List<GameListDTO> getAll() {
         return reader.getAll();
     }
@@ -44,12 +44,12 @@ public class GameController {
         return reader.getById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public GameCreateDTO create(@RequestBody GameCreateDTO dto) {
         return writer.create(dto);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public GameUpdateDTO update(@RequestBody GameUpdateDTO dto) {
         return writer.update(dto);
     }

@@ -29,7 +29,7 @@ public class TeamController {
 
     // region Public Methods
 
-    @GetMapping("/")
+    @GetMapping
     public List<TeamListDTO> getAll() {
         return reader.getAll();
     }
@@ -44,12 +44,12 @@ public class TeamController {
         return reader.getById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public TeamCreateDTO create(@RequestBody TeamCreateDTO dto) {
         return writer.create(dto);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public TeamUpdateDTO update(@RequestBody TeamUpdateDTO dto) {
         return writer.update(dto);
     }

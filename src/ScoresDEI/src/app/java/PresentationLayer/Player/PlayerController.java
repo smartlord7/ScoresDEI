@@ -28,7 +28,7 @@ public class PlayerController {
 
     // region Public Methods
 
-    @GetMapping("/")
+    @GetMapping
     public List<PlayerListDTO> getAll() {
         return reader.getAll();
     }
@@ -43,7 +43,7 @@ public class PlayerController {
         return reader.getBestScorer();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public PlayerCreateDTO create(@RequestBody PlayerCreateDTO dto) {
         return writer.create(dto);
     }
@@ -53,7 +53,7 @@ public class PlayerController {
         return writer.deleteById(id);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public PlayerUpdateDTO update(@RequestBody PlayerUpdateDTO dto) {
         return writer.update(dto);
     }

@@ -44,12 +44,12 @@ public class UserController {
 
     // region Public Methods
 
-    @PostMapping("/")
+    @PostMapping
     public UserCreateDTO create(@RequestBody UserCreateDTO dto) {
         return writer.create(dto);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<UserListDTO> getAll() {
         return reader.getAll();
     }

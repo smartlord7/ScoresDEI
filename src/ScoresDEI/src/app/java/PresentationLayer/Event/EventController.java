@@ -25,7 +25,7 @@ public class EventController {
 
     // region Public Methods
 
-    @PostMapping("/")
+    @PostMapping
     public EventCreateDTO create(@RequestBody EventCreateDTO dto) {
         return writer.create(dto);
     }

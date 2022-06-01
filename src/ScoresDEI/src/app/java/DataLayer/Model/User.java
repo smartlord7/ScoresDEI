@@ -13,7 +13,7 @@ public class User extends AbstractAuditable<User, Long> implements Serializable,
 
     // region Private Properties
 
-    @Column(length = 1024, nullable = false)
+    @Column(length = 1024, nullable = false, unique = true)
     private String userName;
 
     @Column(length = 1024, nullable = false, unique = true)
