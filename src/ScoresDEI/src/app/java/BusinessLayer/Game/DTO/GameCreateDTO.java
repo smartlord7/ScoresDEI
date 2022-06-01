@@ -6,12 +6,19 @@ import java.util.Date;
 import java.util.StringJoiner;
 
 public class GameCreateDTO implements BaseEntityCreateDTO {
+
+    // region Private Properties
+
     private Long id;
     private String place;
     private Date startTime;
     private Date endTime;
     private Long teamAId;
     private Long teamBId;
+
+    // endregion Private Properties
+
+    // region Getters,Setters,Constructors
 
     public GameCreateDTO(String place, Date startTime, Date endTime, Long teamAId, Long teamBId) {
         this.place = place;
@@ -79,4 +86,7 @@ public class GameCreateDTO implements BaseEntityCreateDTO {
                 .add("teamBId=" + teamBId)
                 .toString();
     }
+
+    // endregion Getters,Setters,Constructors
+
 }

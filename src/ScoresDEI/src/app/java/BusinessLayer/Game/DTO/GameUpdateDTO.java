@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.StringJoiner;
 
 public class GameUpdateDTO implements BaseEntityUpdateDTO {
+
+    // region Private Properties
+
     private Long id;
     private String place;
     private Date startTime;
@@ -20,6 +23,9 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
     private Integer scoreTeamB;
     private Collection<EventListDTO> events;
 
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public GameUpdateDTO(Long id) {
         this.id = id;
@@ -160,4 +166,7 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
                 .add("events=" + events)
                 .toString();
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

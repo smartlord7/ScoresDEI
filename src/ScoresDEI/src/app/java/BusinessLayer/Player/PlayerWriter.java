@@ -12,11 +12,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PlayerWriter {
+
+    // region Private Properties
+
     @Autowired
     private PlayerRepository players;
 
     @Autowired
     private TeamRepository teams;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @Transactional
     public PlayerCreateDTO create(PlayerCreateDTO dto) {
@@ -53,4 +60,7 @@ public class PlayerWriter {
 
         return dto;
     }
+
+    // endregion Public Methods
+
 }

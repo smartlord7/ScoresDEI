@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.StringJoiner;
 
 public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
+
+    // region Private Properties
+
     private Long id;
     private String playerName;
     private Date birthDate;
@@ -13,6 +16,10 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
     private Long goals;
     private Long teamId;
     private String teamName;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public PlayerUpdateDTO() {
     }
@@ -117,5 +124,7 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
                 .add("teamName='" + teamName + "'")
                 .toString();
     }
+
+    // endregion Getters,Setters and Constructors
 
 }

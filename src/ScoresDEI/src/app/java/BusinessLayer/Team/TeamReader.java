@@ -13,8 +13,15 @@ import java.util.stream.Collectors;
 
 @Service
 public class TeamReader {
+
+    // region Private Properties
+
     @Autowired
     private TeamRepository teams;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     public List<TeamListDTO> getAll() {
         return teams.findAll()
@@ -42,4 +49,7 @@ public class TeamReader {
 
         return TeamTranslator.toUpdateDTO(t);
     }
+
+    // endregion Public Methods
+
 }

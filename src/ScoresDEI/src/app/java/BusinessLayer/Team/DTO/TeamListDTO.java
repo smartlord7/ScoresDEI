@@ -3,8 +3,15 @@ package BusinessLayer.Team.DTO;
 import BusinessLayer.Base.DTO.BaseEntityListDTO;
 
 public class TeamListDTO implements BaseEntityListDTO {
+
+    // region Private Properties
+
     private Long id;
     private String teamName;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public TeamListDTO() {
     }
@@ -21,4 +28,7 @@ public class TeamListDTO implements BaseEntityListDTO {
     public void setId(Long id) {
         this.id = id;
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

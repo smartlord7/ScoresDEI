@@ -5,12 +5,19 @@ import BusinessLayer.Base.DTO.BaseEntityListDTO;
 import java.util.StringJoiner;
 
 public class TeamListDetailedDTO implements BaseEntityListDTO {
+
+    // region Private Properties
+
     private Long teamId;
     private String teamName;
     private Long games;
     private Long victories;
     private Long losses;
     private Long draws;
+
+    // region Private Properties
+
+    // region Getters,Setters and Constructors
 
     public TeamListDetailedDTO() {
     }
@@ -83,4 +90,7 @@ public class TeamListDetailedDTO implements BaseEntityListDTO {
                 .add("draws=" + draws)
                 .toString();
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

@@ -6,10 +6,17 @@ import DataLayer.Model.Attachment;
 import java.util.StringJoiner;
 
 public class TeamUpdateDTO implements BaseEntityUpdateDTO {
+
+    // region Private Properties
+
     private Long id;
     private String teamName;
     private Long logoId;
     private Attachment logo;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public TeamUpdateDTO(Long id) {
         this.id = id;
@@ -72,4 +79,7 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
                 .add("logo=" + logo)
                 .toString();
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

@@ -6,6 +6,9 @@ import BusinessLayer.Game.DTO.GameUpdateDTO;
 import DataLayer.Model.Game;
 
 public class GameTranslator {
+
+    // region Public Methods
+
     public static Game toModel(GameCreateDTO dto) {
         return new Game(dto.getPlace(),
                 dto.getStartTime(),
@@ -44,4 +47,7 @@ public class GameTranslator {
         model.setStartTime(dto.getStartTime());
         model.setEndTime(dto.getEndTime());
     }
+
+    // endregion Public Methods
+
 }

@@ -6,11 +6,18 @@ import DataLayer.Enum.PlayerPositionEnum;
 import java.util.StringJoiner;
 
 public class PlayerListDTO implements BaseEntityListDTO {
+
+    // region Private Properties
+
     private Long id;
     private String playerName;
     private PlayerPositionEnum position;
     private Long teamId;
     private String teamName;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public PlayerListDTO() {
     }
@@ -73,4 +80,7 @@ public class PlayerListDTO implements BaseEntityListDTO {
                 .add("teamName='" + teamName + "'")
                 .toString();
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

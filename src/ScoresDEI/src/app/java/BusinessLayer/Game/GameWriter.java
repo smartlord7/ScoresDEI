@@ -15,11 +15,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class GameWriter {
+
+    // region Private Properties
+
     @Autowired
     private GameRepository games;
 
     @Autowired
     private TeamRepository teams;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @Transactional
     public GameCreateDTO create(GameCreateDTO dto) {
@@ -55,4 +62,7 @@ public class GameWriter {
 
         return dto;
     }
+
+    // endregion Public Methods.
+
 }

@@ -7,6 +7,9 @@ import DataLayer.Model.Player;
 import java.util.Date;
 
 public class EventCreateDTO implements BaseEntityCreateDTO {
+
+    // region Private Properties
+
     private Long id;
     private EventTypeEnum eventType;
     private Date occurrenceTime;
@@ -14,6 +17,10 @@ public class EventCreateDTO implements BaseEntityCreateDTO {
     private Long gameId;
     private Long playerId;
     private Player player;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public EventCreateDTO() {
     }
@@ -81,4 +88,7 @@ public class EventCreateDTO implements BaseEntityCreateDTO {
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

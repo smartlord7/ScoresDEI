@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class EventWriter {
+
+    // region Private Properties
+
     @Autowired
     private EventRepository events;
 
@@ -21,6 +24,10 @@ public class EventWriter {
 
     @Autowired
     private PlayerRepository players;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @Transactional
     public EventCreateDTO create(EventCreateDTO dto) {
@@ -37,4 +44,8 @@ public class EventWriter {
     public EventUpdateDTO toggleApprove(long id) {
         throw new NotYetImplementedException();
     }
+
+    // endregion Public Methods
+
+
 }

@@ -13,11 +13,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TeamWriter {
+
+    // region Private Properties
+
     @Autowired
     private TeamRepository teams;
 
     @Autowired
     private AttachmentRepository attachments;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @Transactional
     public TeamCreateDTO create(TeamCreateDTO dto) {
@@ -55,4 +62,7 @@ public class TeamWriter {
 
        return dto;
     }
+
+    // endregion Public Methods
+
 }

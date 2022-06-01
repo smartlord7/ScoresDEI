@@ -6,6 +6,9 @@ import BusinessLayer.Team.DTO.TeamUpdateDTO;
 import DataLayer.Model.Team;
 
 public class TeamTranslator {
+
+    // region Public Methods
+
     public static Team toModel(TeamCreateDTO dto) {
         return new Team(dto.getTeamName());
     }
@@ -27,4 +30,7 @@ public class TeamTranslator {
     public static void applyChanges(Team model, TeamUpdateDTO dto) {
         model.setTeamName(dto.getTeamName());
     }
+
+    // endregion Public Methods
+
 }

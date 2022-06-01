@@ -14,11 +14,17 @@ public abstract class BaseEntityWriter<CreateDTO extends BaseEntityCreateDTO,
         EntityModel extends BaseEntityModel,
         Repository extends JpaRepository<EntityModel, Long>> {
 
+    // region Protected Properties
+
     @Autowired
     protected Repository repository;
 
     @Autowired
     protected BaseEntityTranslator<CreateDTO, UpdateDTO, BaseEntityListDTO, EntityModel> translator;
+
+    // endregion Protected Properties
+
+    // region Protected Methods
 
     protected CreateDTO create(CreateDTO dto) {
         repository.save(translator.toModel(dto));
@@ -31,4 +37,8 @@ public abstract class BaseEntityWriter<CreateDTO extends BaseEntityCreateDTO,
 
         return dto;
     }
+
+    // endregion Protected Methods
+
+
 }

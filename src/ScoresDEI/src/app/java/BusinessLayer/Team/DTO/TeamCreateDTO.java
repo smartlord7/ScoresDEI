@@ -5,9 +5,16 @@ import BusinessLayer.Base.DTO.BaseEntityCreateDTO;
 import java.util.StringJoiner;
 
 public class TeamCreateDTO implements BaseEntityCreateDTO {
+
+    // region Private Properties
+
     private Long id;
     private String teamName;
     private Long logoId;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public TeamCreateDTO() {
     }
@@ -49,4 +56,7 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
                 .add("logoId=" + logoId)
                 .toString();
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

@@ -12,8 +12,15 @@ import java.util.stream.Collectors;
 
 @Service
 public class PlayerReader {
+
+    // region Private Properties
+
     @Autowired
     private PlayerRepository players;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     public List<PlayerListDTO> getAll() {
         return players.findAll()
@@ -36,4 +43,7 @@ public class PlayerReader {
 
         return PlayerTranslator.toUpdateDTO(p);
     }
+
+    // endregion Public Methods
+
 }

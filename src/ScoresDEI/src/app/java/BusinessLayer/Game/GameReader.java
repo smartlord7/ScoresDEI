@@ -19,8 +19,15 @@ import java.util.Objects;
 
 @Service
 public class GameReader {
+
+    // region Private Properties
+
     @Autowired
     private GameRepository games;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     public List<GameListDTO> getAll() {
         return games.findAll()
@@ -53,4 +60,7 @@ public class GameReader {
                 .map(EventTranslator::toListDTO).sorted(Comparator.comparing(EventListDTO::getOccurrenceTime))
                 .toList();
     }
+
+    // endregion Public Methods
+
 }

@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.StringJoiner;
 
 public class GameListDTO implements BaseEntityListDTO {
+
+    // region Private Properties
+
     private String place;
     private Date startTime;
     private Date endTime;
@@ -13,6 +16,10 @@ public class GameListDTO implements BaseEntityListDTO {
     private String teamAName;
     private Long teamBId;
     private String teamBName;
+
+    // endregion Private Properties
+
+    // region Getters,Setters and Constructors
 
     public GameListDTO(String place, Date startTime, Date endTime, Long teamAId, String teamAName, Long teamBId, String teamBName) {
         this.place = place;
@@ -92,4 +99,7 @@ public class GameListDTO implements BaseEntityListDTO {
                 .add("teamBName='" + teamBName + "'")
                 .toString();
     }
+
+    // endregion Getters,Setters and Constructors
+
 }

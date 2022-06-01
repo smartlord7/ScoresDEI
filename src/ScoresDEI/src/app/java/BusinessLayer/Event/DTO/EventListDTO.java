@@ -8,9 +8,16 @@ import java.util.Date;
 import java.util.StringJoiner;
 
 public class EventListDTO implements BaseEntityListDTO {
+
+    // region Private Properties
+
     private Long id;
     private EventTypeEnum eventType;
     private Date occurrenceTime;
+
+    // endregion Private Properties
+
+    // region Getters,Setters,Constructors
 
     public EventListDTO() {
     }
@@ -52,4 +59,7 @@ public class EventListDTO implements BaseEntityListDTO {
                 .add("occurrenceTime=" + occurrenceTime)
                 .toString();
     }
+
+    // endregion Getters,Setters,Constructors
+
 }

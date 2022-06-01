@@ -8,12 +8,19 @@ import java.util.Date;
 import java.util.StringJoiner;
 
 public class PlayerCreateDTO implements BaseEntityCreateDTO {
+
+    // region Private Properties
+
     private Long id;
     private String playerName;
     private Date birthDate;
     private PlayerPositionEnum position;
     private Long teamId;
     private Team team;
+
+    // endregion Private Properties
+
+    // region Getters,Setters,Constructors
 
     public PlayerCreateDTO() {
     }
@@ -83,4 +90,7 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
                 .add("teamId=" + teamId)
                 .toString();
     }
+
+    // endregion Getters,Setters,Constructors
+
 }

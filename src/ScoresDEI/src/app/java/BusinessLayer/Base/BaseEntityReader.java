@@ -15,11 +15,17 @@ public abstract class BaseEntityReader<ListDTO extends BaseEntityListDTO,
         EntityModel extends BaseEntityModel,
         Repository extends JpaRepository<EntityModel, Long>> {
 
+    // region Protected Properties
+
     @Autowired
     protected Repository repository;
 
     @Autowired
     protected BaseEntityTranslator<BaseEntityCreateDTO, UpdateDTO, ListDTO, EntityModel> translator;
+
+    // endregion Protected Properties
+
+    // region Protected Methods
 
     protected UpdateDTO getById(Long id) {
         return translator.toUpdateDTO(repository.getById(id));
@@ -32,4 +38,8 @@ public abstract class BaseEntityReader<ListDTO extends BaseEntityListDTO,
                         .toListDTO(entityModel))
                 .toList();
     }
+
+    // endregion Protected Methods
+
+
 }

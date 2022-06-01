@@ -8,6 +8,9 @@ import DataLayer.Model.*;
 import java.sql.Timestamp;
 
 public class EventTranslator {
+
+    // region Private Methods
+
     private static EventTypeEnum getEventType(Event event) {
         Class<? extends Event> clazz = event.getClass();
 
@@ -27,6 +30,10 @@ public class EventTranslator {
             return EventTypeEnum.RED_CARD;
         }
     }
+
+    // endregion Private Methods
+
+    // region Public Methods
 
     public static EventListDTO toListDTO(Event model) {
         return new EventListDTO(model.getId(),
@@ -83,4 +90,7 @@ public class EventTranslator {
             );
         }
     }
+
+    // endregion Public Methods
+
 }

@@ -7,6 +7,9 @@ import DataLayer.Model.Player;
 import DataLayer.Model.Team;
 
 public class PlayerTranslator {
+
+    // region Public Methods
+
     public static PlayerListDTO toListDTO(Player model) {
         Team t = model.getTeam();
         Long teamId = t != null ? t.getId() : null;
@@ -63,4 +66,7 @@ public class PlayerTranslator {
     public static void applyChanges(Player model, PlayerUpdateDTO dto) {
         model.setPosition(dto.getPosition());
     }
+
+    // endregion Public Methods
+
 }
