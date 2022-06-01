@@ -14,10 +14,11 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
             " SELECT COUNT(g) " +
             " FROM Game g " +
             " WHERE (g.teamA.id = t.id OR " +
-            "    g.teamA.id = t.id) AND " +
+            "    g.teamB.id = t.id) AND " +
             "   (SELECT COUNT(*) " +
             "   FROM EventEndGame eg " +
-            "   WHERE eg.game.id = g.id) = 1 " +
+            "   WHERE eg.game.id = g.id AND" +
+            "   eg.approved IS TRUE) = 1 " +
             ") AS games,  " +
             "( " +
             " SELECT COUNT(g) " +
@@ -28,7 +29,8 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
             "   g.scoreB > g.scoreA) AND " +
             "   (SELECT COUNT(*) " +
             "   FROM EventEndGame eg " +
-            "   WHERE eg.game.id = g.id) = 1 " +
+            "   WHERE eg.game.id = g.id AND" +
+            "   eg.approved IS TRUE) = 1 " +
             ") AS victories, " +
             "( " +
             " SELECT COUNT(*) " +
@@ -38,8 +40,9 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
             "   g.teamB.id = t.id AND " +
             "   g.scoreB = g.scoreA) AND " +
             "   (SELECT COUNT(*) " +
-            "   FROM EventEndGame eg " +
-            "   WHERE eg.game.id = g.id) = 1 " +
+            "   FROM EventEndGame eg" +
+            "   WHERE eg.game.id = g.id AND" +
+            "   eg.approved IS TRUE) = 1 " +
             ") AS draws, " +
             "( " +
             "SELECT COUNT(*) " +
@@ -50,7 +53,8 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
             "   g.scoreB < g.scoreA) AND " +
             "   (SELECT COUNT(*) " +
             "   FROM EventEndGame eg " +
-            "   WHERE eg.game.id = g.id) = 1 " +
+            "   WHERE eg.game.id = g.id AND" +
+            "   eg.approved IS TRUE) = 1 " +
             ") AS losses " +
             "FROM Team t")
     List<Object>[] getAllDetailed();
