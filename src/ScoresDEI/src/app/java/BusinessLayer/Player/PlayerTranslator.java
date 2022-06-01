@@ -2,7 +2,7 @@ package BusinessLayer.Player;
 
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
 import BusinessLayer.Player.DTO.PlayerListDTO;
-import BusinessLayer.Player.DTO.PlayerSportsAPIImportDTO;
+import BusinessLayer.Player.Import.PlayerSportsAPIImport;
 import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import DataLayer.Enum.PlayerPositionEnum;
 import DataLayer.Model.Player;
@@ -14,9 +14,9 @@ public class PlayerTranslator {
 
     // region Public Methods
 
-    public static Player toModel(PlayerSportsAPIImportDTO dto,
-                                              TeamRepository teams) {
-        PlayerSportsAPIImportDTO.Player p = dto.getPlayer();
+    public static Player toModel(PlayerSportsAPIImport dto,
+                                 TeamRepository teams) {
+        PlayerSportsAPIImport.Player p = dto.getPlayer();
         LinkedTreeMap<String, LinkedTreeMap<String, String>> statistics =
                 (LinkedTreeMap<String, LinkedTreeMap<String, String>>) dto.getStatistics().get(0);
         String teamName = statistics.get("team").get("name");

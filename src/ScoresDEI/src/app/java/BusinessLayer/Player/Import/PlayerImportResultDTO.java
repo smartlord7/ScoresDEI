@@ -1,4 +1,4 @@
-package BusinessLayer.Player.DTO;
+package BusinessLayer.Player.Import;
 
 import java.util.StringJoiner;
 

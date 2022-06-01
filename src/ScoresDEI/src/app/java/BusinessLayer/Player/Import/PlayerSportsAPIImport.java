@@ -1,11 +1,11 @@
-package BusinessLayer.Player.DTO;
+package BusinessLayer.Player.Import;
 
 import BusinessLayer.Base.DTO.BaseEntityDTO;
 import java.util.Date;
 import java.util.List;
 import java.util.StringJoiner;
 
-public class PlayerSportsAPIImportDTO implements BaseEntityDTO {
+public class PlayerSportsAPIImport implements BaseEntityDTO {
     private Player player;
     private List<Object> statistics;
 
@@ -101,7 +101,7 @@ public class PlayerSportsAPIImportDTO implements BaseEntityDTO {
         }
         @Override
         public String toString() {
-            return new StringJoiner(", ", PlayerSportsAPIImportDTO.class.getSimpleName() + "[", "]")
+            return new StringJoiner(", ", PlayerSportsAPIImport.class.getSimpleName() + "[", "]")
                     .add("name='" + name + "'")
                     .add("firstname='" + firstname + "'")
                     .add("lastname='" + lastname + "'")
@@ -131,7 +131,7 @@ public class PlayerSportsAPIImportDTO implements BaseEntityDTO {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", PlayerSportsAPIImportDTO.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", PlayerSportsAPIImport.class.getSimpleName() + "[", "]")
                 .add("player=" + player)
                 .add("statistics=" + statistics)
                 .toString();

@@ -1,8 +1,8 @@
 package BusinessLayer.Player;
 
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
-import BusinessLayer.Player.DTO.PlayerImportResultDTO;
-import BusinessLayer.Player.DTO.PlayerSportsAPIImportDTO;
+import BusinessLayer.Player.Import.PlayerImportResultDTO;
+import BusinessLayer.Player.Import.PlayerSportsAPIImport;
 import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import DataLayer.Model.Player;
 import DataLayer.Model.Team;
@@ -95,7 +95,7 @@ public class PlayerWriter {
         String playersStr = new JSONObject(new JSONObject(data).get("body").toString()).get("response").toString();
         List<Player> playerList = new ArrayList<Player>();
         new JSONArray(playersStr).forEach(o -> {
-            playerList.add(PlayerTranslator.toModel(new Gson().fromJson(o.toString(), PlayerSportsAPIImportDTO.class), teams));
+            playerList.add(PlayerTranslator.toModel(new Gson().fromJson(o.toString(), PlayerSportsAPIImport.class), teams));
         });
 
         players.saveAll(playerList);

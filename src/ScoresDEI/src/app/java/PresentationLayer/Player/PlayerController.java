@@ -1,7 +1,7 @@
 package PresentationLayer.Player;
 
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
-import BusinessLayer.Player.DTO.PlayerImportResultDTO;
+import BusinessLayer.Player.Import.PlayerImportResultDTO;
 import BusinessLayer.Player.DTO.PlayerListDTO;
 import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import BusinessLayer.Player.PlayerReader;
