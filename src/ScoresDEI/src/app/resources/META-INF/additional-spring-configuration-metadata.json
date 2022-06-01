@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "Description for jwt.secret."
+    },
+    {
+      "name": "jwt.validity_time",
+      "type": "java.lang.Long",
+      "description": "Description for jwt.validity_time."
+    },
+    ,
+    {
+      "name": "api.prefix",
+      "type": "java.lang.String",
+      "description": "Description for api.prefix."
+    }
+  ] }

@@ -4,13 +4,12 @@ import BusinessLayer.User.DTO.UserCreateDTO;
 import BusinessLayer.User.DTO.UserListDTO;
 import DataLayer.Model.User;
 import Util.PasswordHasher;
+import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
 
+@Service
 public class UserTranslator {
-
-    // region Public Methods
-
     public static User toModel(UserCreateDTO dto) {
         return new User(
                 dto.getUserName(),
@@ -28,7 +27,4 @@ public class UserTranslator {
                 model.getRole().stream().toList().get(0).getRoleName()
         );
     }
-
-    // endregion Public Methods
-
 }

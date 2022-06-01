@@ -1,11 +1,16 @@
 package Util;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+@Component
 public class PasswordHasher {
-
     // region Public methods
 
     /**
@@ -14,20 +19,7 @@ public class PasswordHasher {
      * @return the encrypted password.
      */
     public static String encrypt(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-            byte[] messageDigest = md.digest(password.getBytes());
-            BigInteger no = new BigInteger(1, messageDigest);
-            StringBuilder hashtext = new StringBuilder(no.toString(16));
-
-            while (hashtext.length() < 32) {
-                hashtext.insert(0, "0");
-            }
-
-            return hashtext.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+        return new BCryptPasswordEncoder().encode(password);
     }
 
     // endregion Public methods

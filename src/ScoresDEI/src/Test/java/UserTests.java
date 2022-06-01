@@ -52,13 +52,12 @@ public class UserTests {
     public void create() {
         UserCreateDTO u;
 
-        u = new UserCreateDTO();
-        u.setUserName("admin");
-        u.setPassword("admin123#");
-        u.setPhoneNumber("111111111");
-        u.setEmail("admin@admin.com");
-        u.setRoleId((long) 0);
-
+        u = new UserCreateDTO(
+                "admin",
+                "admin@admin.com",
+                "111111111",
+                "admin123#"
+                );
         writer.create(u);
     }
 
