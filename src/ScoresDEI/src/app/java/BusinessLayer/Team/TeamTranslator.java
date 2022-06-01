@@ -3,11 +3,21 @@ package BusinessLayer.Team;
 import BusinessLayer.Team.DTO.TeamCreateDTO;
 import BusinessLayer.Team.DTO.TeamListDTO;
 import BusinessLayer.Team.DTO.TeamUpdateDTO;
+import BusinessLayer.Team.Import.TeamSportsAPIImport;
 import DataLayer.Model.Team;
 
 public class TeamTranslator {
 
     // region Public Methods
+
+    public static Team toModel(TeamSportsAPIImport dto) {
+        return new Team(
+                dto.getName(),
+                dto.getCountry(),
+                dto.getCode(),
+                dto.getFounded()
+        );
+    }
 
     public static Team toModel(TeamCreateDTO dto) {
         return new Team(

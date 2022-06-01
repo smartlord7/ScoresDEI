@@ -4,10 +4,12 @@ import BusinessLayer.Team.DTO.TeamUpdateDTO;
 import BusinessLayer.Team.TeamReader;
 import BusinessLayer.Team.TeamWriter;
 import DataLayer.Repository.TeamRepository;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -28,6 +30,9 @@ import java.util.List;
 public class TeamTests {
 
     // region Private properties
+
+    @Value("${sports_api.api_key}")
+    private String API_KEY;
 
     @Autowired
     private TeamRepository teams;
@@ -111,6 +116,12 @@ public class TeamTests {
     @Test
     public void getAllDetailed2() {
         System.out.println(reader.getAllDetailed());
+    }
+
+    @Test
+    @Rollback(false)
+    public void importViaSportsAPI() throws UnirestException {
+        writer.importViaSportsAPI(API_KEY, 39, 2021);
     }
 
     // endregion Public methods
