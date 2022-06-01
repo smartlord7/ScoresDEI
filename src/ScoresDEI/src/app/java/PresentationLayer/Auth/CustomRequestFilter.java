@@ -26,7 +26,7 @@ public class CustomRequestFilter extends OncePerRequestFilter {
     @Autowired
     private JWTProvider jwtProvider;
 
-    private final String TOKEN_PREFIX = " Bearer";
+    private final String TOKEN_PREFIX = "Bearer ";
 
     // endregion Private Properties
 
