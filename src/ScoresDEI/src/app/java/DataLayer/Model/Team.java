@@ -15,6 +15,14 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
     @Column(length = 1024, nullable = false)
     private String teamName;
 
+    @Column(length = 512, nullable = false)
+    private String country;
+
+    @Column(length = 64, nullable = false)
+    private String code;
+
+    private Integer founded;
+
     @ManyToOne
     @JoinColumn(name="logo")
     private Attachment logo;
@@ -29,8 +37,11 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
     public Team() {
     }
 
-    public Team(String teamName) {
+    public Team(String teamName, String country, String code, Integer founded) {
         this.teamName = teamName;
+        this.country = country;
+        this.code = code;
+        this.founded = founded;
     }
 
     public String getTeamName() {
@@ -49,12 +60,36 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.logo = logo;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public List<Player> getPlayer() {
         return player;
     }
 
-    public void setPlayers(List<Player> player) {
+    public void setPlayer(List<Player> player) {
         this.player = player;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Integer getFounded() {
+        return founded;
+    }
+
+    public void setFounded(Integer founded) {
+        this.founded = founded;
     }
 
     // region Getters,Setters and Constructor

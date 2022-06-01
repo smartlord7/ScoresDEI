@@ -10,7 +10,12 @@ public class TeamTranslator {
     // region Public Methods
 
     public static Team toModel(TeamCreateDTO dto) {
-        return new Team(dto.getTeamName());
+        return new Team(
+                dto.getTeamName(),
+                dto.getCountry(),
+                dto.getCode(),
+                dto.getFounded()
+                );
     }
 
     public static TeamListDTO toListDTO(Team model) {

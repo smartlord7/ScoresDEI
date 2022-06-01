@@ -54,8 +54,15 @@ public class TeamTests {
     @Rollback(false)
     public void createTeam() {
         TeamCreateDTO t;
+        int iid = (int) (Math.random() * (7675 - 1));
 
-        t = new TeamCreateDTO("Team " + (int) (Math.random() * (7675 - 1)), (long) 0);
+        t = new TeamCreateDTO(
+                "Team " + iid,
+                "Portugal",
+                "T" + iid,
+                1983,
+                (long) 0
+            );
         t = writer.create(t);
         System.out.println(t);
     }

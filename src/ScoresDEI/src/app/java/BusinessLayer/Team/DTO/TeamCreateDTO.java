@@ -10,6 +10,9 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
 
     private Long id;
     private String teamName;
+    private String country;
+    private String code;
+    private Integer founded;
     private Long logoId;
 
     // endregion Private Properties
@@ -19,8 +22,11 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
     public TeamCreateDTO() {
     }
 
-    public TeamCreateDTO(String teamName, Long logoId) {
+    public TeamCreateDTO(String teamName, String country, String code, Integer founded, Long logoId) {
         this.teamName = teamName;
+        this.country = country;
+        this.code = code;
+        this.founded = founded;
         this.logoId = logoId;
     }
 
@@ -48,11 +54,38 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
         this.logoId = logoId;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Integer getFounded() {
+        return founded;
+    }
+
+    public void setFounded(Integer founded) {
+        this.founded = founded;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", TeamCreateDTO.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("teamName='" + teamName + "'")
+                .add("country='" + country + "'")
+                .add("code='" + code + "'")
+                .add("founded=" + founded)
                 .add("logoId=" + logoId)
                 .toString();
     }
