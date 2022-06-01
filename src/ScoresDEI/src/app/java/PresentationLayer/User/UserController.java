@@ -8,6 +8,7 @@ import BusinessLayer.User.UserReader;
 import BusinessLayer.User.UserWriter;
 import PresentationLayer.Auth.JWTProvider;
 import PresentationLayer.Auth.UserAuthDetailsProvider;
+import Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -19,7 +20,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path = "/scoresDEI/api/user")
+@RequestMapping(path = ApplicationConst.API_PREFIX + "/user")
 public class UserController {
     @Autowired
     private AuthenticationManager authManager;

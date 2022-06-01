@@ -27,8 +27,8 @@ public class PlayerWriter {
 
     @Transactional
     public PlayerCreateDTO create(PlayerCreateDTO dto) {
-        dto.setTeam(teams.getById(dto.getTeamId()));
         Player p = PlayerTranslator.toModel(dto);
+        p.setTeam(teams.getById(dto.getTeamId()));
         p.getTeam().getPlayer().add(p);
         players.save(p);
         dto.setId(p.getId());

@@ -1,13 +1,15 @@
 package DataLayer.Model;
 
 import DataLayer.Base.BaseEntityModel;
+import DataLayer.Enum.RoleEnum;
 import org.springframework.data.jpa.domain.AbstractAuditable;
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 
 @Entity(name = "Role")
 @Table(name = "Role")
-public class Role extends AbstractAuditable<User, Long> implements BaseEntityModel {
-
+public class Role extends AbstractAuditable<User, Long> implements BaseEntityModel, GrantedAuthority {
     // region Private Properties
 
     @Column(length = 1024, nullable = false)
@@ -37,10 +39,8 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
     }
     // endregion Public Properties
 
-    // region Getters and Setters
-
-    public void setRoleName(String userName) {
-        this.roleName = userName;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     public String getDescription() {
@@ -51,6 +51,8 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.description = description;
     }
 
-    // endregion Getters and Setters
-
+    @Override
+    public String getAuthority() {
+        return RoleEnum.ADMIN.toString();
+    }
 }

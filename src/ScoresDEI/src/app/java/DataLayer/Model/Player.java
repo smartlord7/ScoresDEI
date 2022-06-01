@@ -27,9 +27,25 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     @ManyToOne
     private Team team;
 
+    @Transient
+    private Long goals;
+
     // endregion Private Properties
 
-    // region Getters,Setters and Construtors
+    // region Constructors
+
+    public Player() {
+    }
+
+    public Player(String playerName, Date birthDate, PlayerPositionEnum position) {
+        this.playerName = playerName;
+        this.birthDate = birthDate;
+        this.position = position;
+    }
+
+    // endregion Constructors
+
+    // region Getters & Setters
 
     public Team getTeam() {
         return team;
@@ -37,19 +53,6 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
 
     public void setTeam(Team team) {
         this.team = team;
-    }
-
-    @Transient
-    private Long goals;
-
-    public Player(String playerName, Date birthDate, PlayerPositionEnum position, Team team) {
-        this.playerName = playerName;
-        this.birthDate = birthDate;
-        this.position = position;
-        this.team = team;
-    }
-
-    public Player() {
     }
 
     public String getPlayerName() {
@@ -84,6 +87,6 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
         this.goals = goals;
     }
 
-    // endregion Getters,Setters and Construtors
+    // endregion Getters & Setters
 
 }

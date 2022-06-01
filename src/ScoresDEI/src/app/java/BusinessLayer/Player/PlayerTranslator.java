@@ -58,8 +58,7 @@ public class PlayerTranslator {
         return new Player(
                 dto.getPlayerName(),
                 dto.getBirthDate(),
-                dto.getPosition(),
-                dto.getTeam()
+                dto.getPosition()
         );
     }
 
