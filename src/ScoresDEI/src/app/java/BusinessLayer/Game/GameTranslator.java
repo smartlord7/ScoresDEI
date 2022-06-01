@@ -16,13 +16,18 @@ public class GameTranslator {
     }
 
     public static GameListDTO toListDTO(Game model) {
-        return new GameListDTO(model.getPlace(),
+        return new GameListDTO(
+                model.getId(),
+                model.getPlace(),
                 model.getStartTime(),
                 model.getEndTime(),
                 model.getTeamA().getId(),
                 model.getTeamA().getTeamName(),
                 model.getTeamB().getId(),
-                model.getTeamB().getTeamName());
+                model.getTeamB().getTeamName(),
+                model.getScoreA(),
+                model.getScoreB()
+        );
     }
 
     public static GameUpdateDTO toUpdateDTO(Game model) {

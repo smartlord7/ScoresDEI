@@ -62,5 +62,4 @@ public class GameReader {
     }
 
     // endregion Public Methods
-
 }

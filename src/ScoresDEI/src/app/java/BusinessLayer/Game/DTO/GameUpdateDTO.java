@@ -31,6 +31,9 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
         this.id = id;
     }
 
+    public GameUpdateDTO() {
+    }
+
     public GameUpdateDTO(Long id, String place, Date startTime, Date endTime, Long teamAId, Long teamBId) {
         this.id = id;
         this.place = place;

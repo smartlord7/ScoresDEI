@@ -15,6 +15,9 @@ public class EventYellowCard extends Event{
 
     // endregion Private Properties
 
+    public EventYellowCard() {
+    }
+
     public EventYellowCard(Date occurrenceTime, String description) {
         super(occurrenceTime, description);
     }

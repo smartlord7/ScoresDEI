@@ -10,6 +10,9 @@ public class EventEndGame extends Event{
 
     // region Constructor
 
+    public EventEndGame() {
+    }
+
     public EventEndGame(Date occurrenceTime, String description) {
         super(occurrenceTime, description);
     }

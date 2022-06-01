@@ -9,6 +9,7 @@ public class GameListDTO implements BaseEntityListDTO {
 
     // region Private Properties
 
+    private Long id;
     private String place;
     private Date startTime;
     private Date endTime;
@@ -16,12 +17,19 @@ public class GameListDTO implements BaseEntityListDTO {
     private String teamAName;
     private Long teamBId;
     private String teamBName;
+    private Integer scoreA;
+    private Integer scoreB;
 
     // endregion Private Properties
 
     // region Getters,Setters and Constructors
 
-    public GameListDTO(String place, Date startTime, Date endTime, Long teamAId, String teamAName, Long teamBId, String teamBName) {
+
+    public GameListDTO() {
+    }
+
+    public GameListDTO(Long id, String place, Date startTime, Date endTime, Long teamAId, String teamAName, Long teamBId, String teamBName, Integer scoreA, Integer scoreB) {
+        this.id = id;
         this.place = place;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -29,6 +37,8 @@ public class GameListDTO implements BaseEntityListDTO {
         this.teamAName = teamAName;
         this.teamBId = teamBId;
         this.teamBName = teamBName;
+        this.scoreA = scoreA;
+        this.scoreB = scoreB;
     }
 
     public String getPlace() {
@@ -87,9 +97,34 @@ public class GameListDTO implements BaseEntityListDTO {
         this.teamBName = teamBName;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public Integer getScoreA() {
+        return scoreA;
+    }
+
+    public void setScoreA(Integer scoreA) {
+        this.scoreA = scoreA;
+    }
+
+    public Integer getScoreB() {
+        return scoreB;
+    }
+
+    public void setScoreB(Integer scoreB) {
+        this.scoreB = scoreB;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", GameListDTO.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
                 .add("place='" + place + "'")
                 .add("startTime=" + startTime)
                 .add("endTime=" + endTime)
@@ -97,6 +132,8 @@ public class GameListDTO implements BaseEntityListDTO {
                 .add("teamAName='" + teamAName + "'")
                 .add("teamBId=" + teamBId)
                 .add("teamBName='" + teamBName + "'")
+                .add("scoreA=" + scoreA)
+                .add("scoreB=" + scoreB)
                 .toString();
     }
 

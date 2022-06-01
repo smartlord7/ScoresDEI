@@ -36,9 +36,11 @@ public class EventTranslator {
     // region Public Methods
 
     public static EventListDTO toListDTO(Event model) {
-        return new EventListDTO(model.getId(),
+        return new EventListDTO(
+                model.getId(),
                 getEventType(model),
-                Timestamp.from(model.getOccurrenceTime().toInstant()));
+                model.getOccurrenceTime()
+        );
     }
 
     public static Event toModel(EventCreateDTO dto) {

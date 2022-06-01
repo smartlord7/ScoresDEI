@@ -10,6 +10,9 @@ public class EventResumeGame extends Event{
 
     // region Constructor
 
+    public EventResumeGame() {
+    }
+
     public EventResumeGame(Date occurrenceTime, String description) {
         super(occurrenceTime, description);
     }

@@ -37,12 +37,10 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
     private Team teamB;
 
     @OneToOne
-    @JoinColumn(name="id", nullable = true)
     private EventStartGame eventStartGame;
 
     @OneToOne
-    @JoinColumn(name="id", nullable = true)
-    private EventStartGame eventEndGame;
+    private EventEndGame eventEndGame;
 
     @OneToMany(mappedBy = "game")
     List<EventInterruptGame> eventInterruptGame = new ArrayList<EventInterruptGame>();
@@ -132,11 +130,11 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.eventStartGame = eventStartGame;
     }
 
-    public EventStartGame getEventEndGame() {
+    public EventEndGame getEventEndGame() {
         return eventEndGame;
     }
 
-    public void setEventEndGame(EventStartGame eventEndGame) {
+    public void setEventEndGame(EventEndGame eventEndGame) {
         this.eventEndGame = eventEndGame;
     }
 

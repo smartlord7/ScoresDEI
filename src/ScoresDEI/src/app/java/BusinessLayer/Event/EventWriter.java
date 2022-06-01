@@ -3,10 +3,7 @@ package BusinessLayer.Event;
 import BusinessLayer.Event.DTO.EventCreateDTO;
 import BusinessLayer.Event.DTO.EventUpdateDTO;
 import DataLayer.Enum.EventTypeEnum;
-import DataLayer.Model.Event;
-import DataLayer.Model.Game;
-import DataLayer.Model.Player;
-import DataLayer.Model.Team;
+import DataLayer.Model.*;
 import DataLayer.Repository.EventRepository;
 import DataLayer.Repository.GameRepository;
 import DataLayer.Repository.PlayerRepository;
@@ -38,12 +35,14 @@ public class EventWriter {
         if (dto.getPlayerId() != null) {
             dto.setPlayer(players.getById(dto.getPlayerId()));
         }
+
         Event e = EventTranslator.toModel(dto);
         e.setGame(games.getById(dto.getGameId()));
         e.setApproved(true);
+        EventTypeEnum type = dto.getEventType();
 
-        if (dto.getEventType() == EventTypeEnum.GOAL && e.isApproved()) {
-            Game g = e.getGame();
+        Game g = e.getGame();
+        if (type == EventTypeEnum.GOAL && e.isApproved()) {
             Team tA = g.getTeamA();
             Team tB = g.getTeamB();
             Player p = dto.getPlayer();
@@ -54,6 +53,13 @@ public class EventWriter {
                 g.setScoreB(g.getScoreB() + 1);
             }
         }
+
+        if (type == EventTypeEnum.START_GAME) {
+            g.setEventStartGame((EventStartGame) e);
+        } else if (type == EventTypeEnum.END_GAME) {
+            g.setEventEndGame((EventEndGame) e);
+        }
+
         events.save(e);
         dto.setId(e.getId());
 

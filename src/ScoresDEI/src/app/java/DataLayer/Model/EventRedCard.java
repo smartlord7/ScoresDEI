@@ -17,6 +17,9 @@ public class EventRedCard extends Event{
 
     // region Getters, Setters and Constructors
 
+    public EventRedCard() {
+    }
+
     public EventRedCard(Date occurrenceTime, String description) {
         super(occurrenceTime, description);
     }
