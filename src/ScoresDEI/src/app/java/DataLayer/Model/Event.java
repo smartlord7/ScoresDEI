@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Event extends AbstractAuditable<User, Long> implements BaseEntityModel {
 
     // region Private Properties
