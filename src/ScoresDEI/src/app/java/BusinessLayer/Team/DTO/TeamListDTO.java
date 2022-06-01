@@ -10,6 +10,8 @@ public class TeamListDTO implements BaseEntityListDTO {
 
     private Long id;
     private String teamName;
+    private String country;
+    private String code;
 
     // endregion Private Properties
 
@@ -18,9 +20,11 @@ public class TeamListDTO implements BaseEntityListDTO {
     public TeamListDTO() {
     }
 
-    public TeamListDTO(Long id, String teamName) {
+    public TeamListDTO(Long id, String teamName, String country, String code) {
         this.id = id;
         this.teamName = teamName;
+        this.country = country;
+        this.code = code;
     }
 
     public Long getId() {
@@ -39,11 +43,29 @@ public class TeamListDTO implements BaseEntityListDTO {
         this.teamName = teamName;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", TeamListDTO.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("teamName='" + teamName + "'")
+                .add("country='" + country + "'")
+                .add("code='" + code + "'")
                 .toString();
     }
 

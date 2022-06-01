@@ -99,7 +99,12 @@ public class TeamTests {
     public void update() {
         TeamUpdateDTO dto;
 
-        dto = new TeamUpdateDTO((long) 0, "New team", (long) 0);
+        dto = new TeamUpdateDTO((long) 0,
+                "New team",
+                "Spain",
+                "S41",
+                2912,
+                (long) 0);
         writer.update(dto);
     }
 

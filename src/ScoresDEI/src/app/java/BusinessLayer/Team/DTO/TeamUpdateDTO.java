@@ -1,5 +1,6 @@
 package BusinessLayer.Team.DTO;
 
+import BusinessLayer.Attachment.DTO.AttachmentUpdateDTO;
 import BusinessLayer.Base.DTO.BaseEntityUpdateDTO;
 import DataLayer.Model.Attachment;
 
@@ -11,8 +12,11 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
 
     private Long id;
     private String teamName;
+    private String country;
+    private String code;
+    private Integer founded;
     private Long logoId;
-    private Attachment logo;
+    private AttachmentUpdateDTO logo;
 
     // endregion Private Properties
 
@@ -26,13 +30,16 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
         this.id = id;
     }
 
-    public TeamUpdateDTO(Long id, String teamName, Long logoId) {
+    public TeamUpdateDTO(Long id, String teamName, String country, String code, Integer founded, Long logoId) {
         this.id = id;
         this.teamName = teamName;
+        this.country = country;
+        this.code = code;
+        this.founded = founded;
         this.logoId = logoId;
     }
 
-    public TeamUpdateDTO(Long id, String teamName, Attachment logo) {
+    public TeamUpdateDTO(Long id, String teamName, AttachmentUpdateDTO logo) {
         this.id = id;
         this.teamName = teamName;
         this.logo = logo;
@@ -62,12 +69,36 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
         this.logoId = logoId;
     }
 
-    public Attachment getLogo() {
+    public AttachmentUpdateDTO getLogo() {
         return logo;
     }
 
-    public void setLogo(Attachment logo) {
+    public void setLogo(AttachmentUpdateDTO logo) {
         this.logo = logo;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Integer getFounded() {
+        return founded;
+    }
+
+    public void setFounded(Integer founded) {
+        this.founded = founded;
     }
 
     @Override
@@ -75,6 +106,9 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
         return new StringJoiner(", ", TeamUpdateDTO.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("teamName='" + teamName + "'")
+                .add("country='" + country + "'")
+                .add("code='" + code + "'")
+                .add("founded=" + founded)
                 .add("logoId=" + logoId)
                 .add("logo=" + logo)
                 .toString();
