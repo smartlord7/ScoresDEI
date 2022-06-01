@@ -27,7 +27,7 @@ public class GameController {
         return reader.getAll();
     }
 
-    @GetMapping("/events/{id}")
+    @GetMapping("/{id}/events")
     public List<EventListDTO> getEvents(@PathVariable Long id) {
         return reader.getEvents(id);
     }

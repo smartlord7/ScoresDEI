@@ -3,6 +3,7 @@ package BusinessLayer.Event.DTO;
 import BusinessLayer.Base.DTO.BaseEntityCreateDTO;
 import DataLayer.Enum.EventTypeEnum;
 import DataLayer.Model.Player;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
@@ -16,6 +17,7 @@ public class EventCreateDTO implements BaseEntityCreateDTO {
     private String description;
     private Long gameId;
     private Long playerId;
+    @JsonIgnore
     private Player player;
 
     // endregion Private Properties
