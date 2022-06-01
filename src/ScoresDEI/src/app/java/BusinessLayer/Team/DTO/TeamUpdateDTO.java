@@ -18,12 +18,12 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
 
     // region Getters,Setters and Constructors
 
-    public TeamUpdateDTO(Long id) {
-        this.id = id;
+
+    public TeamUpdateDTO() {
     }
 
-    public TeamUpdateDTO(String teamName) {
-        this.teamName = teamName;
+    public TeamUpdateDTO(Long id) {
+        this.id = id;
     }
 
     public TeamUpdateDTO(Long id, String teamName, Long logoId) {

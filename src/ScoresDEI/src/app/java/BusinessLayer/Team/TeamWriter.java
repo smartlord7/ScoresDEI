@@ -29,11 +29,12 @@ public class TeamWriter {
     @Transactional
     public TeamCreateDTO create(TeamCreateDTO dto) {
         Team t;
-        Attachment a;
 
         t = TeamTranslator.toModel(dto);
-        a = attachments.getById(dto.getLogoId());
-        t.setLogo(a);
+        if (dto.getLogoId() != null) {
+            Attachment a = attachments.getById(dto.getLogoId());
+            t.setLogo(a);
+        }
         teams.save(t);
 
         dto.setId(t.getId());
@@ -51,12 +52,13 @@ public class TeamWriter {
     @Transactional
     public TeamUpdateDTO update(TeamUpdateDTO dto) {
        Team t;
-       Attachment a;
 
        t = teams.getById(dto.getId());
-       TeamTranslator.applyChanges(t, dto);
-       a = attachments.getById(dto.getLogoId());
-       t.setLogo(a);
+        if (dto.getLogoId() != null) {
+            TeamTranslator.applyChanges(t, dto);
+            Attachment a = attachments.getById(dto.getLogoId());
+            t.setLogo(a);
+        }
 
        teams.save(t);
 

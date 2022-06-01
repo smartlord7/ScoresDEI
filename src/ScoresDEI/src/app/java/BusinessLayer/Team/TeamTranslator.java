@@ -14,7 +14,8 @@ public class TeamTranslator {
     }
 
     public static TeamListDTO toListDTO(Team model) {
-        return new TeamListDTO(model.getId(), model.getTeamName());
+        return new TeamListDTO(model.getId(),
+                model.getTeamName());
     }
 
     public static TeamUpdateDTO toUpdateDTO(long id) {
