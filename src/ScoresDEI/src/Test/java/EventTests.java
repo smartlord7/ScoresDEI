@@ -64,7 +64,7 @@ public class EventTests {
                 new Date(),
                 "Test event",
                 (long) 40,
-                (long) 1);
+                null);
         System.out.println(writer.create(end));
     }
 

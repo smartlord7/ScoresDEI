@@ -43,9 +43,7 @@ public class TeamReader {
     }
 
     public TeamUpdateDTO getById(long id) {
-        Team t;
-
-        t = teams.getById(id);
+        Team t = teams.getById(id);
 
         return TeamTranslator.toUpdateDTO(t);
     }

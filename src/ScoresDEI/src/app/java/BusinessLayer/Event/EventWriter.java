@@ -2,7 +2,11 @@ package BusinessLayer.Event;
 
 import BusinessLayer.Event.DTO.EventCreateDTO;
 import BusinessLayer.Event.DTO.EventUpdateDTO;
+import DataLayer.Enum.EventTypeEnum;
 import DataLayer.Model.Event;
+import DataLayer.Model.Game;
+import DataLayer.Model.Player;
+import DataLayer.Model.Team;
 import DataLayer.Repository.EventRepository;
 import DataLayer.Repository.GameRepository;
 import DataLayer.Repository.PlayerRepository;
@@ -31,18 +35,29 @@ public class EventWriter {
 
     @Transactional
     public EventCreateDTO create(EventCreateDTO dto) {
-        dto.setPlayer(players.getById(dto.getPlayerId()));
+        if (dto.getPlayerId() != null) {
+            dto.setPlayer(players.getById(dto.getPlayerId()));
+        }
         Event e = EventTranslator.toModel(dto);
         e.setGame(games.getById(dto.getGameId()));
+        e.setApproved(true);
+
+        if (dto.getEventType() == EventTypeEnum.GOAL && e.isApproved()) {
+            Game g = e.getGame();
+            Team tA = g.getTeamA();
+            Team tB = g.getTeamB();
+            Player p = dto.getPlayer();
+
+            if (tA.getPlayer().contains(p)) {
+                g.setScoreA(g.getScoreA() + 1);
+            } else if (tB.getPlayer().contains(p))  {
+                g.setScoreB(g.getScoreB() + 1);
+            }
+        }
         events.save(e);
         dto.setId(e.getId());
 
         return dto;
-    }
-
-    @Transactional
-    public EventUpdateDTO toggleApprove(long id) {
-        throw new NotYetImplementedException();
     }
 
     // endregion Public Methods

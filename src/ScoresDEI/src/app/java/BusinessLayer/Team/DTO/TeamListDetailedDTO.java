@@ -22,13 +22,13 @@ public class TeamListDetailedDTO implements BaseEntityListDTO {
     public TeamListDetailedDTO() {
     }
 
-    public TeamListDetailedDTO(Long teamId, String teamName, Long games, Long victories, Long losses, Long draws) {
+    public TeamListDetailedDTO(Long teamId, String teamName, Long games, Long victories, Long draws, Long losses) {
         this.teamId = teamId;
         this.teamName = teamName;
         this.games = games;
         this.victories = victories;
-        this.losses = losses;
         this.draws = draws;
+        this.losses = losses;
     }
 
     public Long getTeamId() {

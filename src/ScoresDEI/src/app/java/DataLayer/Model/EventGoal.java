@@ -32,25 +32,4 @@ public class EventGoal extends Event{
     public void setPlayer(Player player) {
         this.player = player;
     }
-
-    @PostUpdate
-
-    // region Public Methods
-
-    /**
-     * Method to change the game score.
-     */
-    @PostPersist
-    public void changeGameScore() {
-        Game g = getGame();
-        if (isApproved()) {
-            if (g.getTeamA().getPlayer().contains(player)) {
-                g.setScoreA(g.getScoreA() + 1);
-            } else {
-                g.setScoreB(g.getScoreB() + 1);
-            }
-        }
-    }
-    // endregion Public Methods
-
 }
