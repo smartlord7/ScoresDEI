@@ -1,6 +1,7 @@
 package PresentationLayer.Player;
 
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
+import BusinessLayer.Player.DTO.PlayerImportResultDTO;
 import BusinessLayer.Player.DTO.PlayerListDTO;
 import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import BusinessLayer.Player.PlayerReader;
@@ -58,11 +59,11 @@ public class PlayerController {
     }
 
     @GetMapping("/import")
-    public Integer importViaSportsAPI(@RequestHeader(value="x-apisports-key") String keyAPI,
-                                      @RequestParam long league,
-                                      @RequestParam long year,
-                                      @RequestParam long page) {
-        return writer.importViaSportsAPI(keyAPI, league, year, page);
+    public PlayerImportResultDTO importViaSportsAPI(@RequestHeader(value="x-apisports-key") String keyAPI,
+                                                    @RequestParam long league,
+                                                    @RequestParam long season,
+                                                    @RequestParam long page) {
+        return writer.importViaSportsAPI(keyAPI, league, season, page);
     }
 
     // endregion Public Methods

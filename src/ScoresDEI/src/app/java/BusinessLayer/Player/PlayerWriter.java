@@ -1,6 +1,7 @@
 package BusinessLayer.Player;
 
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
+import BusinessLayer.Player.DTO.PlayerImportResultDTO;
 import BusinessLayer.Player.DTO.PlayerSportsAPIImportDTO;
 import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import DataLayer.Model.Player;
@@ -76,7 +77,7 @@ public class PlayerWriter {
     }
 
     @Transactional
-    public int importViaSportsAPI(String keyAPI, long league, long season, long page) {
+    public PlayerImportResultDTO importViaSportsAPI(String keyAPI, long league, long season, long page) {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> data = null;
         try {
@@ -89,7 +90,7 @@ public class PlayerWriter {
         } catch (UnirestException e) {
             e.printStackTrace();
 
-            return 0;
+            return null;
         }
         String playersStr = new JSONObject(new JSONObject(data).get("body").toString()).get("response").toString();
         List<Player> playerList = new ArrayList<Player>();
@@ -99,7 +100,10 @@ public class PlayerWriter {
 
         players.saveAll(playerList);
 
-        return playerList.size();
+        return new PlayerImportResultDTO(
+                (long) playerList.size(),
+                SPORTS_API_BASE_URL + "/players"
+        );
     }
 
     // endregion Public Methods
