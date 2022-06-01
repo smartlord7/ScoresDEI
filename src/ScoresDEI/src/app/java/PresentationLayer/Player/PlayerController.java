@@ -57,6 +57,14 @@ public class PlayerController {
         return writer.update(dto);
     }
 
+    @GetMapping("/import")
+    public Integer importViaSportsAPI(@RequestHeader(value="x-apisports-key") String keyAPI,
+                                      @RequestParam long league,
+                                      @RequestParam long year,
+                                      @RequestParam long page) {
+        return writer.importViaSportsAPI(keyAPI, league, year, page);
+    }
+
     // endregion Public Methods
 
 }

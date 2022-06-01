@@ -12,15 +12,9 @@ import com.google.gson.internal.LinkedTreeMap;
 
 public class PlayerTranslator {
 
-    // region Private Methods
-
-
-
-    // endregion Private Methods
-
     // region Public Methods
 
-    public static PlayerCreateDTO toCreateDTO(PlayerSportsAPIImportDTO dto,
+    public static Player toModel(PlayerSportsAPIImportDTO dto,
                                               TeamRepository teams) {
         PlayerSportsAPIImportDTO.Player p = dto.getPlayer();
         LinkedTreeMap<String, LinkedTreeMap<String, String>> statistics =
@@ -40,17 +34,26 @@ public class PlayerTranslator {
             weight = Double.parseDouble(weightStr.replaceAll("[^0-9]", ""));
         }
 
-        return new PlayerCreateDTO(
+        Player model = new Player(
                 p.getName(),
                 p.getFirstname(),
                 p.getLastname(),
                 p.getBirth().getDate(),
                 position,
-                teams.getTeamByTeamName(teamName),
                 p.getNationality(),
                 height,
                 weight
         );
+
+        Team team = teams.getTeamByTeamName(teamName);
+        if (team != null) {
+            model.setTeam(team);
+            team.getPlayer().add(model);
+        }
+
+        model.setImported(true);
+
+        return model;
     }
 
     public static PlayerListDTO toListDTO(Player model) {
@@ -98,11 +101,20 @@ public class PlayerTranslator {
     }
 
     public static Player toModel(PlayerCreateDTO dto) {
-        return new Player(
+        Player p = new Player(
                 dto.getPlayerName(),
+                dto.getFirstName(),
+                dto.getLastName(),
                 dto.getBirthDate(),
-                dto.getPosition()
+                dto.getPosition(),
+                dto.getNationality(),
+                dto.getHeight(),
+                dto.getWeight()
         );
+
+        p.setImported(false);
+
+        return p;
     }
 
     public static void applyChanges(Player model, PlayerUpdateDTO dto) {

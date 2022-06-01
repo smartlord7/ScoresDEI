@@ -8,6 +8,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -25,6 +26,8 @@ import java.util.Date;
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class PlayerTests {
+    @Value("${sports_api.api_key}")
+    private String API_KEY;
 
     // region Private properties
 
@@ -82,7 +85,7 @@ public class PlayerTests {
      */
     @Test
     public void deleteById() {
-        System.out.println(writer.deleteById(68));
+        System.out.println(writer.deleteById(0));
     }
 
     /**
@@ -92,7 +95,7 @@ public class PlayerTests {
     @Rollback(false)
     public void update() {
         System.out.println(writer.update(
-                new PlayerUpdateDTO((long) 68, "Sancho Simões",
+                new PlayerUpdateDTO((long) 0, "Sancho Simões",
                         PlayerPositionEnum.GK,
                         new Date(),
                         (long) 1)));
@@ -105,13 +108,14 @@ public class PlayerTests {
 
     @Test
     public void getById() {
-        System.out.println(reader.getById(68));
+        System.out.println(reader.getById(0));
     }
 
 
     @Test
+    @Rollback(false)
     public void importViaSportsAPI() throws UnirestException {
-        writer.importViaSportsAPI((long)39, (long)2021, (long)1);
+        writer.importViaSportsAPI(API_KEY, (long)39, (long)2021, (long)1);
     }
     // endregion Public methods
 

@@ -23,7 +23,6 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     private String lastName;
 
     @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
     private Date birthDate;
 
     @Enumerated(EnumType.ORDINAL)
@@ -33,11 +32,11 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     @Column(nullable = false)
     private String nationality;
 
-    @Column(nullable = false)
     private Double height;
 
-    @Column(nullable = false)
     private Double weight;
+
+    private boolean imported;
 
     @ManyToOne
     private Team team;
@@ -52,10 +51,15 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     public Player() {
     }
 
-    public Player(String playerName, Date birthDate, PlayerPositionEnum position) {
+    public Player(String playerName, String firstName, String lastName, Date birthDate, PlayerPositionEnum position, String nationality, Double height, Double weight) {
         this.playerName = playerName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.birthDate = birthDate;
         this.position = position;
+        this.nationality = nationality;
+        this.height = height;
+        this.weight = weight;
     }
 
     // endregion Constructors
@@ -142,6 +146,13 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
         this.goals = goals;
     }
 
-    // endregion Getters & Setters
+    public boolean isImported() {
+        return imported;
+    }
+
+    public void setImported(boolean imported) {
+        this.imported = imported;
+    }
+// endregion Getters & Setters
 
 }
