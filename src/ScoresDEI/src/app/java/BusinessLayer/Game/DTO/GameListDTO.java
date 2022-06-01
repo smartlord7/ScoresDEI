@@ -22,7 +22,7 @@ public class GameListDTO implements BaseEntityListDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructors
+    // region Constructors
 
 
     public GameListDTO() {
@@ -40,6 +40,10 @@ public class GameListDTO implements BaseEntityListDTO {
         this.scoreA = scoreA;
         this.scoreB = scoreB;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getPlace() {
         return place;
@@ -137,6 +141,6 @@ public class GameListDTO implements BaseEntityListDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters and Constructors
+    // endregion Getters and Setters
 
 }

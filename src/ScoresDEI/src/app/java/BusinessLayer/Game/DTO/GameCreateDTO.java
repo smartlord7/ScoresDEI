@@ -18,7 +18,7 @@ public class GameCreateDTO implements BaseEntityCreateDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters,Constructors
+    // region Constructors
 
     public GameCreateDTO(String place, Date startTime, Date endTime, Long teamAId, Long teamBId) {
         this.place = place;
@@ -27,6 +27,10 @@ public class GameCreateDTO implements BaseEntityCreateDTO {
         this.teamAId = teamAId;
         this.teamBId = teamBId;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getId() {
         return id;
@@ -87,6 +91,6 @@ public class GameCreateDTO implements BaseEntityCreateDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters,Constructors
+    // endregion Getters and Setters
 
 }

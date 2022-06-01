@@ -24,7 +24,7 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructors
+    // region Constructors
 
     public PlayerUpdateDTO() {
     }
@@ -64,6 +64,10 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         this.height = height;
         this.weight = weight;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getPlayerName() {
         return playerName;
@@ -183,6 +187,6 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters and Constructors
+    // endregion Getters and Setters
 
 }

@@ -5,8 +5,15 @@ import BusinessLayer.Base.DTO.BaseEntityDTO;
 import java.util.StringJoiner;
 
 public class UserLoginDTO implements BaseEntityDTO {
+
+    // region Private Properties
+
     private String userName;
     private String password;
+
+    // endregion Private Properties
+
+    // region Constructors
 
     public UserLoginDTO() {
     }
@@ -15,6 +22,10 @@ public class UserLoginDTO implements BaseEntityDTO {
         this.userName = userName;
         this.password = password;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getUserName() {
         return this.userName;
@@ -39,4 +50,7 @@ public class UserLoginDTO implements BaseEntityDTO {
                 .add("password='" + password + "'")
                 .toString();
     }
+
+    // endregion Getters and Setters
+
 }

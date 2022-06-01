@@ -5,8 +5,15 @@ import BusinessLayer.Player.Import.PlayerImportResultDTO;
 import java.util.StringJoiner;
 
 public class TeamImportResultDTO {
+
+    // region Private Properties
+
     private Long importedTeams;
     private String source;
+
+    // endregion Private Properties
+
+    // region Constructors
 
     public TeamImportResultDTO() {
     }
@@ -15,6 +22,10 @@ public class TeamImportResultDTO {
         this.importedTeams = importedTeams;
         this.source = source;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getImportedTeams() {
         return importedTeams;
@@ -39,4 +50,7 @@ public class TeamImportResultDTO {
                 .add("source='" + source + "'")
                 .toString();
     }
+
+    // endregion Getters and Setters
+
 }

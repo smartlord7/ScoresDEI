@@ -10,8 +10,15 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserReader {
+
+    // region Private Properties
+
     @Autowired
     private UserRepository users;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     public List<UserListDTO> getAll() {
         return users.findAll()
@@ -19,4 +26,7 @@ public class UserReader {
                 .map(UserTranslator::toListDTO)
                 .collect(Collectors.toList());
     }
+
+    // endregion Public Methods
+
 }

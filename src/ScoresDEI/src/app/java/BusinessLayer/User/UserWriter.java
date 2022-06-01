@@ -10,11 +10,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserWriter {
+
+    // region Private Properties
+
     @Autowired
     private UserRepository users;
 
     @Autowired
     private RoleRepository roles;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @Transactional
     public UserCreateDTO create(UserCreateDTO dto) {
@@ -30,4 +37,7 @@ public class UserWriter {
 
         return dto;
     }
+
+    // endregion Public Methods
+
 }

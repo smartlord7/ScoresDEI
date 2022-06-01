@@ -6,10 +6,21 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class PlayerSportsAPIImport implements BaseEntityDTO {
+
+    // region Private Properties
+
     private Player player;
     private List<Object> statistics;
 
+    // endregion Private Properties
+
+    // region Inner Classes
+
     public static class Player {
+
+        // region Private Properties
+
+
         private String name;
         private String firstname;
         private String lastname;
@@ -18,11 +29,26 @@ public class PlayerSportsAPIImport implements BaseEntityDTO {
         private String height;
         private String weight;
 
+        // endregion Private Properties
+
         public static class Birth {
+
+            // region Private Properties
+
+
             private Date date;
+
+            // endregion Private Properties
+
+
+            // region Constructors
 
             public Birth() {
             }
+
+            // endregion Constructors
+
+            // region Getters and Setters
 
             public Birth(Date date) {
                 this.date = date;
@@ -42,7 +68,14 @@ public class PlayerSportsAPIImport implements BaseEntityDTO {
                         .add("date=" + date)
                         .toString();
             }
+
+            // endregion Getters and Setters
+
         }
+
+        // endregion Inner Classes
+
+        // region Getters and Setters
 
         public String getName() {
             return name;
@@ -111,7 +144,12 @@ public class PlayerSportsAPIImport implements BaseEntityDTO {
                     .add("weight='" + weight + "'")
                     .toString();
         }
+
+        // endregion Getters and Setters
+
     }
+
+    // region Getters and Setters
 
     public Player getPlayer() {
         return player;
@@ -136,4 +174,7 @@ public class PlayerSportsAPIImport implements BaseEntityDTO {
                 .add("statistics=" + statistics)
                 .toString();
     }
+
+    // endregion Getters and Setters
+
 }

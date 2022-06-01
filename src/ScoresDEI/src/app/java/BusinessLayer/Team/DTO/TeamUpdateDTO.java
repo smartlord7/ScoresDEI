@@ -20,7 +20,7 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructors
+    // region Constructors
 
 
     public TeamUpdateDTO() {
@@ -44,6 +44,11 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
         this.teamName = teamName;
         this.logo = logo;
     }
+
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getId() {
         return id;
@@ -114,6 +119,5 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters and Constructors
-
+    // endregion Getters and Setters
 }

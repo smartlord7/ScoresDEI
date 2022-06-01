@@ -26,7 +26,7 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters,Constructors
+    // region Constructors
 
     public PlayerCreateDTO() {
     }
@@ -42,6 +42,10 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
         this.height = height;
         this.weight = weight;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getNationality() {
         return nationality;
@@ -139,6 +143,6 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters,Constructors
+    // endregion Getters and Setters
 
 }

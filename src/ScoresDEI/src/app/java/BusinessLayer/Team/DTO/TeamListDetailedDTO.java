@@ -17,7 +17,7 @@ public class TeamListDetailedDTO implements BaseEntityListDTO {
 
     // region Private Properties
 
-    // region Getters,Setters and Constructors
+    // region Constructors
 
     public TeamListDetailedDTO() {
     }
@@ -30,6 +30,10 @@ public class TeamListDetailedDTO implements BaseEntityListDTO {
         this.draws = draws;
         this.losses = losses;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getTeamId() {
         return teamId;
@@ -91,6 +95,6 @@ public class TeamListDetailedDTO implements BaseEntityListDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters and Constructors
+    // endregion Getters and Setters
 
 }

@@ -25,7 +25,7 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructors
+    // region Constructors
 
     public GameUpdateDTO(Long id) {
         this.id = id;
@@ -64,6 +64,10 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
         this.scoreTeamA = scoreTeamA;
         this.scoreTeamB = scoreTeamB;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getPlace() {
         return place;
@@ -170,6 +174,6 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters and Constructors
+    // endregion Getters and Setters
 
 }

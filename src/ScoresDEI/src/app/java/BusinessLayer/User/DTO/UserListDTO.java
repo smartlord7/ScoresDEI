@@ -5,10 +5,17 @@ import BusinessLayer.Base.DTO.BaseEntityListDTO;
 import java.util.StringJoiner;
 
 public class UserListDTO implements BaseEntityListDTO {
+
+    // region Private Properties
+
     private Long id;
     private String userName;
     private String email;
     private String role;
+
+    // endregion Private Properties
+
+    // region Constructors
 
     public UserListDTO() {
     }
@@ -19,6 +26,10 @@ public class UserListDTO implements BaseEntityListDTO {
         this.email = email;
         this.role = role;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getId() {
         return id;
@@ -61,4 +72,7 @@ public class UserListDTO implements BaseEntityListDTO {
                 .add("role='" + role + "'")
                 .toString();
     }
+
+    // endregion Getters and Setters
+
 }

@@ -17,7 +17,7 @@ public class EventListDTO implements BaseEntityListDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters,Constructors
+    // region Constructors
 
     public EventListDTO() {
     }
@@ -27,6 +27,10 @@ public class EventListDTO implements BaseEntityListDTO {
         this.eventType = eventType;
         this.occurrenceTime = occurrenceTime;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getId() {
         return id;
@@ -60,6 +64,6 @@ public class EventListDTO implements BaseEntityListDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters,Constructors
+    // endregion Getters and Setters
 
 }

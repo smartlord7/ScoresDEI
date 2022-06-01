@@ -17,7 +17,7 @@ public class UserCreateDTO implements BaseEntityCreateDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructors
+    // region Constructors
 
     public UserCreateDTO() {
     }
@@ -28,6 +28,10 @@ public class UserCreateDTO implements BaseEntityCreateDTO {
         this.phoneNumber = phoneNumber;
         this.password = passwordHash;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getId() {
         return id;
@@ -89,6 +93,6 @@ public class UserCreateDTO implements BaseEntityCreateDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters and Constructors
+    // endregion Getters and Setters
 
 }

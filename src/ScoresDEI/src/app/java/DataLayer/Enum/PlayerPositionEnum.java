@@ -22,6 +22,11 @@ public enum PlayerPositionEnum {
     CF,
     ST;
 
+    /**
+     * Function that associates positions to it's abbreviation.
+     * @param str is the position
+     * @return the abbreviation
+     */
     public static PlayerPositionEnum fromString(String str) {
         return switch (str.toLowerCase()) {
             case "goalkeeper" -> GK;

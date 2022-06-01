@@ -3,10 +3,17 @@ package BusinessLayer.Team.Import;
 import java.util.StringJoiner;
 
 public class TeamSportsAPIImport {
+
+    // region Private Properties
+
     private String name;
     private String code;
     private String country;
     private Integer founded;
+
+    // endregion Private Properties
+
+    // region Constructors
 
     public TeamSportsAPIImport() {
     }
@@ -17,6 +24,10 @@ public class TeamSportsAPIImport {
         this.country = country;
         this.founded = founded;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getName() {
         return name;
@@ -59,4 +70,7 @@ public class TeamSportsAPIImport {
                 .add("founder=" + founded)
                 .toString();
     }
+
+    // endregion Getters and Setters
+
 }

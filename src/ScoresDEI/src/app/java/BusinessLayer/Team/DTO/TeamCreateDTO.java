@@ -17,7 +17,7 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructors
+    // region Constructors
 
     public TeamCreateDTO() {
     }
@@ -29,6 +29,10 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
         this.founded = founded;
         this.logoId = logoId;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getId() {
         return id;
@@ -90,6 +94,6 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
                 .toString();
     }
 
-    // endregion Getters,Setters and Constructors
+    // endregion Getters and Setters
 
 }

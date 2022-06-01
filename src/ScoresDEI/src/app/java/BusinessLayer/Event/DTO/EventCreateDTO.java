@@ -22,7 +22,7 @@ public class EventCreateDTO implements BaseEntityCreateDTO {
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructors
+    // region Constructors
 
     public EventCreateDTO() {
     }
@@ -34,6 +34,10 @@ public class EventCreateDTO implements BaseEntityCreateDTO {
         this.gameId = gameId;
         this.playerId = playerId;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getId() {
         return id;
@@ -91,6 +95,6 @@ public class EventCreateDTO implements BaseEntityCreateDTO {
         this.player = player;
     }
 
-    // endregion Getters,Setters and Constructors
+    // endregion Getters and Setters
 
 }
