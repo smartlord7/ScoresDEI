@@ -74,7 +74,7 @@ public class GameTests {
     public void update() {
         GameUpdateDTO g;
 
-        g = new GameUpdateDTO((long) 40,
+        g = new GameUpdateDTO((long) 0,
                 "Not here",
                 new Date(),
                 new Date(),
@@ -89,7 +89,7 @@ public class GameTests {
      */
     @Test
     public void delete() {
-        System.out.println(writer.deleteById(40));
+        System.out.println(writer.deleteById(0));
     }
 
     // region Getters
@@ -99,7 +99,7 @@ public class GameTests {
      */
     @Test
     public void getEvents() {
-        System.out.println(reader.getEvents(40));
+        System.out.println(reader.getEvents(0));
     }
 
     /**
@@ -107,7 +107,7 @@ public class GameTests {
      */
     @Test
     public void getById() {
-        System.out.println(reader.getById(40));
+        System.out.println(reader.getById(0));
     }
 
     // endregion Getters

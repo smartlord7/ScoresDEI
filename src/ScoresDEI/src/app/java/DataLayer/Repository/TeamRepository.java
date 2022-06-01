@@ -58,5 +58,5 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
             ") AS losses " +
             "FROM Team t")
     List<Object>[] getAllDetailed();
-    Team getTeamByTeamName(String teamName);
+    Team getFirstByTeamName(String teamName);
 }

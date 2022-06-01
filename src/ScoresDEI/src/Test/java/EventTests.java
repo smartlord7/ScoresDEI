@@ -49,8 +49,8 @@ public class EventTests {
         EventCreateDTO goal = new EventCreateDTO(EventTypeEnum.GOAL,
                 new Date(),
                 "Test event",
-                (long) 40,
-                (long) 1);
+                (long) 0,
+                (long) 0);
         System.out.println(writer.create(goal));
     }
 
@@ -63,7 +63,7 @@ public class EventTests {
         EventCreateDTO end = new EventCreateDTO(EventTypeEnum.END_GAME,
                 new Date(),
                 "Test event",
-                (long) 40,
+                (long) 0,
                 null);
         System.out.println(writer.create(end));
     }

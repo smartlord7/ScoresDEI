@@ -53,11 +53,12 @@ public class UserTests {
         UserCreateDTO u;
 
         u = new UserCreateDTO(
-                "admin",
-                "admin@admin.com",
-                "111111111",
-                "admin123#"
+                "test",
+                "test@test.com",
+                "222222222",
+                "test123##"
                 );
+        u.setRoleId((long) 0);
         writer.create(u);
     }
 

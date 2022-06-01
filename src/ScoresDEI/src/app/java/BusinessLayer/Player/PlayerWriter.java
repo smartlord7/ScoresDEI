@@ -79,7 +79,8 @@ public class PlayerWriter {
     @Transactional
     public PlayerImportResultDTO importViaSportsAPI(String keyAPI, long league, long season, long page) {
         Unirest.setTimeouts(0, 0);
-        HttpResponse<String> data = null;
+        HttpResponse<String> data;
+
         try {
             data = Unirest.get(SPORTS_API_BASE_URL + "/players")
                     .queryString("league", league)
@@ -92,6 +93,7 @@ public class PlayerWriter {
 
             return null;
         }
+
         String playersStr = new JSONObject(new JSONObject(data).get("body").toString()).get("response").toString();
         List<Player> playerList = new ArrayList<Player>();
         new JSONArray(playersStr).forEach(o -> {

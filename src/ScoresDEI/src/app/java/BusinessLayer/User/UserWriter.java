@@ -20,10 +20,12 @@ public class UserWriter {
     public UserCreateDTO create(UserCreateDTO dto) {
         User u;
         u = UserTranslator.toModel(dto);
-        u.getRole().add(roles.getById(dto.getRoleId()));
+
+        if (dto.getRoleId() != null) {
+            u.getRole().add(roles.getById(dto.getRoleId()));
+        }
 
         users.save(u);
-
         dto.setId(u.getId());
 
         return dto;

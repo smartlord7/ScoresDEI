@@ -45,7 +45,7 @@ public class PlayerTranslator {
                 weight
         );
 
-        Team team = teams.getTeamByTeamName(teamName);
+        Team team = teams.getFirstByTeamName(teamName);
         if (team != null) {
             model.setTeam(team);
             team.getPlayer().add(model);
