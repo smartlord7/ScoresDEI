@@ -1,5 +1,6 @@
 package PresentationLayer.Team;
 
+import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import BusinessLayer.Team.DTO.TeamCreateDTO;
 import BusinessLayer.Team.DTO.TeamListDTO;
 import BusinessLayer.Team.DTO.TeamListDetailedDTO;
@@ -47,6 +48,11 @@ public class TeamController {
     @PostMapping
     public TeamCreateDTO create(@RequestBody TeamCreateDTO dto) {
         return writer.create(dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public TeamUpdateDTO deleteById(@PathVariable Long id) {
+        return writer.deleteById(id);
     }
 
     @PutMapping

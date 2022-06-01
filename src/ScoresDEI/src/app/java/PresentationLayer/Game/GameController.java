@@ -6,6 +6,7 @@ import BusinessLayer.Game.DTO.GameListDTO;
 import BusinessLayer.Game.DTO.GameUpdateDTO;
 import BusinessLayer.Game.GameReader;
 import BusinessLayer.Game.GameWriter;
+import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +48,11 @@ public class GameController {
     @PostMapping
     public GameCreateDTO create(@RequestBody GameCreateDTO dto) {
         return writer.create(dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public GameUpdateDTO deleteById(@PathVariable Long id) {
+        return writer.deleteById(id);
     }
 
     @PutMapping
