@@ -53,6 +53,6 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     @Override
     public String getAuthority() {
-        return RoleEnum.ADMIN.toString();
+        return "ROLE_" + getRoleName().toUpperCase();
     }
 }
