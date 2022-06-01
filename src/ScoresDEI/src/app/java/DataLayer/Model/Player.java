@@ -16,6 +16,12 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     @Column(length = 1024, nullable = false)
     private String playerName;
 
+    @Column(length = 512, nullable = false)
+    private String firstName;
+
+    @Column(length = 512, nullable = false)
+    private String lastName;
+
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date birthDate;
@@ -23,6 +29,15 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private PlayerPositionEnum position;
+
+    @Column(nullable = false)
+    private String nationality;
+
+    @Column(nullable = false)
+    private Double height;
+
+    @Column(nullable = false)
+    private Double weight;
 
     @ManyToOne
     private Team team;
@@ -49,6 +64,46 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
 
     public Team getTeam() {
         return team;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public Double getHeight() {
+        return height;
+    }
+
+    public void setHeight(Double height) {
+        this.height = height;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 
     public void setTeam(Team team) {

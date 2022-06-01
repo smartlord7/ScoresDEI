@@ -20,5 +20,14 @@ public enum PlayerPositionEnum {
     RF,
     LF,
     CF,
-    ST
+    ST;
+
+    public static PlayerPositionEnum fromString(String str) {
+        return switch (str.toLowerCase()) {
+            case "goalkeeper" -> GK;
+            case "defender" -> CB;
+            case "midfielder" -> CM;
+            default -> ST;
+        };
+    }
 }

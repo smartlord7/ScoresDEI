@@ -4,6 +4,7 @@ import BusinessLayer.Player.PlayerReader;
 import BusinessLayer.Player.PlayerWriter;
 import DataLayer.Enum.PlayerPositionEnum;
 import DataLayer.Repository.PlayerRepository;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,10 +65,16 @@ public class PlayerTests {
     @Rollback(false)
     public void create() {
         System.out.println(writer.create(
-                new PlayerCreateDTO("Sancho Simões",
+                new PlayerCreateDTO(
+                        "Sancho S.",
+                        "Sancho",
+                        "Simões",
                         new Date(),
                         PlayerPositionEnum.GK,
-                        (long) 0)));
+                        (long) 0,
+                        "Portuguese",
+                        1.90,
+                        100.0)));
     }
 
     /**
@@ -91,8 +98,6 @@ public class PlayerTests {
                         (long) 1)));
     }
 
-    // region Getters
-
     @Test
     public void getAll() {
         System.out.println(reader.getAll());
@@ -103,8 +108,11 @@ public class PlayerTests {
         System.out.println(reader.getById(68));
     }
 
-    //endregion Getters
 
+    @Test
+    public void importViaSportsAPI() throws UnirestException {
+        writer.importViaSportsAPI((long)39, (long)2021, (long)1);
+    }
     // endregion Public methods
 
 }

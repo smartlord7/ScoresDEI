@@ -2,13 +2,56 @@ package BusinessLayer.Player;
 
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
 import BusinessLayer.Player.DTO.PlayerListDTO;
+import BusinessLayer.Player.DTO.PlayerSportsAPIImportDTO;
 import BusinessLayer.Player.DTO.PlayerUpdateDTO;
+import DataLayer.Enum.PlayerPositionEnum;
 import DataLayer.Model.Player;
 import DataLayer.Model.Team;
+import DataLayer.Repository.TeamRepository;
+import com.google.gson.internal.LinkedTreeMap;
 
 public class PlayerTranslator {
 
+    // region Private Methods
+
+
+
+    // endregion Private Methods
+
     // region Public Methods
+
+    public static PlayerCreateDTO toCreateDTO(PlayerSportsAPIImportDTO dto,
+                                              TeamRepository teams) {
+        PlayerSportsAPIImportDTO.Player p = dto.getPlayer();
+        LinkedTreeMap<String, LinkedTreeMap<String, String>> statistics =
+                (LinkedTreeMap<String, LinkedTreeMap<String, String>>) dto.getStatistics().get(0);
+        String teamName = statistics.get("team").get("name");
+        PlayerPositionEnum position = PlayerPositionEnum.fromString(statistics.get("games").get("position"));
+        String heightStr = p.getHeight();
+        String weightStr = p.getWeight();
+        Double height = null;
+        Double weight = null;
+
+        if (heightStr != null) {
+            height = Double.parseDouble(heightStr.replaceAll("[^0-9]", ""));
+        }
+
+        if (weightStr != null) {
+            weight = Double.parseDouble(weightStr.replaceAll("[^0-9]", ""));
+        }
+
+        return new PlayerCreateDTO(
+                p.getName(),
+                p.getFirstname(),
+                p.getLastname(),
+                p.getBirth().getDate(),
+                position,
+                teams.getTeamByTeamName(teamName),
+                p.getNationality(),
+                height,
+                weight
+        );
+    }
 
     public static PlayerListDTO toListDTO(Player model) {
         Team t = model.getTeam();

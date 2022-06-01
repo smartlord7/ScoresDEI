@@ -5,6 +5,7 @@ import DataLayer.Enum.PlayerPositionEnum;
 import DataLayer.Model.Team;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.Column;
 import java.util.Date;
 import java.util.StringJoiner;
 
@@ -14,9 +15,14 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
 
     private Long id;
     private String playerName;
+    private String firstName;
+    private String lastName;
     private Date birthDate;
     private PlayerPositionEnum position;
     private Long teamId;
+    private String nationality;
+    private Double height;
+    private Double weight;
 
     // endregion Private Properties
 
@@ -25,11 +31,40 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
     public PlayerCreateDTO() {
     }
 
-    public PlayerCreateDTO(String playerName, Date birthDate, PlayerPositionEnum position, Long teamId) {
+    public PlayerCreateDTO(String playerName, String firstName, String lastName, Date birthDate, PlayerPositionEnum position, Long teamId, String nationality, Double height, Double weight) {
         this.playerName = playerName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.birthDate = birthDate;
         this.position = position;
         this.teamId = teamId;
+        this.nationality = nationality;
+        this.height = height;
+        this.weight = weight;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public Double getHeight() {
+        return height;
+    }
+
+    public void setHeight(Double height) {
+        this.height = height;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 
     public String getPlayerName() {
@@ -68,6 +103,22 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
         return teamId;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public void setTeamId(Long teamId) {
         this.teamId = teamId;
     }
@@ -77,9 +128,14 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
         return new StringJoiner(", ", PlayerCreateDTO.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("playerName='" + playerName + "'")
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
                 .add("birthDate=" + birthDate)
                 .add("position=" + position)
                 .add("teamId=" + teamId)
+                .add("nationality='" + nationality + "'")
+                .add("height=" + height)
+                .add("weight=" + weight)
                 .toString();
     }
 

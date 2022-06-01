@@ -15,5 +15,15 @@
       "name": "api.prefix",
       "type": "java.lang.String",
       "description": "Description for api.prefix."
+    },
+    {
+      "name": "sports_api.api_key",
+      "type": "java.lang.String",
+      "description": "Description for sports_api.api_key."
+    },
+    {
+      "name": "sports_api.base_url",
+      "type": "java.lang.String",
+      "description": "Description for sports_api.base_url."
     }
   ] }
