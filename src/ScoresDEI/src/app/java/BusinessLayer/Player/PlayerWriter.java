@@ -56,6 +56,8 @@ public class PlayerWriter {
             t2.getPlayer().add(p);
         }
 
+        dto.setTeamName(p.getTeam().getTeamName());
+
         players.save(p);
 
         return dto;
