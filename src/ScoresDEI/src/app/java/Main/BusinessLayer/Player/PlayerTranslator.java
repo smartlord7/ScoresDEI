@@ -77,7 +77,8 @@ public class PlayerTranslator {
                 model.getPlayerName(),
                 model.getPosition(),
                 teamId,
-                teamName
+                teamName,
+                model.getNationality()
         );
     }
 

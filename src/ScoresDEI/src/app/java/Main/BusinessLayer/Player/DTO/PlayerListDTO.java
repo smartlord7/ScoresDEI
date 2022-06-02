@@ -25,6 +25,7 @@ public class PlayerListDTO implements BaseEntityListDTO {
     private PlayerPositionEnum position;
     private Long teamId;
     private String teamName;
+    private String nationality;
 
     // endregion Private Properties
 
@@ -33,12 +34,13 @@ public class PlayerListDTO implements BaseEntityListDTO {
     public PlayerListDTO() {
     }
 
-    public PlayerListDTO(Long id, String playerName, PlayerPositionEnum position, Long teamId, String teamName) {
+    public PlayerListDTO(Long id, String playerName, PlayerPositionEnum position, Long teamId, String teamName, String nationality) {
         this.id = id;
         this.playerName = playerName;
         this.position = position;
         this.teamId = teamId;
         this.teamName = teamName;
+        this.nationality = nationality;
     }
 
     // endregion Constructors
@@ -85,6 +87,14 @@ public class PlayerListDTO implements BaseEntityListDTO {
         this.teamName = teamName;
     }
 
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", PlayerListDTO.class.getSimpleName() + "[", "]")
@@ -93,6 +103,7 @@ public class PlayerListDTO implements BaseEntityListDTO {
                 .add("position=" + position)
                 .add("teamId=" + teamId)
                 .add("teamName='" + teamName + "'")
+                .add("nationality='" + nationality + "'")
                 .toString();
     }
 
