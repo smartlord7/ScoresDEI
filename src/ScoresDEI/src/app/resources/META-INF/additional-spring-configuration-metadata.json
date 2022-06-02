@@ -25,5 +25,10 @@
       "name": "sports_api.base_url",
       "type": "java.lang.String",
       "description": "Description for sports_api.base_url."
+    },
+    {
+      "name": "app.name",
+      "type": "java.lang.String",
+      "description": "Description for app.name."
     }
   ] }

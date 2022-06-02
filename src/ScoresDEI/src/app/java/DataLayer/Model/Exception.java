@@ -26,7 +26,7 @@ public class Exception extends AbstractAuditable<User, Long> implements BaseEnti
     @Column(length = 1024)
     private String message;
 
-    @Column(length = 4096)
+    @Column(length = 16384)
     private String stackTrace;
 
     @Column(length = 512)

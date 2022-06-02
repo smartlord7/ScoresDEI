@@ -16,12 +16,14 @@ import DataLayer.Model.Exception;
 import DataLayer.Repository.ExceptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ExceptionWriter {
     @Autowired
     private ExceptionRepository exceptions;
 
+    @Transactional
     public ExceptionCreateDTO create(ExceptionCreateDTO dto) {
         Exception e = ExceptionTranslator.toModel(dto);
         exceptions.save(e);

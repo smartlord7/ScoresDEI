@@ -24,7 +24,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 public class ScoresDeiApplication {
 
-	// region Public methods
+	// region Public Methods
 
 	/**
 	 * Main method.
