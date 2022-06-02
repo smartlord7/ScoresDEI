@@ -21,7 +21,7 @@ public class PlayerViewController {
     private PlayerWriter writer;
 
     @GetMapping
-    public ModelAndView getAll(Model model) {
+    public ModelAndView index(Model model) {
         model.addAttribute("players", reader.getAll());
         model.addAttribute("bestScorer", reader.getBestScorer());
 

@@ -21,7 +21,7 @@ public class TeamViewController {
     private TeamWriter writer;
 
     @GetMapping
-    public ModelAndView getAll(Model model) {
+    public ModelAndView index(Model model) {
         model.addAttribute("teams", reader.getAllDetailed());
 
         return new ModelAndView("team/index");

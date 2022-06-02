@@ -10,35 +10,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
 <nav th:insert="fragments/navbar.html :: navbar"> </nav>
-
-
-<div class="jumbotron">
-
-
-    <hr class="my-4">
-    <div class="container">
-    </div>
-</div>
-
-
-
+<div style="height: 600px; overflow: auto; background: linear-gradient(to left, #8edad2, #bbcbc5)">
 <table class="table table-striped">
     <thead>
     <tr>
-
         <th scope="col">Place</th>
         <th scope="col">Starts at</th>
         <th scope="col">Ends at</th>
         <th scope="col">Teams</th>
         <th scope="col">Score</th>
-
+        <th scope="col">Actions</th>
     </tr>
     </thead>
-
     <tbody>
     <tr th:each="game :${games}">
         <td th:text="${game.getPlace()}"></td>
@@ -52,11 +39,15 @@
             <span th:text="${game.getScoreA()  + ' vs ' + game.getScoreB()}">
             </span>
         </td>
+        <td>
+            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
+            <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+        </td>
     </tr>
-
     </tbody>
 </table>
-
-
+<footer th:insert="fragments/footer.html :: footer"> </footer>
+</div>
 </body>
 </html>

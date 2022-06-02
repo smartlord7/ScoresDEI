@@ -1,7 +1,6 @@
-package Main.PresentationLayer.Controller.Game;
+package Main.PresentationLayer.Controller;
 
-import Main.BusinessLayer.Game.GameReader;
-import Main.BusinessLayer.Game.GameWriter;
+import Main.BusinessLayer.Player.PlayerReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,19 +11,15 @@ import org.springframework.web.servlet.ModelAndView;
 import static Main.Util.ApplicationConst.APP_NAME;
 
 @Controller
-@RequestMapping(path = APP_NAME + "/game")
-public class GameViewController {
-
+@RequestMapping(path = APP_NAME + "/statistics")
+public class StatisticsController {
     @Autowired
-    private GameReader reader;
-
-    @Autowired
-    private GameWriter writer;
+    private PlayerReader playerReader;
 
     @GetMapping
     public ModelAndView index(Model model) {
-        model.addAttribute("games", reader.getAll());
+        model.addAttribute("bestScorer", playerReader.getBestScorer());
 
-        return new ModelAndView("game/index");
+        return new ModelAndView("statistics/index");
     }
 }
