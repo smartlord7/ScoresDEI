@@ -13,13 +13,14 @@ package Main.PresentationLayer.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.security.Principal;
+import org.springframework.web.bind.annotation.RequestMapping;
+import static Main.Util.ApplicationConst.APP_NAME;
 
 @Controller
+@RequestMapping(path = APP_NAME + "/home")
 public class HomeController {
-    @GetMapping("/")
-    String index(Principal principal) {
-        return principal != null ? "general/home" : "general/home_no_auth";
+    @GetMapping
+    public String index() {
+        return "general/home";
     }
 }

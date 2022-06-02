@@ -25,11 +25,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
+
+import static Main.Util.ApplicationConst.APP_NAME;
+import static Main.Util.ApplicationConst.REDIRECT;
 
 @Controller
 @CrossOrigin
@@ -54,7 +60,7 @@ public class UserViewController {
     @GetMapping("/login")
     public String login(Principal principal, Model model) {
         if (principal != null && ((Authentication) principal).isAuthenticated()) {
-            return ApplicationConst.REDIRECT + "general/home";
+            return REDIRECT + "general/home";
         } else {
             model.addAttribute("userLoginDTO", new UserLoginDTO());
 
@@ -63,18 +69,18 @@ public class UserViewController {
     }
 
     @PostMapping("/login")
-    public String login(UserLoginDTO loginDTO, HttpSession session, Model model) throws Exception {
+    public ModelAndView login(UserLoginDTO loginDTO, HttpSession session, Model model) throws IOException {
         UserLoginResultDTO loginResultDTO;
         try {
             loginResultDTO = authHelper.authenticate(loginDTO);
         } catch (Exception e) {
             model.addAttribute("error", "Wrong username or password");
 
-            return "user/login";
+            return new ModelAndView("user/login");
         }
         session.setAttribute("user", loginResultDTO);
 
-        return "general/home";
+        return new ModelAndView("redirect:/scoresDEI/home");
     }
 
     @GetMapping("/create")
@@ -99,7 +105,7 @@ public class UserViewController {
             return "user/create";
         }
 
-        return ApplicationConst.REDIRECT + "/";
+        return REDIRECT + "/";
     }
 
     // endregion Public Methods

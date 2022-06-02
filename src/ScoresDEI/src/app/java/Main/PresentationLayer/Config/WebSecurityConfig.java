@@ -73,6 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
+                .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.PUT, API_PREFIX + "/user/login").permitAll()
@@ -107,18 +108,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(HttpMethod.GET, API_PREFIX + "/exception").hasAnyAuthority("ROLE_ADMIN")
 
+                .antMatchers(APP_NAME + "/user/login").permitAll()
+                .antMatchers( APP_NAME + "/").permitAll()
+                .antMatchers( APP_NAME + "/home").permitAll()
                 .antMatchers( APP_NAME + "/user/create").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage(APP_NAME + "/user/login")
-                .loginProcessingUrl(API_PREFIX + "/user/login")
-                .permitAll()
-                .defaultSuccessUrl("/")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll()
+                .antMatchers( APP_NAME + "/game").permitAll()
+                .anyRequest().fullyAuthenticated()
                 .and()
                 .authorizeRequests()
                 .and()
