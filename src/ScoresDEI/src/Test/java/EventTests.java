@@ -28,9 +28,9 @@ import java.util.Date;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-@EntityScan(basePackages = "DataLayer.Model")
+@EntityScan(basePackages = "Main.DataLayer.Model")
 @ContextConfiguration(classes = {EventWriter.class, EventReader.class})
-@EnableJpaRepositories(basePackages = "DataLayer.Repository")
+@EnableJpaRepositories(basePackages = "Main.DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class EventTests {
 

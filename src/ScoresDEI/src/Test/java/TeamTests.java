@@ -34,7 +34,7 @@ import java.util.List;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-@EntityScan(basePackages = "DataLayer.Model")
+@EntityScan(basePackages = "Main.DataLayer.Model")
 @ContextConfiguration(classes = {TeamWriter.class, TeamReader.class, TeamRepository.class})
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)

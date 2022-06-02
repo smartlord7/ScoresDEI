@@ -32,7 +32,7 @@ import java.util.Date;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-@EntityScan(basePackages = "DataLayer.Model")
+@EntityScan(basePackages = "Main.DataLayer.Model")
 @ContextConfiguration(classes = {PlayerRepository.class, PlayerReader.class, PlayerWriter.class})
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)

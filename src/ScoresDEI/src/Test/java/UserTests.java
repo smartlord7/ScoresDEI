@@ -29,7 +29,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-@EntityScan(basePackages = "DataLayer.Model")
+@EntityScan(basePackages = "Main.DataLayer.Model")
 @ContextConfiguration(classes = {UserRepository.class, UserWriter.class, UserReader.class})
 @EnableJpaRepositories(basePackages = "DataLayer.Repository")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)

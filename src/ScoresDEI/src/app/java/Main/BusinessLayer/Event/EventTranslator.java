@@ -14,7 +14,6 @@ package Main.BusinessLayer.Event;
 import Main.BusinessLayer.Event.DTO.EventCreateDTO;
 import Main.BusinessLayer.Event.DTO.EventListDTO;
 import Main.DataLayer.Enum.EventTypeEnum;
-import DataLayer.Model.*;
 import Main.DataLayer.Model.*;
 
 public class EventTranslator {

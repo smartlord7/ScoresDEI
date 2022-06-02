@@ -13,7 +13,6 @@ package Main.BusinessLayer.Event;
 
 import Main.BusinessLayer.Event.DTO.EventCreateDTO;
 import Main.DataLayer.Enum.EventTypeEnum;
-import DataLayer.Model.*;
 import Main.DataLayer.Repository.EventRepository;
 import Main.DataLayer.Repository.GameRepository;
 import Main.DataLayer.Repository.PlayerRepository;
