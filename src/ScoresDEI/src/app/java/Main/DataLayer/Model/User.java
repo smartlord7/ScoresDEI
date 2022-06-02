@@ -41,14 +41,10 @@ public class User extends AbstractAuditable<User, Long> implements Serializable,
 
     // endregion Private Properties
 
-    // region Public Properties
+    // region Constructors
 
     public User() {
     }
-
-    // endregion Public Properties
-
-    // region Getters,Setters and Constructor
 
     public User(String userName, String email, String phoneNumber, String passwordHash) {
         this.userName = userName;
@@ -56,6 +52,10 @@ public class User extends AbstractAuditable<User, Long> implements Serializable,
         this.phoneNumber = phoneNumber;
         this.passwordHash = passwordHash;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getUserName() {
         return userName;
@@ -97,6 +97,6 @@ public class User extends AbstractAuditable<User, Long> implements Serializable,
         this.role = role;
     }
 
-    // endregion Getters,Setters and Constructor
+    // endregion Getters and Setters
 
 }

@@ -22,6 +22,7 @@ import java.security.NoSuchAlgorithmException;
 
 @Component
 public class PasswordHasher {
+
     // region Public methods
 
     /**

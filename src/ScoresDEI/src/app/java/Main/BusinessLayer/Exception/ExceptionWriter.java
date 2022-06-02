@@ -20,8 +20,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ExceptionWriter {
+
+    // region Private Properties
+
     @Autowired
     private ExceptionRepository exceptions;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @Transactional
     public ExceptionCreateDTO create(ExceptionCreateDTO dto) {
@@ -31,4 +38,7 @@ public class ExceptionWriter {
 
         return dto;
     }
+
+    // endregion Public Methods
+
 }

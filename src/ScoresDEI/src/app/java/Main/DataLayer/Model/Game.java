@@ -70,7 +70,7 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructor
+    // region Constructors
 
     public Game() {
     }
@@ -80,6 +80,10 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getPlace() {
         return place;
@@ -193,6 +197,6 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.endTime = endTime;
     }
 
-    // endregion Getters,Setters and Constructor
+    // endregion Getters and Setters
 
 }

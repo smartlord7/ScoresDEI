@@ -26,12 +26,16 @@ public class EventYellowCard extends Event{
 
     // endregion Private Properties
 
+    // region Constructors
+
     public EventYellowCard() {
     }
 
     public EventYellowCard(Date occurrenceTime, String description) {
         super(occurrenceTime, description);
     }
+
+    // endregion Constructors
 
     // region Getters and Setters
 

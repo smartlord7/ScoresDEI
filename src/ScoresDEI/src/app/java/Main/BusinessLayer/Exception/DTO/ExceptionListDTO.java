@@ -15,11 +15,18 @@ import java.time.LocalDateTime;
 import java.util.StringJoiner;
 
 public class ExceptionListDTO {
+
+    // region Private Properties
+
     private String message;
     private String source;
     private String context;
     private Long createdById;
     private LocalDateTime createdDate;
+
+    // endregion Private Properties
+
+    // region Constructors
 
     public ExceptionListDTO() {
     }
@@ -31,6 +38,10 @@ public class ExceptionListDTO {
         this.createdById = createdById;
         this.createdDate = createdDate;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getMessage() {
         return message;
@@ -82,4 +93,7 @@ public class ExceptionListDTO {
                 .add("createdDate=" + createdDate)
                 .toString();
     }
+
+    // endregion Getters and Setters
+
 }

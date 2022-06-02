@@ -38,6 +38,7 @@ import static Main.Util.ApplicationConst.APP_NAME;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // region Private Properties
+
     @Value("${api.prefix}")
     private String API_PREFIX;
 
@@ -130,8 +131,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // endregion Protected Methods
 
+    // region Public Methods
+
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userAuthDetailsProvider).passwordEncoder(passwordEncoder());
     }
+
+    // endregion Public Methods
+
 }

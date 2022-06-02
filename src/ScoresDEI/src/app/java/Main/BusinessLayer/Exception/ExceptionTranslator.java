@@ -18,6 +18,9 @@ import Main.DataLayer.Model.Exception;
 import java.time.LocalDateTime;
 
 public class ExceptionTranslator {
+
+    // region Public Methods
+
     public static ExceptionListDTO toListDTO(Exception model) {
         LocalDateTime createDate = null;
         Long userId = null;
@@ -47,4 +50,7 @@ public class ExceptionTranslator {
                 dto.getContext()
         );
     }
+
+    // endregion Public Methods
+
 }

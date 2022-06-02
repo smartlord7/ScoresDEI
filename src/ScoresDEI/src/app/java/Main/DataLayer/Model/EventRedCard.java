@@ -26,7 +26,7 @@ public class EventRedCard extends Event{
 
     // endregion Private Properties
 
-    // region Getters, Setters and Constructors
+    // region Constructors
 
     public EventRedCard() {
     }
@@ -34,6 +34,10 @@ public class EventRedCard extends Event{
     public EventRedCard(Date occurrenceTime, String description) {
         super(occurrenceTime, description);
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Player getPlayer() {
         return player;
@@ -43,6 +47,6 @@ public class EventRedCard extends Event{
         this.player = player;
     }
 
-    // endregion Getters, Setters and Constructors
+    // endregion Getters and Setters
 
 }

@@ -20,6 +20,7 @@ import javax.persistence.*;
 @Entity(name = "Role")
 @Table(name = "Role")
 public class Role extends AbstractAuditable<User, Long> implements BaseEntityModel, GrantedAuthority {
+
     // region Private Properties
 
     @Column(length = 1024, nullable = false)
@@ -27,6 +28,10 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     @Column(length = 4096)
     private String description;
+
+    // endregion Private Properties
+
+    // region Constructors
 
     public Role() {
     }
@@ -36,7 +41,7 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.description = description;
     }
 
-    // endregion Private Properties
+    // endregion Constructors
 
     // region Public Properties
 
@@ -47,7 +52,10 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
     public String getRoleName() {
         return roleName;
     }
+
     // endregion Public Properties
+
+    // region Getters and Setters
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
@@ -65,4 +73,7 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
     public String getAuthority() {
         return "ROLE_" + getRoleName().toUpperCase();
     }
+
+    // endregion Getters and Setters
+
 }

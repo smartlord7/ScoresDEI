@@ -17,8 +17,15 @@ import Main.DataLayer.Enum.StorageTypeEnum;
 import java.util.StringJoiner;
 
 public class AttachmentUpdateDTO implements BaseEntityUpdateDTO {
+
+    // region Private Properties
+
     private StorageTypeEnum storageType;
     private String path;
+
+    // endregion Private Properties
+
+    // region Constructors
 
     public AttachmentUpdateDTO() {
     }
@@ -27,6 +34,10 @@ public class AttachmentUpdateDTO implements BaseEntityUpdateDTO {
         this.storageType = storageType;
         this.path = path;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public StorageTypeEnum getStorageType() {
         return storageType;
@@ -51,4 +62,7 @@ public class AttachmentUpdateDTO implements BaseEntityUpdateDTO {
                 .add("path='" + path + "'")
                 .toString();
     }
+
+    // endregion Getters and Setters
+
 }

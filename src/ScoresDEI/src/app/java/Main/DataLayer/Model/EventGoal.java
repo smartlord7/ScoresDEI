@@ -26,7 +26,7 @@ public class EventGoal extends Event{
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructors
+    // region Constructors
 
     public EventGoal() {
         super();
@@ -36,6 +36,10 @@ public class EventGoal extends Event{
         super(occurrenceTime, description);
     }
 
+    // endregion Constructors
+
+    // region Getters and Setters
+
     public Player getPlayer() {
         return player;
     }
@@ -43,4 +47,7 @@ public class EventGoal extends Event{
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+    // endregion Getters and Setters
+
 }

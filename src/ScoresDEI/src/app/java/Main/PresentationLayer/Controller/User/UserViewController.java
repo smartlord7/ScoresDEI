@@ -1,3 +1,14 @@
+/**------------scoreDEI: Resultados desportivos em direto - WEB FRAMEWORK------------
+ University of Coimbra
+ Degree in Computer Science and Engineering
+ Sistemas Distribuidos
+ 3rd year, 2nd semester
+ Authors:
+ Sancho Amaral Simões, 2019217590, uc2019217590@student.uc.pt
+ Tiago Filipe Santa Ventura, 2019243695, uc2019243695@student.uc.pt
+ Coimbra, 31th May 2022
+ */
+
 package Main.PresentationLayer.Controller.User;
 
 import Main.BusinessLayer.User.DTO.UserCreateDTO;
@@ -24,6 +35,9 @@ import java.util.Map;
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.APP_NAME + "/user")
 public class UserViewController {
+
+    // region Private Properties
+
     @Autowired
     private UserWriter writer;
 
@@ -32,6 +46,10 @@ public class UserViewController {
 
     @Autowired
     private AuthHelper authHelper;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     @GetMapping("/login")
     public String login(Principal principal, Model model) {
@@ -83,4 +101,7 @@ public class UserViewController {
 
         return ApplicationConst.REDIRECT + "/";
     }
+
+    // endregion Public Methods
+
 }

@@ -20,8 +20,15 @@ import java.util.List;
 
 @Service
 public class ExceptionReader {
+
+    // region Private Properties
+
     @Autowired
     private ExceptionRepository exceptions;
+
+    // endregion Private Properties
+
+    // region Public Methods
 
     public List<ExceptionListDTO> getAll() {
         return exceptions.findAll()
@@ -29,4 +36,7 @@ public class ExceptionReader {
                 .map(ExceptionTranslator::toListDTO)
                 .toList();
     }
+
+    // endregion Public Methods
+
 }

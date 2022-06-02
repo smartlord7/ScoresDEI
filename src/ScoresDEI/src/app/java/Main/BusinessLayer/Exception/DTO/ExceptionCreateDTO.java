@@ -14,11 +14,18 @@ package Main.BusinessLayer.Exception.DTO;
 import java.util.StringJoiner;
 
 public class ExceptionCreateDTO {
+
+    // region Private Properties
+
     private Long id;
     private String message;
     private String stackTrace;
     private String source;
     private String context;
+
+    // endregion Private Properties
+
+    // region Constructors
 
     public ExceptionCreateDTO() {
     }
@@ -29,6 +36,10 @@ public class ExceptionCreateDTO {
         this.source = source;
         this.context = context;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public Long getId() {
         return id;
@@ -80,4 +91,7 @@ public class ExceptionCreateDTO {
                 .add("context='" + context + "'")
                 .toString();
     }
+
+    // endregion Getters and Setters
+
 }

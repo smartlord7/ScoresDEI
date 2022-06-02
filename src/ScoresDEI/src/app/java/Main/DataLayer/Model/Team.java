@@ -45,7 +45,7 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     // endregion Private Properties
 
-    // region Getters,Setters and Constructor
+    // region Constructors
 
     public Team() {
     }
@@ -56,6 +56,10 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.code = code;
         this.founded = founded;
     }
+
+    // endregion Constructors
+
+    // region Getters and Setters
 
     public String getTeamName() {
         return teamName;
@@ -112,6 +116,7 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
     public void setImported(boolean imported) {
         this.imported = imported;
     }
-// region Getters,Setters and Constructor
+
+    // endregion Getters and Setters
 
 }
