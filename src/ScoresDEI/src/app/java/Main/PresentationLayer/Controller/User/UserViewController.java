@@ -2,20 +2,23 @@ package Main.PresentationLayer.Controller.User;
 
 import Main.BusinessLayer.User.DTO.UserCreateDTO;
 import Main.BusinessLayer.User.DTO.UserLoginDTO;
+import Main.BusinessLayer.User.DTO.UserLoginResultDTO;
 import Main.BusinessLayer.User.UserReader;
 import Main.BusinessLayer.User.UserWriter;
+import Main.PresentationLayer.Auth.AuthHelper;
 import Main.Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @CrossOrigin
@@ -27,25 +30,38 @@ public class UserViewController {
     @Autowired
     private UserReader reader;
 
+    @Autowired
+    private AuthHelper authHelper;
+
     @GetMapping("/login")
     public String login(Principal principal, Model model) {
         if (principal != null && ((Authentication) principal).isAuthenticated()) {
             return ApplicationConst.REDIRECT + "general/home";
         } else {
-            model.addAttribute("dto", new UserLoginDTO());
+            model.addAttribute("userLoginDTO", new UserLoginDTO());
+
             return "user/login";
         }
     }
 
     @PostMapping("/login")
-    public String login(Model model) {
+    public String login(UserLoginDTO loginDTO, HttpSession session, Model model) throws Exception {
+        UserLoginResultDTO loginResultDTO;
+        try {
+            loginResultDTO = authHelper.authenticate(loginDTO);
+        } catch (Exception e) {
+            model.addAttribute("error", "Wrong username or password");
 
-        return "user/login";
+            return "user/login";
+        }
+        session.setAttribute("user", loginResultDTO);
+
+        return "general/home";
     }
 
     @GetMapping("/create")
     public String create(Model model){
-        model.addAttribute("dto", new UserCreateDTO());
+        model.addAttribute("userCreateDTO", new UserCreateDTO());
 
         return "user/create";
     }

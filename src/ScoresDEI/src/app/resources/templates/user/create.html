@@ -11,7 +11,7 @@
         <div class="card-body register-card-body">
             <p class="login-box-msg">Register a new account</p>
 
-            <form action="#" th:action="@{/scoresDEI/user/login}" th:object="${dto}" method="post">
+            <form action="#" th:action="@{/scoresDEI/user/login}" th:object="${userCreateDTO}" method="post">
                 <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
                     <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
                 </div>

@@ -22,11 +22,16 @@ public class ExceptionInterceptor {
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ExceptionCreateDTO processRuntimeException(RuntimeException e) {
+        String cause = null;
+        if (e.getCause() != null) {
+            cause = e.getCause().toString();
+        }
+
         return writer.create(new ExceptionCreateDTO(
                 e.getMessage(),
                 Arrays.toString(e.getStackTrace()),
                 APP_NAME,
-                e.getCause().toString()
+                cause
         ));
     }
 }
