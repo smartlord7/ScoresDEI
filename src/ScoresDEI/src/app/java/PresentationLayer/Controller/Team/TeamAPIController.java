@@ -9,9 +9,8 @@
  Coimbra, 31th May 2022
  */
 
-package PresentationLayer.Team;
+package PresentationLayer.Controller.Team;
 
-import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import BusinessLayer.Team.DTO.TeamCreateDTO;
 import BusinessLayer.Team.DTO.TeamListDTO;
 import BusinessLayer.Team.DTO.TeamListDetailedDTO;
@@ -27,7 +26,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/team")
-public class TeamController {
+public class TeamAPIController {
 
     // region Private Properties
 

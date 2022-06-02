@@ -9,7 +9,7 @@
  Coimbra, 31th May 2022
  */
 
-package PresentationLayer.Player;
+package PresentationLayer.Controller.Player;
 
 import BusinessLayer.Player.DTO.PlayerCreateDTO;
 import BusinessLayer.Player.Import.PlayerImportResultDTO;
@@ -25,7 +25,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/player")
-public class PlayerController {
+public class PlayerAPIController {
 
     // region Private Properties
 

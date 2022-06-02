@@ -9,7 +9,7 @@
  Coimbra, 31th May 2022
  */
 
-package PresentationLayer.Exception;
+package PresentationLayer.Controller.Exception;
 
 import BusinessLayer.Exception.DTO.ExceptionListDTO;
 import BusinessLayer.Exception.ExceptionReader;
@@ -25,7 +25,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/exception")
-public class ExceptionController {
+public class ExceptionAPIController {
 
     // region Private Properties
 

@@ -9,7 +9,7 @@
  Coimbra, 31th May 2022
  */
 
-package PresentationLayer.Game;
+package PresentationLayer.Controller.Game;
 
 import BusinessLayer.Event.DTO.EventListDTO;
 import BusinessLayer.Game.DTO.GameCreateDTO;
@@ -17,7 +17,6 @@ import BusinessLayer.Game.DTO.GameListDTO;
 import BusinessLayer.Game.DTO.GameUpdateDTO;
 import BusinessLayer.Game.GameReader;
 import BusinessLayer.Game.GameWriter;
-import BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/game")
-public class GameController {
+public class GameAPIController {
 
     // region Private Properties
 

@@ -25,12 +25,15 @@ public class TeamTranslator {
     // region Public Methods
 
     public static Team toModel(TeamSportsAPIImport dto) {
-        return new Team(
+        Team t = new Team(
                 dto.getName(),
                 dto.getCountry(),
                 dto.getCode(),
                 dto.getFounded()
         );
+        t.setImported(true);
+
+        return t;
     }
 
     public static Team toModel(TeamCreateDTO dto) {

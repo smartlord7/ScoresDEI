@@ -9,7 +9,7 @@
  Coimbra, 31th May 2022
  */
 
-package PresentationLayer.User;
+package PresentationLayer.Controller.User;
 
 import BusinessLayer.User.DTO.JWTGrantDTO;
 import BusinessLayer.User.DTO.UserCreateDTO;
@@ -37,7 +37,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/user")
-public class UserController {
+public class UserAPIController {
 
     // region Private Properties
 

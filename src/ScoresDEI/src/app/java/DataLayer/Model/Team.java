@@ -34,6 +34,8 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     private Integer founded;
 
+    private boolean imported;
+
     @ManyToOne
     @JoinColumn(name="logo")
     private Attachment logo;
@@ -103,6 +105,13 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.founded = founded;
     }
 
-    // region Getters,Setters and Constructor
+    public boolean isImported() {
+        return imported;
+    }
+
+    public void setImported(boolean imported) {
+        this.imported = imported;
+    }
+// region Getters,Setters and Constructor
 
 }

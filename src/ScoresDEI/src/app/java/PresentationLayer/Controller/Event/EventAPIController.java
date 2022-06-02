@@ -9,12 +9,11 @@
  Coimbra, 31th May 2022
  */
 
-package PresentationLayer.Event;
+package PresentationLayer.Controller.Event;
 
 import BusinessLayer.Event.DTO.EventCreateDTO;
 import BusinessLayer.Event.EventReader;
 import BusinessLayer.Event.EventWriter;
-import BusinessLayer.Game.DTO.GameCreateDTO;
 import Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/event")
-public class EventController {
+public class EventAPIController {
 
     // region Private Properties
 
