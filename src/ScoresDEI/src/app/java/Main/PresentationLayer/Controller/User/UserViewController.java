@@ -80,7 +80,7 @@ public class UserViewController {
         }
         session.setAttribute("user", loginResultDTO);
 
-        return new ModelAndView("redirect:/scoresDEI/home");
+        return new ModelAndView("redirect:/scoresDEI/home#");
     }
 
     @GetMapping("/create")

@@ -15,12 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static Main.Util.ApplicationConst.APP_NAME;
+import static Main.Util.ApplicationConst.REDIRECT;
 
 @Controller
 @RequestMapping(path = APP_NAME + "/home")
 public class HomeController {
     @GetMapping
     public String index() {
-        return "general/home";
+        return REDIRECT + "scoresDEI/game";
     }
 }
