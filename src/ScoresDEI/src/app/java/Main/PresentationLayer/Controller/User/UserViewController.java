@@ -91,21 +91,17 @@ public class UserViewController {
     }
 
     @PostMapping("/create")
-    public String create(UserCreateDTO dto, BindingResult bindingResult, Model model){
-        if (bindingResult.hasErrors()){
-            model.addAttribute("registrationForm", dto);
-
-            return "user/create";
-        }
-        try {
+    public ModelAndView create(UserCreateDTO dto, HttpSession session, Model model) throws IOException {
             writer.create(dto);
-        } catch (Exception e){
-            model.addAttribute("registrationForm", dto);
+            UserLoginDTO loginData = new UserLoginDTO(
+                    dto.getUserName(),
+                    dto.getPassword()
+            );
+            model.addAttribute("userLoginDTO", loginData);
 
-            return "user/create";
-        }
-
-        return REDIRECT + "/";
+        return login(loginData,
+                session,
+                model);
     }
 
     // endregion Public Methods
