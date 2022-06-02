@@ -16,6 +16,10 @@ import Main.BusinessLayer.Event.DTO.EventListDTO;
 import Main.DataLayer.Enum.EventTypeEnum;
 import Main.DataLayer.Model.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class EventTranslator {
 
     // region Private Methods
@@ -52,12 +56,14 @@ public class EventTranslator {
         );
     }
 
-    public static Event toModel(EventCreateDTO dto) {
+    public static Event toModel(EventCreateDTO dto) throws ParseException {
         EventTypeEnum type = dto.getEventType();
+        String timeStr = dto.getOccurrenceTime().replace("T", " ");
+        Date occurrenceTime = new SimpleDateFormat("MM-yyyy-dd HH:mm").parse(timeStr);
 
         if (type == EventTypeEnum.GOAL) {
             EventGoal e = new EventGoal(
-                    dto.getOccurrenceTime(),
+                    occurrenceTime,
                     dto.getDescription()
             );
             e.setPlayer(dto.getPlayer());
@@ -65,7 +71,7 @@ public class EventTranslator {
             return e;
         } else if (type == EventTypeEnum.RED_CARD) {
             EventRedCard e = new EventRedCard(
-                    dto.getOccurrenceTime(),
+                    occurrenceTime,
                     dto.getDescription()
             );
             e.setPlayer(dto.getPlayer());
@@ -73,7 +79,7 @@ public class EventTranslator {
             return e;
         } else if (type == EventTypeEnum.YELLOW_CARD) {
             EventYellowCard e = new EventYellowCard(
-                    dto.getOccurrenceTime(),
+                    occurrenceTime,
                     dto.getDescription()
             );
             e.setPlayer(dto.getPlayer());
@@ -81,22 +87,22 @@ public class EventTranslator {
             return e;
         } else if (type == EventTypeEnum.END_GAME){
             return new EventEndGame(
-                    dto.getOccurrenceTime(),
+                    occurrenceTime,
                     dto.getDescription()
             );
         } else if (type == EventTypeEnum.START_GAME) {
             return new EventStartGame(
-                    dto.getOccurrenceTime(),
+                    occurrenceTime,
                     dto.getDescription()
             );
         } else if (type == EventTypeEnum.INTERRUPT_GAME) {
             return new EventInterruptGame(
-                    dto.getOccurrenceTime(),
+                    occurrenceTime,
                     dto.getDescription()
             );
         } else {
             return new EventResumeGame(
-                    dto.getOccurrenceTime(),
+                    occurrenceTime,
                     dto.getDescription()
             );
         }

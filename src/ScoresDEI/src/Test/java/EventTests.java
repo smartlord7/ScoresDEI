@@ -24,6 +24,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @DataJpaTest
@@ -56,9 +59,9 @@ public class EventTests {
      */
     @Test
     @Rollback(false)
-    public void createGoalEvent() {
+    public void createGoalEvent() throws ParseException {
         EventCreateDTO goal = new EventCreateDTO(EventTypeEnum.GOAL,
-                new Date(),
+                "21/03/2022",
                 "Test event",
                 (long) 0,
                 (long) 0);
@@ -70,9 +73,9 @@ public class EventTests {
      */
     @Test
     @Rollback(false)
-    public void createEndGameEvent() {
+    public void createEndGameEvent() throws ParseException {
         EventCreateDTO end = new EventCreateDTO(EventTypeEnum.END_GAME,
-                new Date(),
+                "12/32/1234",
                 "Test event",
                 (long) 0,
                 null);

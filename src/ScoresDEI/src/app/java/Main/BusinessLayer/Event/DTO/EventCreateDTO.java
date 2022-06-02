@@ -15,6 +15,7 @@ import Main.BusinessLayer.Base.DTO.BaseEntityCreateDTO;
 import Main.DataLayer.Enum.EventTypeEnum;
 import Main.DataLayer.Model.Player;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -24,7 +25,7 @@ public class EventCreateDTO implements BaseEntityCreateDTO {
 
     private Long id;
     private EventTypeEnum eventType;
-    private Date occurrenceTime;
+    private String occurrenceTime;
     private String description;
     private Long gameId;
     private Long playerId;
@@ -38,9 +39,9 @@ public class EventCreateDTO implements BaseEntityCreateDTO {
     public EventCreateDTO() {
     }
 
-    public EventCreateDTO(EventTypeEnum eventType, Date occurrenceType, String description, Long gameId, Long playerId) {
+    public EventCreateDTO(EventTypeEnum eventType, String occurrenceTime, String description, Long gameId, Long playerId) {
         this.eventType = eventType;
-        this.occurrenceTime = occurrenceType;
+        this.occurrenceTime = occurrenceTime;
         this.description = description;
         this.gameId = gameId;
         this.playerId = playerId;
@@ -66,11 +67,11 @@ public class EventCreateDTO implements BaseEntityCreateDTO {
         this.eventType = eventType;
     }
 
-    public Date getOccurrenceTime() {
+    public String getOccurrenceTime() {
         return occurrenceTime;
     }
 
-    public void setOccurrenceTime(Date occurrenceTime) {
+    public void setOccurrenceTime(String occurrenceTime) {
         this.occurrenceTime = occurrenceTime;
     }
 

@@ -18,6 +18,8 @@ import Main.Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+
 @RestController
 @CrossOrigin
 @RequestMapping(path = ApplicationConst.API_PREFIX + "/event")
@@ -36,7 +38,7 @@ public class EventAPIController {
     // region Public Methods
 
     @PostMapping
-    public EventCreateDTO create(@RequestBody EventCreateDTO dto) {
+    public EventCreateDTO create(@RequestBody EventCreateDTO dto) throws ParseException {
         return writer.create(dto);
     }
 

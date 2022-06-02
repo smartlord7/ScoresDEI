@@ -51,6 +51,12 @@
                     <th scope="col">Id</th>
                     <th scope="col">Type</th>
                     <th scope="col">Time</th>
+                    <th scope="col">
+                        <button style="float: right; margin-right: 1em; margin-top: 1em" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#exampleModal">
+                            <i class="fa-solid fa-calendar-times"></i>
+                            Create event
+                        </button>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -58,11 +64,62 @@
                     <td th:text="${event.getId()}"></td>
                     <td th:text="${event.getEventType()}"></td>
                     <td th:text="${event.getOccurrenceTime()}"></td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form" method="POST" th:action="@{/scoresDEI/game/{id}/createEvent(id=${gameDetails.getId()})}" th:object="${event}">
+                <div class="modal-body">
+                    <p>Type:
+                        <label for="type" class="sr-only">Type</label>
+                        <select id="type" name="type" class="form-control" th:field="*{eventType}" required autofocus>
+                            <option th:value="'START_GAME'">Start game</option>
+                            <option th:value="'END_GAME'">End game</option>
+                            <option th:value="'INTERRUPT_GAME'">Interrupt game</option>
+                            <option th:value="'RESUME_GAME'">Resume game</option>
+                            <option th:value="'GOAL'">Goal</option>
+                            <option th:value="'RED_CARD'">Red card</option>
+                            <option th:value="'YELLOW_CARD'">Yellow card</option>
+                        </select>
+                    </p>
+                    <p>Time:
+                        <label for="occurrenceTime" class="sr-only">Time</label>
+                        <input type="datetime-local" id="occurrenceTime" name="occurrenceTime" class="form-control" th:value="*{occurrenceTime}"
+                               placeholder="Time" required>
+                    </p>
+                    <p>Description:
+                        <label for="description" class="sr-only">Description</label>
+                        <textarea type="text" id="description" name="description" class="form-control" th:value="*{description}"
+                                  placeholder="Description">
+
+                        </textarea>
+                    </p>Player id:
+                    <p>
+                        <label for="playerId" class="sr-only">Player id</label>
+                        <input type="number" id="playerId" name="playerId" class="form-control" th:value="*{playerId}"
+                                  placeholder="Player id">
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>

@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+
 @Service
 public class EventWriter {
 
@@ -40,7 +42,7 @@ public class EventWriter {
     // region Public Methods
 
     @Transactional
-    public EventCreateDTO create(EventCreateDTO dto) {
+    public EventCreateDTO create(EventCreateDTO dto) throws ParseException {
         if (dto.getPlayerId() != null) {
             dto.setPlayer(players.getById(dto.getPlayerId()));
         }
