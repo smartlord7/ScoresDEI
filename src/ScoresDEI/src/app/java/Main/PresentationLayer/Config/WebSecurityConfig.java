@@ -30,6 +30,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static Main.Util.ApplicationConst.APP_NAME;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -72,6 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.PUT, API_PREFIX + "/user/login").permitAll()
                 .antMatchers(HttpMethod.POST, API_PREFIX + "/user").permitAll()
                 .antMatchers(HttpMethod.GET, API_PREFIX + "/user").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, API_PREFIX + "/user").hasAnyAuthority("ROLE_ADMIN")
@@ -106,7 +109,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage(API_PREFIX + "/user/login")
+                .loginPage(APP_NAME + "/user/login")
+                .permitAll()
+                .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
                 .logout()

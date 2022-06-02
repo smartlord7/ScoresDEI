@@ -12,7 +12,7 @@
 package Main.Util;
 
 public class ApplicationConst {
-    public static final String APP_NAME = "scoresDEI";
+    public static final String APP_NAME = "/scoresDEI";
     public static final String API_PREFIX = APP_NAME + "/api";
     public static final String REDIRECT = "redirect:/";
 }
