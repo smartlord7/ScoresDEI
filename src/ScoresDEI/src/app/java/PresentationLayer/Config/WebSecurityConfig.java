@@ -101,6 +101,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(HttpMethod.POST, API_PREFIX + "/event").hasAnyAuthority("ROLE_ADMIN")
 
+                .antMatchers(HttpMethod.GET, API_PREFIX + "/exception").hasAnyAuthority("ROLE_ADMIN")
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
