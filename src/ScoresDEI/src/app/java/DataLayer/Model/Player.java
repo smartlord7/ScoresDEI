@@ -153,6 +153,7 @@ public class Player extends AbstractAuditable<User, Long> implements BaseEntityM
     public void setImported(boolean imported) {
         this.imported = imported;
     }
-// endregion Getters & Setters
+
+    // endregion Getters & Setters
 
 }
