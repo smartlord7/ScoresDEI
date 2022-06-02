@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Exception")
 @Table(name = "Exception")
-public class Exception  extends AbstractAuditable<User, Long> implements BaseEntityModel {
+public class Exception extends AbstractAuditable<User, Long> implements BaseEntityModel {
 
     // region Private Properties
 
