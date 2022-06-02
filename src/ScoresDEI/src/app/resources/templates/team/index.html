@@ -15,48 +15,30 @@
 
 <nav th:insert="fragments/navbar.html :: navbar"> </nav>
 
-
 <div class="jumbotron">
-
-
     <hr class="my-4">
     <div class="container">
     </div>
 </div>
-
-
-
 <table class="table table-striped">
     <thead>
     <tr>
-
-        <th scope="col">Place</th>
-        <th scope="col">Starts at</th>
-        <th scope="col">Ends at</th>
-        <th scope="col">Teams</th>
-        <th scope="col">Score</th>
-
+        <th scope="col">Team</th>
+        <th scope="col">Games</th>
+        <th scope="col">Victories</th>
+        <th scope="col">Losses</th>
+        <th scope="col">Draws</th>
     </tr>
     </thead>
-
     <tbody>
-    <tr th:each="game :${games}">
-        <td th:text="${game.getPlace()}"></td>
-        <td th:text="${game.getStartTime()}"></td>
-        <td th:text="${game.getEndTime()}"></td>
-        <td th:text="${game.getTeamAName() + ' vs ' + game.getTeamBName()}"></td>
-        <td th:if="${game.getScoreA() == null || game.getScoreB() == null}">
-            NA
-        </td>
-        <td th:if="${game.getScoreA() != null && game.getScoreB() != null}">
-            <span th:text="${game.getScoreA()  + ' vs ' + game.getScoreB()}">
-            </span>
-        </td>
+    <tr th:each="team :${teams}">
+        <td th:text="${team.getTeamName()}"></td>
+        <td th:text="${team.getGames()}"></td>
+        <td th:text="${team.getVictories()}"></td>
+        <td th:text="${team.getLosses()}"></td>
+        <td th:text="${team.getDraws()}"></td>
     </tr>
-
     </tbody>
 </table>
-
-
 </body>
 </html>

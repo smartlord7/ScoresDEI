@@ -113,6 +113,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( APP_NAME + "/home").permitAll()
                 .antMatchers( APP_NAME + "/user/create").permitAll()
                 .antMatchers( APP_NAME + "/game").permitAll()
+                .antMatchers( APP_NAME + "/team").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .authorizeRequests()
