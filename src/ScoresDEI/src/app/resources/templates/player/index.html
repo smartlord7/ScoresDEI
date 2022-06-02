@@ -18,6 +18,25 @@
 <div class="jumbotron">
     <hr class="my-4">
     <div class="container">
+        <h4>Best scorer</h4>
+        <div class="row">
+            <div class="col">
+                <h5>Name:</h5>
+                <h6 th:text="${bestScorer.getPlayerName()}"></h6>
+            </div>
+            <div class="col">
+                <h5>Team:</h5>
+                <h6 th:text="${bestScorer.getTeamName()}"></h6>
+            </div>
+            <div class="col">
+                <h5>Nationality:</h5>
+                <h6 th:text="${bestScorer.getNationality()}"></h6>
+            </div>
+            <div class="col">
+                <h5>Goals:</h5>
+                <h6 th:text="${bestScorer.getGoals()}"></h6>
+            </div>
+        </div>
     </div>
 </div>
 <table class="table table-striped">

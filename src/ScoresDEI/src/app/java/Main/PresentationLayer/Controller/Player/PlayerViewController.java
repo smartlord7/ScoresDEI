@@ -23,6 +23,7 @@ public class PlayerViewController {
     @GetMapping
     public ModelAndView getAll(Model model) {
         model.addAttribute("players", reader.getAll());
+        model.addAttribute("bestScorer", reader.getBestScorer());
 
         return new ModelAndView("player/index");
     }
