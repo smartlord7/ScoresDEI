@@ -13,20 +13,28 @@ package Main.BusinessLayer.User.DTO;
 
 import Main.BusinessLayer.Base.DTO.BaseEntityDTO;
 
+import java.util.Date;
 import java.util.StringJoiner;
 
-public class JWTGrantDTO implements BaseEntityDTO {
+public class UserLoginResultDTO implements BaseEntityDTO {
 
     // region Private Properties
 
     private String token;
+    private String userName;
+    private Date expirationDate;
 
     // endregion Private Properties
 
     // region Constructors
 
-    public JWTGrantDTO(String token) {
+    public UserLoginResultDTO() {
+    }
+
+    public UserLoginResultDTO(String token, Date expirationDate, String userName) {
         this.token = token;
+        this.expirationDate = expirationDate;
+        this.userName = userName;
     }
 
     // endregion Constructors
@@ -41,10 +49,28 @@ public class JWTGrantDTO implements BaseEntityDTO {
         this.token = token;
     }
 
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     @Override
     public String toString() {
-        return new StringJoiner(", ", JWTGrantDTO.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", UserLoginResultDTO.class.getSimpleName() + "[", "]")
                 .add("token='" + token + "'")
+                .add("userName='" + userName + "'")
+                .add("expirationDate=" + expirationDate)
                 .toString();
     }
 

@@ -1,6 +1,7 @@
 package Main.PresentationLayer.Controller.User;
 
 import Main.BusinessLayer.User.DTO.UserCreateDTO;
+import Main.BusinessLayer.User.DTO.UserLoginDTO;
 import Main.BusinessLayer.User.UserReader;
 import Main.BusinessLayer.User.UserWriter;
 import Main.Util.ApplicationConst;
@@ -27,17 +28,25 @@ public class UserViewController {
     private UserReader reader;
 
     @GetMapping("/login")
-    public String login(Principal principal) {
-        if (principal!=null && ((Authentication) principal).isAuthenticated()) {
+    public String login(Principal principal, Model model) {
+        if (principal != null && ((Authentication) principal).isAuthenticated()) {
             return ApplicationConst.REDIRECT + "general/home";
         } else {
+            model.addAttribute("dto", new UserLoginDTO());
             return "user/login";
         }
+    }
+
+    @PostMapping("/login")
+    public String login(Model model) {
+
+        return "user/login";
     }
 
     @GetMapping("/create")
     public String create(Model model){
         model.addAttribute("dto", new UserCreateDTO());
+
         return "user/create";
     }
 

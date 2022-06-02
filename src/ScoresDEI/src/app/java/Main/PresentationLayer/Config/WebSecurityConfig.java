@@ -106,10 +106,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(HttpMethod.GET, API_PREFIX + "/exception").hasAnyAuthority("ROLE_ADMIN")
 
+                .antMatchers( APP_NAME + "/user/create").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage(APP_NAME + "/user/login")
+                .loginProcessingUrl(API_PREFIX + "/user/login")
                 .permitAll()
                 .defaultSuccessUrl("/")
                 .permitAll()

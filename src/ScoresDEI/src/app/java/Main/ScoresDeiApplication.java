@@ -25,8 +25,6 @@ public class ScoresDeiApplication {
 
 	// region Public Methods
 
-
-
 	/**
 	 * Main method.
 	 * @param args main args.

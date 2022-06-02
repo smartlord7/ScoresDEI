@@ -11,7 +11,7 @@
 
 package Main.PresentationLayer.Controller.User;
 
-import Main.BusinessLayer.User.DTO.JWTGrantDTO;
+import Main.BusinessLayer.User.DTO.UserLoginResultDTO;
 import Main.BusinessLayer.User.DTO.UserCreateDTO;
 import Main.BusinessLayer.User.DTO.UserListDTO;
 import Main.BusinessLayer.User.DTO.UserLoginDTO;
@@ -20,16 +20,12 @@ import Main.BusinessLayer.User.UserWriter;
 import Main.DataLayer.Enum.RoleEnum;
 import Main.DataLayer.Model.Role;
 import Main.DataLayer.Repository.RoleRepository;
-import Main.PresentationLayer.Auth.JWTProvider;
+import Main.PresentationLayer.Auth.AuthHelper;
 import Main.PresentationLayer.Auth.UserAuthDetailsProvider;
 import Main.Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -42,15 +38,6 @@ public class UserAPIController {
     // region Private Properties
 
     @Autowired
-    private AuthenticationManager authManager;
-
-    @Autowired
-    private JWTProvider jwtProvider;
-
-    @Autowired
-    private UserAuthDetailsProvider userAuthDetailsProvider;
-
-    @Autowired
     private UserReader reader;
 
     @Autowired
@@ -58,6 +45,12 @@ public class UserAPIController {
 
     @Autowired
     private RoleRepository roles;
+
+    @Autowired
+    private AuthHelper authHelper;
+
+    @Autowired
+    private UserAuthDetailsProvider userAuthDetailsProvider;
 
     // endregion Private Properties
 
@@ -87,30 +80,8 @@ public class UserAPIController {
     }
 
     @PutMapping("/login")
-    public JWTGrantDTO login(@RequestBody UserLoginDTO dto) throws Exception {
-
-        authenticate(dto.getUserName(), dto.getPassword());
-        UserDetails userDetails = userAuthDetailsProvider
-                .loadUserByUsername(dto.getUserName());
-        String token = jwtProvider.generateToken(userDetails);
-
-        return new JWTGrantDTO(token);
-    }
-
-    /**
-     * Method to authenticate a user.
-     * @param username is the user login.
-     * @param password is the user password.
-     * @throws Exception
-     */
-    private void authenticate(String username, String password) throws Exception {
-        try {
-            authManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
-        } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
-        }
+    public UserLoginResultDTO login(@RequestBody UserLoginDTO dto) throws Exception {
+        return authHelper.authenticate(dto);
     }
 
     // endregion Public Methods
