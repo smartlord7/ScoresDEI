@@ -48,6 +48,11 @@ public class PlayerReader {
 
     public PlayerUpdateDTO getBestScorer() {
         List<Object>[] results = players.getBestScorer();
+
+        if (results.length == 0) {
+            return new PlayerUpdateDTO();
+        }
+
         Player p = (Player) results[0].get(0);
         long goals = (long) results[0].get(1);
         p.setGoals(goals);

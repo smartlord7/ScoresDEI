@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A sports information platform">
+    <meta name="author" content="Sancho Simões">
+    <title>scoresDEI - Games</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<nav th:insert="fragments/navbar.html :: navbar"> </nav>
+<div class="jumbotron">
+    <hr class="my-4">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5>Place:</h5>
+                <h6 th:text="${gameDetails.getPlace()}"></h6>
+            </div>
+            <div class="col">
+                <h5>Starts at:</h5>
+                <h6 th:text="${gameDetails.getStartTime()}"></h6>
+            </div>
+            <div class="col">
+                <h5>Ends at:</h5>
+                <h6 th:text="${gameDetails.getEndTime()}"></h6>
+            </div>
+            <div class="col">
+                <h5>Teams:</h5>
+                <h6 th:text="${gameDetails.getTeamAName() + ' vs ' + gameDetails.getTeamBName()}"></h6>
+            </div>
+            <div class="col" th:if="${gameDetails.getScoreTeamA() == null || gameDetails.getScoreTeamB() == null}">
+                <h5>Score:</h5>
+                <h6> NA </h6>
+            </div>
+            <div class="col" th:if="${gameDetails.getScoreTeamA() != null && gameDetails.getScoreTeamB() != null}">
+                <h5>Score:</h5>
+                <h6 th:text="${gameDetails.getScoreTeamA()  + ' - ' + gameDetails.getScoreTeamB()}"></h6>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="event :${gameDetails.getEvents()}">
+                    <td th:text="${event.getId()}"></td>
+                    <td th:text="${event.getEventType()}"></td>
+                    <td th:text="${event.getOccurrenceTime()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

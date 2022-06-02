@@ -13,9 +13,12 @@ package Main.BusinessLayer.User;
 
 import Main.BusinessLayer.User.DTO.UserCreateDTO;
 import Main.BusinessLayer.User.DTO.UserListDTO;
+import Main.DataLayer.Model.Role;
 import Main.DataLayer.Model.User;
 import Main.Util.PasswordHasher;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserTranslator {
@@ -32,11 +35,18 @@ public class UserTranslator {
     }
 
     public static UserListDTO toListDTO(User model) {
+        List<Role> roles = model.getRole();
+        String roleName = null;
+
+        if (roles.size() != 0) {
+            roleName = roles.get(0).getRoleName();
+        }
+
         return new UserListDTO(
                 model.getId(),
                 model.getUserName(),
                 model.getEmail(),
-                model.getRole().stream().toList().get(0).getRoleName()
+                roleName
         );
     }
 

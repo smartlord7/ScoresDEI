@@ -42,7 +42,7 @@ public class UserAuthDetailsProvider implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User u = users.findByUserName(userName);
+        User u = users.findFirstByUserName(userName);
 
         if (u != null) {
             ArrayList<Role> roles = new ArrayList<Role>(u.getRole());

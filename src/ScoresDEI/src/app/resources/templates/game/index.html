@@ -36,13 +36,19 @@
             NA
         </td>
         <td th:if="${game.getScoreA() != null && game.getScoreB() != null}">
-            <span th:text="${game.getScoreA()  + ' vs ' + game.getScoreB()}">
+            <span th:text="${game.getScoreA()  + ' - ' + game.getScoreB()}">
             </span>
         </td>
         <td>
-            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-            <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            <a type="button" class="btn btn-primary" th:href="@{/scoresDEI/game/{id}(id=${game.getId()})}">
+                <i class="far fa-eye"></i>
+            </a>
+            <a type="button" class="btn btn-success">
+                <i class="fas fa-edit"></i>
+            </a>
+            <a type="button" class="btn btn-danger">
+                <i class="far fa-trash-alt"></i>
+            </a>
         </td>
     </tr>
     </tbody>

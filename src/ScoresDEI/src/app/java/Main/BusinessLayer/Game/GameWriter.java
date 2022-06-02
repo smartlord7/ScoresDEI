@@ -46,6 +46,8 @@ public class GameWriter {
         Team tB = teams.getById(dto.getTeamBId());
         g.setTeamA(tA);
         g.setTeamB(tB);
+        g.setScoreA(0);
+        g.setScoreB(0);
 
         games.save(g);
         dto.setId(g.getId());

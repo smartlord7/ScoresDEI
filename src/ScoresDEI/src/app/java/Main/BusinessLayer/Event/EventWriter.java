@@ -55,8 +55,8 @@ public class EventWriter {
             Team tA = g.getTeamA();
             Team tB = g.getTeamB();
             Player p = dto.getPlayer();
-
             if (tA.getPlayer().contains(p)) {
+
                 g.setScoreA(g.getScoreA() + 1);
             } else if (tB.getPlayer().contains(p))  {
                 g.setScoreB(g.getScoreB() + 1);
