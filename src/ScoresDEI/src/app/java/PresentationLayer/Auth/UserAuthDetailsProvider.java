@@ -15,6 +15,7 @@ import DataLayer.Model.Role;
 import DataLayer.Model.User;
 import DataLayer.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -50,6 +51,16 @@ public class UserAuthDetailsProvider implements UserDetailsService {
         } else {
             throw new UsernameNotFoundException("User not found with username: " + userName);
         }
+    }
+
+    public UserDetails getSession() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            return (UserDetails) principal;
+        }
+
+        return null;
     }
 
     // endregion Public Methods

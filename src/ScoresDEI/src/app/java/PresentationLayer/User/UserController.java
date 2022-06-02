@@ -17,10 +17,15 @@ import BusinessLayer.User.DTO.UserListDTO;
 import BusinessLayer.User.DTO.UserLoginDTO;
 import BusinessLayer.User.UserReader;
 import BusinessLayer.User.UserWriter;
+import DataLayer.Enum.RoleEnum;
+import DataLayer.Model.Role;
+import DataLayer.Repository.RoleRepository;
 import PresentationLayer.Auth.JWTProvider;
 import PresentationLayer.Auth.UserAuthDetailsProvider;
 import Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -51,13 +56,29 @@ public class UserController {
     @Autowired
     private UserWriter writer;
 
+    @Autowired
+    private RoleRepository roles;
+
     // endregion Private Properties
 
     // region Public Methods
 
     @PostMapping
-    public UserCreateDTO create(@RequestBody UserCreateDTO dto) {
-        return writer.create(dto);
+    public ResponseEntity<?> create(@RequestBody UserCreateDTO dto) {
+        UserDetails session = userAuthDetailsProvider.getSession();
+        Long roleId = dto.getRoleId();
+        Role adminRole = roles.getFirstByRoleName("Admin");
+
+        if (roleId != null) {
+            Role role = roles.getById(roleId);
+            // if a non-admin user (or not authenticated) tries to create a user with role other thant USER
+            if (!role.getRoleName().equals(RoleEnum.ROLE_USER.toString()) &&
+                    (session == null || !session.getAuthorities().contains(adminRole))) {
+                return new ResponseEntity<String>(HttpStatus.UNAUTHORIZED);
+            }
+        }
+
+        return new ResponseEntity<UserCreateDTO>(writer.create(dto), HttpStatus.OK);
     }
 
     @GetMapping
