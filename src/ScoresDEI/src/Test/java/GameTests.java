@@ -9,13 +9,13 @@
  Coimbra, 31th May 2022
  */
 
-import BusinessLayer.Game.DTO.GameCreateDTO;
-import BusinessLayer.Game.DTO.GameUpdateDTO;
+import Main.BusinessLayer.Game.DTO.GameCreateDTO;
+import Main.BusinessLayer.Game.DTO.GameUpdateDTO;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
-import BusinessLayer.Game.GameReader;
-import BusinessLayer.Game.GameWriter;
+import Main.BusinessLayer.Game.GameReader;
+import Main.BusinessLayer.Game.GameWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;

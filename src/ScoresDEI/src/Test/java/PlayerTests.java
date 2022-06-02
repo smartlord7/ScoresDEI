@@ -9,12 +9,12 @@
  Coimbra, 31th May 2022
  */
 
-import BusinessLayer.Player.DTO.PlayerCreateDTO;
-import BusinessLayer.Player.DTO.PlayerUpdateDTO;
-import BusinessLayer.Player.PlayerReader;
-import BusinessLayer.Player.PlayerWriter;
-import DataLayer.Enum.PlayerPositionEnum;
-import DataLayer.Repository.PlayerRepository;
+import Main.BusinessLayer.Player.DTO.PlayerCreateDTO;
+import Main.BusinessLayer.Player.DTO.PlayerUpdateDTO;
+import Main.BusinessLayer.Player.PlayerReader;
+import Main.BusinessLayer.Player.PlayerWriter;
+import Main.DataLayer.Enum.PlayerPositionEnum;
+import Main.DataLayer.Repository.PlayerRepository;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Test;
 import org.junit.runner.RunWith;

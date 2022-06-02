@@ -9,12 +9,12 @@
  Coimbra, 31th May 2022
  */
 
-import BusinessLayer.Team.DTO.TeamCreateDTO;
-import BusinessLayer.Team.DTO.TeamListDTO;
-import BusinessLayer.Team.DTO.TeamUpdateDTO;
-import BusinessLayer.Team.TeamReader;
-import BusinessLayer.Team.TeamWriter;
-import DataLayer.Repository.TeamRepository;
+import Main.BusinessLayer.Team.DTO.TeamCreateDTO;
+import Main.BusinessLayer.Team.DTO.TeamListDTO;
+import Main.BusinessLayer.Team.DTO.TeamUpdateDTO;
+import Main.BusinessLayer.Team.TeamReader;
+import Main.BusinessLayer.Team.TeamWriter;
+import Main.DataLayer.Repository.TeamRepository;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

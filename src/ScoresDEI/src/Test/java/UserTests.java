@@ -9,12 +9,12 @@
  Coimbra, 31th May 2022
  */
 
-import BusinessLayer.User.DTO.UserCreateDTO;
-import BusinessLayer.User.UserReader;
-import BusinessLayer.User.UserWriter;
-import DataLayer.Model.User;
-import DataLayer.Repository.UserRepository;
-import Util.PasswordHasher;
+import Main.BusinessLayer.User.DTO.UserCreateDTO;
+import Main.BusinessLayer.User.UserReader;
+import Main.BusinessLayer.User.UserWriter;
+import Main.DataLayer.Model.User;
+import Main.DataLayer.Repository.UserRepository;
+import Main.Util.PasswordHasher;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;

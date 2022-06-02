@@ -9,10 +9,10 @@
  Coimbra, 31th May 2022
  */
 
-import BusinessLayer.Event.DTO.EventCreateDTO;
-import BusinessLayer.Event.EventReader;
-import BusinessLayer.Event.EventWriter;
-import DataLayer.Enum.EventTypeEnum;
+import Main.BusinessLayer.Event.DTO.EventCreateDTO;
+import Main.BusinessLayer.Event.EventReader;
+import Main.BusinessLayer.Event.EventWriter;
+import Main.DataLayer.Enum.EventTypeEnum;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
