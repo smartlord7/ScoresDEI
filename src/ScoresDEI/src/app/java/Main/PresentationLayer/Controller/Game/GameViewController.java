@@ -43,7 +43,7 @@ public class GameViewController {
         GameUpdateDTO details = reader.getById(id);
         EventCreateDTO event = new EventCreateDTO();
         event.setGameId(details.getId());
-        model.addAttribute("gameDetails", details);
+        model.addAttribute("game", details);
         model.addAttribute("event", event);
 
         return new ModelAndView("game/details");
