@@ -9,17 +9,17 @@
             </div>
             <form class="form" method="POST" th:action="@{/scoresDEI/player/import}" th:object="${importData}">
                 <div class="modal-body">
-                    <p>
+                    <p>League:
                         <label for="league" class="sr-only">Username</label>
                         <input type="text" id="league" name="league" class="form-control" th:value="*{league}"
                                placeholder="League" required autofocus>
                     </p>
-                    <p>
+                    <p>Season:
                         <label for="season" class="sr-only">Season</label>
                         <input type="text" id="season" name="season" class="form-control" th:value="*{season}"
                                placeholder="Season" required>
                     </p>
-                    <p>
+                    <p>Page:
                         <label for="page" class="sr-only">Season</label>
                         <input type="text" id="page" name="page" class="form-control" th:value="*{page}"
                                placeholder="Page" required>
