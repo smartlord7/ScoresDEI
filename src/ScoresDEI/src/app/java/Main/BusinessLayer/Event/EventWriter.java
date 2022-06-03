@@ -53,7 +53,7 @@ public class EventWriter {
         EventTypeEnum type = dto.getEventType();
 
         Game g = e.getGame();
-        if (type == EventTypeEnum.GOAL && e.isApproved()) {
+        if (type == EventTypeEnum.GOAL && e.isApproved() && dto.getPlayerId() != null) {
             Team tA = g.getTeamA();
             Team tB = g.getTeamB();
             Player p = dto.getPlayer();
