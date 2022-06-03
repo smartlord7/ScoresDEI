@@ -1,0 +1,93 @@
+<div th:fragment="create_modal" class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Create player</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form" method="POST" th:action="@{/scoresDEI/player}" th:object="${player}">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div>Name:
+                                <label for="playerName" class="sr-only">Name</label>
+                                <input type="text" id="playerName" name="playerName" class="form-control" th:value="*{playerName}"
+                                       placeholder="Name" required autofocus>
+                            </div>
+                            <div>First name:
+                                <label for="firstName" class="sr-only">First name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" th:value="*{firstName}"
+                                       placeholder="First name" required>
+                            </div>
+                            <div>Last name:
+                                <label for="lastName" class="sr-only">Last name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" th:value="*{lastName}"
+                                       placeholder="Last name" required>
+                            </div>
+                            <div th:insert="fragments/nationality_dropdown.html :: nationality_dropdown"></div>
+                        </div>
+                        <div class="col-6">
+                            <div>Height (m):
+                                <label for="height" class="sr-only">Height</label>
+                                <input type="number" min="0" step="any" id="height" name="height" class="form-control" th:value="*{height}"
+                                       placeholder="Height" required>
+                            </div>
+                            <div>Weight (kg):
+                                <label for="weight" class="sr-only">Weight</label>
+                                <input type="number" min="0" step="any" id="weight" name="height" class="form-control" th:value="*{weight}"
+                                       placeholder="Weight" required>
+                            </div>
+                            <div>Birthdate:
+                                <label for="birthDate" class="sr-only">Season</label>
+                                <input type="date" id="birthDate" name="birthDate" class="form-control" th:value="*{birthDate}"
+                                       placeholder="Birthdate" required>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="margin-top: 1em;">
+                    <div class="row">
+                        <div class="col-6">
+                            <div>
+                                Position:
+                                <label for="position" class="sr-only">Position</label>
+                                <select id="position" name="position" class="form-select" th:field="*{position}" required autofocus>
+                                    <option th:value="'GK'">Goalkeeper</option>
+                                    <option th:value="'RB'">Right-back</option>
+                                    <option th:value="'LB'">Left-back</option>
+                                    <option th:value="'RWB'">Right wing-back</option>
+                                    <option th:value="'LWB'">Left wing-back</option>
+                                    <option th:value="'CB'">Centre-back</option>
+                                    <option th:value="'CDM'">Centre defensive midfielder</option>
+                                    <option th:value="'CM'">Centre midfielder</option>
+                                    <option th:value="'CAM'">Central attacking midfielder</option>
+                                    <option th:value="'RM'">Right-midfielder</option>
+                                    <option th:value="'LM'">Left-midfielder</option>
+                                    <option th:value="'RW'">Right-winger</option>
+                                    <option th:value="'LW'">Left-winger</option>
+                                    <option th:value="'RF'">Right-forward</option>
+                                    <option th:value="'LF'">Left-forward</option>
+                                    <option th:value="'CF'">Centre-forward</option>
+                                    <option th:value="'ST'">Striker</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>Team id:
+                                <label for="teamId" class="sr-only">Team id</label>
+                                <input type="number" min="0" step="any" id="teamId" name="teamId" class="form-control" th:value="*{teamId}"
+                                       placeholder="Team id" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

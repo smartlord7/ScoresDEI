@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="d-flex flex-column min-vh-100" style="background: linear-gradient(to left, #a6a496, #cae1ec)">
-<nav th:insert="fragments/navbar.html :: navbar"> </nav>
+<nav th:insert="fragments/general/navbar.html :: navbar"> </nav>
 <div class="jumbotron">
     <hr class="my-4">
     <div class="container">
@@ -38,5 +38,5 @@
         </div>
     </div>
 </div>
-<footer th:insert="fragments/footer.html :: footer"> </footer>
+<footer th:insert="fragments/general/footer.html :: footer"> </footer>
 </body>

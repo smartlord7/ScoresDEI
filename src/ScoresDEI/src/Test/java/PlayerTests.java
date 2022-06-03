@@ -27,6 +27,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -77,13 +79,13 @@ public class PlayerTests {
      */
     @Test
     @Rollback(false)
-    public void create() {
+    public void create() throws ParseException {
         System.out.println(writer.create(
                 new PlayerCreateDTO(
                         "Sancho S.",
                         "Sancho",
                         "Simões",
-                        new Date(),
+                        "2001-06-03",
                         PlayerPositionEnum.GK,
                         (long) 0,
                         "Portuguese",

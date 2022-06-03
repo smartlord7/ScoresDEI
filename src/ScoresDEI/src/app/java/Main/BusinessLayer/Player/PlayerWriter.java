@@ -29,6 +29,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,10 +53,14 @@ public class PlayerWriter {
     // region Public Methods
 
     @Transactional
-    public PlayerCreateDTO create(PlayerCreateDTO dto) {
+    public PlayerCreateDTO create(PlayerCreateDTO dto) throws ParseException {
         Player p = PlayerTranslator.toModel(dto);
-        p.setTeam(teams.getById(dto.getTeamId()));
-        p.getTeam().getPlayer().add(p);
+
+        if (dto.getTeamId() != null) {
+            p.setTeam(teams.getById(dto.getTeamId()));
+            p.getTeam().getPlayer().add(p);
+        }
+
         players.save(p);
         dto.setId(p.getId());
 

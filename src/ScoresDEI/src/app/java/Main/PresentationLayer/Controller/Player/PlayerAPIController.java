@@ -20,6 +20,8 @@ import Main.BusinessLayer.Player.PlayerWriter;
 import Main.Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -55,7 +57,7 @@ public class PlayerAPIController {
     }
 
     @PostMapping
-    public PlayerCreateDTO create(@RequestBody PlayerCreateDTO dto) {
+    public PlayerCreateDTO create(@RequestBody PlayerCreateDTO dto) throws ParseException {
         return writer.create(dto);
     }
 

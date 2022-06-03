@@ -21,6 +21,10 @@ import Main.DataLayer.Model.Team;
 import Main.DataLayer.Repository.TeamRepository;
 import com.google.gson.internal.LinkedTreeMap;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class PlayerTranslator {
 
     // region Public Methods
@@ -124,12 +128,15 @@ public class PlayerTranslator {
         );
     }
 
-    public static Player toModel(PlayerCreateDTO dto) {
+    public static Player toModel(PlayerCreateDTO dto) throws ParseException {
+        String birthDateStr = dto.getBirthDate();
+        Date birthDate = new SimpleDateFormat("yyyy-MM-dd").parse(birthDateStr);
+
         Player p = new Player(
                 dto.getPlayerName(),
                 dto.getFirstName(),
                 dto.getLastName(),
-                dto.getBirthDate(),
+                birthDate,
                 dto.getPosition(),
                 dto.getNationality(),
                 dto.getHeight(),

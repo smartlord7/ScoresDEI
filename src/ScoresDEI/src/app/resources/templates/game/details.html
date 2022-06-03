@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<nav th:insert="fragments/navbar.html :: navbar"> </nav>
+<nav th:insert="fragments/general/navbar.html :: navbar"> </nav>
 <div class="jumbotron">
     <hr class="my-4">
     <div class="container">
@@ -54,7 +54,7 @@
                     <th scope="col">
                         <button style="float: right; margin-right: 1em; margin-top: 1em" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#exampleModal">
                             <i class="fa-solid fa-calendar-times"></i>
-                            Create event
+                            Create
                         </button>
                     </th>
                 </tr>
@@ -84,7 +84,7 @@
                 <div class="modal-body">
                     <p>Type:
                         <label for="type" class="sr-only">Type</label>
-                        <select id="type" name="type" class="form-control" th:field="*{eventType}" required autofocus>
+                        <select id="type" name="type" class="form-select" th:field="*{eventType}" required autofocus>
                             <option th:value="'START_GAME'">Start game</option>
                             <option th:value="'END_GAME'">End game</option>
                             <option th:value="'INTERRUPT_GAME'">Interrupt game</option>

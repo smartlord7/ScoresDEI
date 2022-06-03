@@ -25,7 +25,7 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
     private String playerName;
     private String firstName;
     private String lastName;
-    private Date birthDate;
+    private String birthDate;
     private PlayerPositionEnum position;
     private Long teamId;
     private String nationality;
@@ -39,7 +39,7 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
     public PlayerCreateDTO() {
     }
 
-    public PlayerCreateDTO(String playerName, String firstName, String lastName, Date birthDate, PlayerPositionEnum position, Long teamId, String nationality, Double height, Double weight) {
+    public PlayerCreateDTO(String playerName, String firstName, String lastName, String birthDate, PlayerPositionEnum position, Long teamId, String nationality, Double height, Double weight) {
         this.playerName = playerName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -87,11 +87,11 @@ public class PlayerCreateDTO implements BaseEntityCreateDTO {
         this.playerName = playerName;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

@@ -1,5 +1,6 @@
 package Main.PresentationLayer.Controller.Player;
 
+import Main.BusinessLayer.Player.DTO.PlayerCreateDTO;
 import Main.BusinessLayer.Player.Import.PlayerImportDataDTO;
 import Main.BusinessLayer.Player.PlayerReader;
 import Main.BusinessLayer.Player.PlayerWriter;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.text.ParseException;
 
 import static Main.Util.ApplicationConst.APP_NAME;
 import static Main.Util.ApplicationConst.REDIRECT;
@@ -30,10 +33,18 @@ public class PlayerViewController {
     @GetMapping
     public ModelAndView index(Model model) {
         model.addAttribute("players", reader.getAll());
+        model.addAttribute("player", new PlayerCreateDTO());
         model.addAttribute("bestScorer", reader.getBestScorer());
         model.addAttribute("importData", new PlayerImportDataDTO());
 
         return new ModelAndView("player/index");
+    }
+
+    @PostMapping
+    public ModelAndView create(PlayerCreateDTO dto, Model model) throws ParseException {
+        writer.create(dto);
+
+        return index(model);
     }
 
     @PostMapping(path = "/import")
@@ -47,6 +58,6 @@ public class PlayerViewController {
                      ));
         }
 
-        return new ModelAndView("redirect:/scoresDEI/player#");
+        return index(model);
     }
 }

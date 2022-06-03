@@ -9,82 +9,57 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body style="background: linear-gradient(to left, #8f9ede, #c0c8c9)">
-<nav th:insert="fragments/navbar.html :: navbar"> </nav>
+<nav th:insert="fragments/general/navbar.html :: navbar"> </nav>
 <div style="height: 600px; overflow: auto;">
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Player</th>
-        <th scope="col">Position</th>
-        <th scope="col">Team id</th>
-        <th scope="col">Team</th>
-        <th scope="col">Actions</th>
-        <th scope="col">
-            <button style="float: right; margin-right: 1em; margin-top: 1em" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#exampleModal">
+    <div class="row pt-4">
+        <div class="col-10">
+        </div>
+        <div class="col-2">
+            <button class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#importModal">
                 Import
                 <i class="fa-solid fa-file-import"></i>
             </button>
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="player :${players}">
-        <td th:text="${player.getId()}"></td>
-        <td th:text="${player.getPlayerName()}"></td>
-        <td th:text="${player.getPosition()}"></td>
-        <td th:text="${player.getTeamId()}"></td>
-        <td th:text="${player.getTeamName()}"></td>
-        <td>
-            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-            <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-        </td>
-        <td></td>
-    </tr>
-    </tbody>
-</table>
-</div>
-<footer th:insert="fragments/footer.html :: footer"> </footer>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Import players</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-                <form class="form" method="POST" th:action="@{/scoresDEI/player/import}" th:object="${importData}">
-                    <div class="modal-body">
-                        <p>
-                            <label for="league" class="sr-only">Username</label>
-                            <input type="text" id="league" name="league" class="form-control" th:value="*{league}"
-                                   placeholder="League" required autofocus>
-                        </p>
-                        <p>
-                            <label for="season" class="sr-only">Season</label>
-                            <input type="text" id="season" name="season" class="form-control" th:value="*{season}"
-                                   placeholder="Season" required>
-                        </p>
-                        <p>
-                            <label for="page" class="sr-only">Season</label>
-                            <input type="text" id="page" name="page" class="form-control" th:value="*{page}"
-                                   placeholder="Page" required>
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Import</button>
-                    </div>
-                </form>
-            </div>
+            <button class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#createModal">
+                Create
+                <i class="fa-solid fa-plus-circle"></i>
+            </button>
         </div>
     </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Player</th>
+            <th scope="col">Position</th>
+            <th scope="col">Team id</th>
+            <th scope="col">Team</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="player :${players}">
+            <td th:text="${player.getId()}"></td>
+            <td th:text="${player.getPlayerName()}"></td>
+            <td th:text="${player.getPosition()}"></td>
+            <td th:text="${player.getTeamId()}"></td>
+            <td th:text="${player.getTeamName()}"></td>
+            <td>
+                <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
+                <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:insert="fragments/general/footer.html :: footer"></footer>
+<div th:insert="fragments/create_modal.html :: create_modal"></div>
+<div th:insert="fragments/import_modal.html :: import_modal"></div>
 </div>
 </body>
 </html>
