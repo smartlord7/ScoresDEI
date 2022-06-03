@@ -21,6 +21,7 @@ import Main.Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -56,7 +57,7 @@ public class GameAPIController {
     }
 
     @PostMapping
-    public GameCreateDTO create(@RequestBody GameCreateDTO dto) {
+    public GameCreateDTO create(@RequestBody GameCreateDTO dto) throws ParseException {
         return writer.create(dto);
     }
 
@@ -66,7 +67,7 @@ public class GameAPIController {
     }
 
     @PutMapping
-    public GameUpdateDTO update(@RequestBody GameUpdateDTO dto) {
+    public GameUpdateDTO update(@RequestBody GameUpdateDTO dto) throws ParseException {
         return writer.update(dto);
     }
 

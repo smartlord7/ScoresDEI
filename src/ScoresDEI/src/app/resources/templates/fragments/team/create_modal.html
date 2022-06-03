@@ -1,0 +1,40 @@
+<div th:fragment="create_modal" class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Create team</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form" method="POST" th:action="@{/scoresDEI/team}" th:object="${team}">
+                <div class="modal-body">
+                    <p>Name:
+                        <label for="teamName" class="sr-only">Name</label>
+                        <input type="text" id="teamName" name="teamName" class="form-control" th:value="*{teamName}"
+                               placeholder="Name" required autofocus>
+                    </p>
+                    <p>Country:
+                        <label for="country" class="sr-only">Country</label>
+                        <input type="text" id="country" name="country" class="form-control" th:value="*{country}"
+                               placeholder="Country" required>
+                    </p>
+                    <p>Code:
+                        <label for="code" class="sr-only">Code</label>
+                        <input type="text" id="code" name="code" class="form-control" th:value="*{code}"
+                               placeholder="Code" required>
+                    </p>
+                    <p>Founded on:
+                        <label for="founded" class="sr-only">Founded on</label>
+                        <input type="text" id="founded" name="founded" class="form-control" th:value="*{founded}"
+                               placeholder="Founded on" required>
+                    </p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

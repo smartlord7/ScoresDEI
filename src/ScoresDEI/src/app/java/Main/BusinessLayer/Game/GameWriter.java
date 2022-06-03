@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+
 
 @Service
 public class GameWriter {
@@ -38,10 +40,8 @@ public class GameWriter {
     // region Public Methods
 
     @Transactional
-    public GameCreateDTO create(GameCreateDTO dto) {
-        Game g = new Game(dto.getPlace(),
-                dto.getStartTime(),
-                dto.getEndTime());
+    public GameCreateDTO create(GameCreateDTO dto) throws ParseException {
+        Game g = GameTranslator.toModel(dto);
         Team tA = teams.getById(dto.getTeamAId());
         Team tB = teams.getById(dto.getTeamBId());
         g.setTeamA(tA);
@@ -63,7 +63,7 @@ public class GameWriter {
     }
 
     @Transactional
-    public GameUpdateDTO update(GameUpdateDTO dto) {
+    public GameUpdateDTO update(GameUpdateDTO dto) throws ParseException {
         Game g = games.getById(dto.getId());
         GameTranslator.applyChanges(g, dto);
         g.setTeamA(teams.getById(dto.getTeamAId()));

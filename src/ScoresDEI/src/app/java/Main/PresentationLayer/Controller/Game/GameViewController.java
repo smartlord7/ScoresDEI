@@ -2,6 +2,7 @@ package Main.PresentationLayer.Controller.Game;
 
 import Main.BusinessLayer.Event.DTO.EventCreateDTO;
 import Main.BusinessLayer.Event.EventWriter;
+import Main.BusinessLayer.Game.DTO.GameCreateDTO;
 import Main.BusinessLayer.Game.DTO.GameUpdateDTO;
 import Main.BusinessLayer.Game.GameReader;
 import Main.BusinessLayer.Game.GameWriter;
@@ -34,8 +35,16 @@ public class GameViewController {
     @GetMapping
     public ModelAndView index(Model model) {
         model.addAttribute("games", reader.getAll());
+        model.addAttribute("game", new GameCreateDTO());
 
         return new ModelAndView("game/index");
+    }
+
+    @PostMapping
+    public ModelAndView create(GameCreateDTO dto, Model model) throws ParseException {
+        writer.create(dto);
+
+        return details(dto.getId(), model);
     }
 
     @GetMapping("/{id}")

@@ -17,9 +17,9 @@
 <nav th:insert="fragments/general/navbar.html :: navbar"> </nav>
 <div style="height: 600px; overflow: auto;" class="container-fluid">
     <div class="row pt-4">
-        <div class="col-10">
+        <div class="col-11">
         </div>
-        <div class="col-2">
+        <div class="col-1">
             <button title="Import" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#importModal">
                 <i class="fa-solid fa-file-import"></i>
             </button>
@@ -34,7 +34,6 @@
             <th scope="col">Id</th>
             <th scope="col">Player</th>
             <th scope="col">Position</th>
-            <th scope="col">Team id</th>
             <th scope="col">Team</th>
             <th scope="col">Actions</th>
         </tr>
@@ -44,8 +43,7 @@
             <td th:text="${player.getId()}"></td>
             <td th:text="${player.getPlayerName()}"></td>
             <td th:text="${player.getPosition()}"></td>
-            <td th:text="${player.getTeamId()}"></td>
-            <td th:text="${player.getTeamName()}"></td>
+            <td><a th:text="${player.getTeamName()}" th:href="@{/scoresDEI/team/{id}(id=${player.getTeamId()})}"></a></td>
             <td>
                 <a type="button" class="btn btn-primary" th:href="@{/scoresDEI/player/{id}(id=${player.getId()})}">
                     <i class="far fa-eye"></i>

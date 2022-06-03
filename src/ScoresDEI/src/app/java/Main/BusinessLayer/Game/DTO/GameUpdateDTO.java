@@ -24,8 +24,8 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
 
     private Long id;
     private String place;
-    private Date startTime;
-    private Date endTime;
+    private String startTime;
+    private String endTime;
     private Long teamAId;
     private String teamAName;
     private Long teamBId;
@@ -45,7 +45,7 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
     public GameUpdateDTO() {
     }
 
-    public GameUpdateDTO(Long id, String place, Date startTime, Date endTime, Long teamAId, Long teamBId) {
+    public GameUpdateDTO(Long id, String place, String startTime, String endTime, Long teamAId, Long teamBId) {
         this.id = id;
         this.place = place;
         this.startTime = startTime;
@@ -56,8 +56,8 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
 
     public GameUpdateDTO(Long id,
                          String place,
-                         Date startTime,
-                         Date endTime,
+                         String startTime,
+                         String endTime,
                          Long teamAId,
                          String teamAName,
                          Long teamBId,
@@ -88,19 +88,19 @@ public class GameUpdateDTO implements BaseEntityUpdateDTO {
         this.place = place;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

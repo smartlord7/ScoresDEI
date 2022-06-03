@@ -1,0 +1,45 @@
+<div th:fragment="create_modal" class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Create game</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form" method="POST" th:action="@{/scoresDEI/game}" th:object="${game}">
+                <div class="modal-body">
+                    <p>Place:
+                        <label for="place" class="sr-only">Place</label>
+                        <input type="text" id="place" name="place" class="form-control" th:value="*{place}"
+                               placeholder="Place" required autofocus>
+                    </p>
+                    <p>Start time:
+                        <label for="startTime" class="sr-only">Start time</label>
+                        <input type="datetime-local" id="startTime" name="startTime" class="form-control" th:value="*{startTime}"
+                               placeholder="Start time" required>
+                    </p>
+                    <p>End time:
+                        <label for="endTime" class="sr-only">End time</label>
+                        <input type="datetime-local" id="endTime" name="endTime" class="form-control" th:value="*{endTime}"
+                               placeholder="End time" required>
+                    </p>
+                    <p>Team A id:
+                        <label for="teamAId" class="sr-only">Team A id</label>
+                        <input type="number" min="0" step="1" id="teamAId" name="teamAId" class="form-control" th:value="*{teamAId}"
+                               placeholder="Team A id" required>
+                    </p>
+                    <p>Team B id:
+                        <label for="teamBId" class="sr-only">Team B id</label>
+                        <input type="number" min="0" step="1" id="teamBId" name="teamBId" class="form-control" th:value="*{teamBId}"
+                               placeholder="Team B id" required>
+                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

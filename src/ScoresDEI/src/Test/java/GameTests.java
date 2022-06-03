@@ -25,6 +25,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.text.ParseException;
 import java.util.Date;
 
 @DataJpaTest
@@ -65,12 +66,12 @@ public class GameTests {
      */
     @Test
     @Rollback(false)
-    public void create() {
+    public void create() throws ParseException {
         GameCreateDTO g;
 
         g = new GameCreateDTO("Place " + (int) (Math.random() * (321 - 1)),
-                new Date(),
-                new Date(),
+                "2022-02-05",
+                "2021-03-06",
                 (long) 0,
                 (long) 1);
         g = writer.create(g);
@@ -82,13 +83,13 @@ public class GameTests {
      */
     @Test
     @Rollback(false)
-    public void update() {
+    public void update() throws ParseException {
         GameUpdateDTO g;
 
         g = new GameUpdateDTO((long) 0,
                 "Not here",
-                new Date(),
-                new Date(),
+                "2022-02-05",
+                "2021-03-06",
                 (long) 0,
                 (long) 1);
         g = writer.update(g);

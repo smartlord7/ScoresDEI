@@ -48,6 +48,7 @@ public class PlayerViewController {
 
         return index(model);
     }
+
     @GetMapping("/{id}")
     public ModelAndView details(@PathVariable Long id, Model model) throws ParseException {
         PlayerUpdateDTO details = reader.getById(id);
@@ -55,7 +56,6 @@ public class PlayerViewController {
 
         return new ModelAndView("player/details");
     }
-
 
     @PostMapping(path = "/import")
     public ModelAndView importViaSportsAPI(PlayerImportDataDTO importData, Model model) {

@@ -1,6 +1,7 @@
 package Main.PresentationLayer.Controller.Team;
 
 import Main.BusinessLayer.Player.Import.PlayerImportDataDTO;
+import Main.BusinessLayer.Team.DTO.TeamCreateDTO;
 import Main.BusinessLayer.Team.DTO.TeamImportDataDTO;
 import Main.BusinessLayer.Team.DTO.TeamUpdateDTO;
 import Main.BusinessLayer.Team.TeamReader;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.text.ParseException;
 
 import static Main.Util.ApplicationConst.APP_NAME;
 
@@ -32,9 +35,17 @@ public class TeamViewController {
     @GetMapping
     public ModelAndView index(Model model) {
         model.addAttribute("teams", reader.getAllDetailed());
-        model.addAttribute("importData", new PlayerImportDataDTO());
+        model.addAttribute("importData", new TeamImportDataDTO());
+        model.addAttribute("team", new TeamCreateDTO());
 
         return new ModelAndView("team/index");
+    }
+
+    @PostMapping
+    public ModelAndView create(TeamCreateDTO dto, Model model) throws ParseException {
+        writer.create(dto);
+
+        return index(model);
     }
 
     @GetMapping("/{id}")

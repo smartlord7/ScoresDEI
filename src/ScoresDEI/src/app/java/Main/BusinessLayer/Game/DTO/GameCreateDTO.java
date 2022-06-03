@@ -22,8 +22,8 @@ public class GameCreateDTO implements BaseEntityCreateDTO {
 
     private Long id;
     private String place;
-    private Date startTime;
-    private Date endTime;
+    private String startTime;
+    private String endTime;
     private Long teamAId;
     private Long teamBId;
 
@@ -31,7 +31,10 @@ public class GameCreateDTO implements BaseEntityCreateDTO {
 
     // region Constructors
 
-    public GameCreateDTO(String place, Date startTime, Date endTime, Long teamAId, Long teamBId) {
+    public GameCreateDTO() {
+    }
+
+    public GameCreateDTO(String place, String startTime, String endTime, Long teamAId, Long teamBId) {
         this.place = place;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -59,19 +62,19 @@ public class GameCreateDTO implements BaseEntityCreateDTO {
         this.place = place;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
