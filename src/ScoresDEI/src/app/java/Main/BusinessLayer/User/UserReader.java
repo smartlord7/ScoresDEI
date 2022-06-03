@@ -35,7 +35,7 @@ public class UserReader {
         return users.findAll()
                 .stream()
                 .map(UserTranslator::toListDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     // endregion Public Methods

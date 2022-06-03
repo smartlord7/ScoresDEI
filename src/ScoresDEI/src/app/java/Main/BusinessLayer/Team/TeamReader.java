@@ -11,10 +11,12 @@
 
 package Main.BusinessLayer.Team;
 
+import Main.BusinessLayer.Player.PlayerTranslator;
 import Main.BusinessLayer.Team.DTO.TeamListDTO;
 import Main.BusinessLayer.Team.DTO.TeamListDetailedDTO;
 import Main.BusinessLayer.Team.DTO.TeamUpdateDTO;
 import Main.DataLayer.Model.Team;
+import Main.DataLayer.Repository.PlayerRepository;
 import Main.DataLayer.Repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,9 @@ public class TeamReader {
     @Autowired
     private TeamRepository teams;
 
+    @Autowired
+    private PlayerRepository players;
+
     // endregion Private Properties
 
     // region Public Methods
@@ -38,7 +43,7 @@ public class TeamReader {
         return teams.findAll()
                 .stream()
                 .map(TeamTranslator::toListDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<TeamListDetailedDTO> getAllDetailed() {
@@ -55,8 +60,10 @@ public class TeamReader {
 
     public TeamUpdateDTO getById(long id) {
         Team t = teams.getById(id);
+        TeamUpdateDTO dto = TeamTranslator.toUpdateDTO(t);
+        dto.setPlayers(players.getByTeam_Id(id).stream().map(PlayerTranslator::toListDTO).toList());
 
-        return TeamTranslator.toUpdateDTO(t);
+        return dto;
     }
 
     // endregion Public Methods

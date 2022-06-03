@@ -37,7 +37,7 @@ public class PlayerReader {
         return players.findAll()
                 .stream()
                 .map(PlayerTranslator::toListDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public PlayerUpdateDTO getById(long id) {

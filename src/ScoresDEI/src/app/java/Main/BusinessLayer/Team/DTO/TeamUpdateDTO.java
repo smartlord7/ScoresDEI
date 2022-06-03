@@ -13,7 +13,9 @@ package Main.BusinessLayer.Team.DTO;
 
 import Main.BusinessLayer.Attachment.DTO.AttachmentUpdateDTO;
 import Main.BusinessLayer.Base.DTO.BaseEntityUpdateDTO;
+import Main.BusinessLayer.Player.DTO.PlayerListDTO;
 
+import java.util.List;
 import java.util.StringJoiner;
 
 public class TeamUpdateDTO implements BaseEntityUpdateDTO {
@@ -27,6 +29,7 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
     private Integer founded;
     private Long logoId;
     private AttachmentUpdateDTO logo;
+    private List<PlayerListDTO> players;
 
     // endregion Private Properties
 
@@ -119,6 +122,14 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
         this.founded = founded;
     }
 
+    public List<PlayerListDTO> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<PlayerListDTO> players) {
+        this.players = players;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", TeamUpdateDTO.class.getSimpleName() + "[", "]")
@@ -129,6 +140,7 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
                 .add("founded=" + founded)
                 .add("logoId=" + logoId)
                 .add("logo=" + logo)
+                .add("players=" + players)
                 .toString();
     }
 

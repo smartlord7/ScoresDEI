@@ -33,5 +33,5 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
             "WHERE eg2.approved IS TRUE " +
             "GROUP BY eg2.player.id)")
     List<Object>[] getBestScorer();
-
+    List<Player> getByTeam_Id(Long teamId);
 }
