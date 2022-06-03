@@ -15,17 +15,15 @@
 </head>
 <body style="background: linear-gradient(to left, #8f9ede, #c0c8c9)">
 <nav th:insert="fragments/general/navbar.html :: navbar"> </nav>
-<div style="height: 600px; overflow: auto;">
+<div style="height: 600px; overflow: auto;" class="container-fluid">
     <div class="row pt-4">
         <div class="col-10">
         </div>
         <div class="col-2">
-            <button class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#importModal">
-                Import
+            <button title="Import" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#importModal">
                 <i class="fa-solid fa-file-import"></i>
             </button>
-            <button class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#createModal">
-                Create
+            <button title="Create" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#createModal">
                 <i class="fa-solid fa-plus-circle"></i>
             </button>
         </div>
@@ -64,8 +62,8 @@
     </table>
 </div>
 <footer th:insert="fragments/general/footer.html :: footer"></footer>
-<div th:insert="fragments/create_modal.html :: create_modal"></div>
-<div th:insert="fragments/import_modal.html :: import_modal"></div>
+<div th:insert="fragments/player/create_modal.html :: create_modal"></div>
+<div th:insert="fragments/player/import_modal.html :: import_modal"></div>
 </div>
 </body>
 </html>

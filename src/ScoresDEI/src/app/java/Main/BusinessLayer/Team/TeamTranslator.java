@@ -71,6 +71,9 @@ public class TeamTranslator {
         return new TeamUpdateDTO(
                 model.getId(),
                 model.getTeamName(),
+                model.getCountry(),
+                model.getCode(),
+                model.getFounded(),
                 new AttachmentUpdateDTO(
                         storageTypeEnum,
                         path

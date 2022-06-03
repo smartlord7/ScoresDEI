@@ -2,6 +2,7 @@ package Main.PresentationLayer.Controller.Team;
 
 import Main.BusinessLayer.Player.Import.PlayerImportDataDTO;
 import Main.BusinessLayer.Team.DTO.TeamImportDataDTO;
+import Main.BusinessLayer.Team.DTO.TeamUpdateDTO;
 import Main.BusinessLayer.Team.TeamReader;
 import Main.BusinessLayer.Team.TeamWriter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +35,14 @@ public class TeamViewController {
         model.addAttribute("importData", new PlayerImportDataDTO());
 
         return new ModelAndView("team/index");
+    }
+
+    @GetMapping("/{id}")
+    public ModelAndView details(@PathVariable Long id, Model model) {
+        TeamUpdateDTO details = reader.getById(id);
+        model.addAttribute("team", details);
+
+        return new ModelAndView("team/details");
     }
 
     @PostMapping(path = "/import")

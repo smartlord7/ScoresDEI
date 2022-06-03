@@ -14,7 +14,19 @@
 </head>
 <body style="background: linear-gradient(to left, #897a98, #afe7c3)">
 <nav th:insert="fragments/general/navbar.html :: navbar"> </nav>
-<div style="height: 600px; overflow: auto">
+<div style="height: 600px; overflow: auto" class="container-fluid">
+    <div class="row pt-4">
+        <div class="col-10">
+        </div>
+        <div class="col-2">
+            <button title="Import" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#importModal">
+                <i class="fa-solid fa-file-import"></i>
+            </button>
+            <button title="Create" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#createModal">
+                <i class="fa-solid fa-plus-circle"></i>
+            </button>
+        </div>
+    </div>
 <table class="table">
     <thead>
     <tr>
@@ -25,28 +37,27 @@
         <th scope="col">Losses</th>
         <th scope="col">Draws</th>
         <th scope="col">Actions</th>
-        <th scope="col">
-            <button style="float: right; margin-right: 1em; margin-top: 1em" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#exampleModal">
-            Import
-                <i class="fa-solid fa-file-import"></i>
-            </button>
-        </th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="team :${teams}">
-        <td th:text="${team.getTeamId()}"></td>
+        <td th:text="${team.getId()}"></td>
         <td th:text="${team.getTeamName()}"></td>
         <td th:text="${team.getGames()}"></td>
         <td th:text="${team.getVictories()}"></td>
         <td th:text="${team.getLosses()}"></td>
         <td th:text="${team.getDraws()}"></td>
         <td>
-            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-            <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            <a type="button" class="btn btn-primary" th:href="@{/scoresDEI/team/{id}(id=${team.getId()})}">
+                <i class="far fa-eye"></i>
+            </a>
+            <a type="button" class="btn btn-success">
+                <i class="fas fa-edit"></i>
+            </a>
+            <a type="button" class="btn btn-danger">
+                <i class="far fa-trash-alt"></i>
+            </a>
         </td>
-        <td></td>
     </tr>
     </tbody>
 </table>

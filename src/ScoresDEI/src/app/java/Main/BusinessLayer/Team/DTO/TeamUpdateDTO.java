@@ -49,9 +49,12 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
         this.logoId = logoId;
     }
 
-    public TeamUpdateDTO(Long id, String teamName, AttachmentUpdateDTO logo) {
+    public TeamUpdateDTO(Long id, String teamName, String country, String code, Integer founded, AttachmentUpdateDTO logo) {
         this.id = id;
         this.teamName = teamName;
+        this.country = country;
+        this.code = code;
+        this.founded = founded;
         this.logo = logo;
     }
 

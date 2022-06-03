@@ -19,7 +19,7 @@ public class TeamListDetailedDTO implements BaseEntityListDTO {
 
     // region Private Properties
 
-    private Long teamId;
+    private Long id;
     private String teamName;
     private Long games;
     private Long victories;
@@ -33,8 +33,8 @@ public class TeamListDetailedDTO implements BaseEntityListDTO {
     public TeamListDetailedDTO() {
     }
 
-    public TeamListDetailedDTO(Long teamId, String teamName, Long games, Long victories, Long draws, Long losses) {
-        this.teamId = teamId;
+    public TeamListDetailedDTO(Long id, String teamName, Long games, Long victories, Long draws, Long losses) {
+        this.id = id;
         this.teamName = teamName;
         this.games = games;
         this.victories = victories;
@@ -46,12 +46,12 @@ public class TeamListDetailedDTO implements BaseEntityListDTO {
 
     // region Getters and Setters
 
-    public Long getTeamId() {
-        return teamId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTeamName() {
@@ -97,7 +97,7 @@ public class TeamListDetailedDTO implements BaseEntityListDTO {
     @Override
     public String toString() {
         return new StringJoiner(", ", TeamListDetailedDTO.class.getSimpleName() + "[", "]")
-                .add("teamId=" + teamId)
+                .add("teamId=" + id)
                 .add("teamName='" + teamName + "'")
                 .add("games=" + games)
                 .add("victories=" + victories)
