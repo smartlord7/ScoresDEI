@@ -1,6 +1,8 @@
 package Main.PresentationLayer.Controller.Team;
 
+import Main.BusinessLayer.Player.DTO.PlayerListDTO;
 import Main.BusinessLayer.Player.Import.PlayerImportDataDTO;
+import Main.BusinessLayer.Player.PlayerReader;
 import Main.BusinessLayer.Team.DTO.TeamCreateDTO;
 import Main.BusinessLayer.Team.DTO.TeamImportDataDTO;
 import Main.BusinessLayer.Team.DTO.TeamUpdateDTO;
@@ -29,6 +31,9 @@ public class TeamViewController {
     @Autowired
     private TeamWriter writer;
 
+    @Autowired
+    private PlayerReader playerReader;
+
     @Value("${sports_api.api_key}")
     private String SPORTS_API_KEY;
 
@@ -52,6 +57,8 @@ public class TeamViewController {
     public ModelAndView details(@PathVariable Long id, Model model) {
         TeamUpdateDTO details = reader.getById(id);
         model.addAttribute("team", details);
+        model.addAttribute("players", playerReader.getAll());
+        model.addAttribute("player", new PlayerListDTO());
 
         return new ModelAndView("team/details");
     }
@@ -66,6 +73,20 @@ public class TeamViewController {
                     ));
         }
 
-        return new ModelAndView("redirect:/scoresDEI/team#");
+        return index(model);
+    }
+
+    @PostMapping(path = "/{id}/player")
+    public ModelAndView addPlayer(@PathVariable Long id, PlayerListDTO player, Model model) {
+        writer.addPlayer(id, player.getId());
+
+        return details(id, model);
+    }
+
+    @GetMapping(path = "/{id}/player/{playerId}")
+    public ModelAndView addPlayer(@PathVariable Long id, @PathVariable Long playerId, Model model) {
+        writer.removePlayer(id, playerId);
+
+        return details(id, model);
     }
 }

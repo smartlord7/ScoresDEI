@@ -16,8 +16,10 @@ import Main.BusinessLayer.Team.DTO.TeamUpdateDTO;
 import Main.BusinessLayer.Team.Import.TeamImportResultDTO;
 import Main.BusinessLayer.Team.Import.TeamSportsAPIImport;
 import Main.DataLayer.Model.Attachment;
+import Main.DataLayer.Model.Player;
 import Main.DataLayer.Model.Team;
 import Main.DataLayer.Repository.AttachmentRepository;
+import Main.DataLayer.Repository.PlayerRepository;
 import Main.DataLayer.Repository.TeamRepository;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
@@ -41,6 +43,9 @@ public class TeamWriter {
 
     @Autowired
     private TeamRepository teams;
+
+    @Autowired
+    private PlayerRepository players;
 
     @Autowired
     private AttachmentRepository attachments;
@@ -122,6 +127,37 @@ public class TeamWriter {
                 (long) teamList.size(),
                 SPORTS_API_BASE_URL + "/teams"
         );
+    }
+
+    @Transactional
+    public TeamUpdateDTO addPlayer(Long teamId, Long playerId) {
+        Team t = teams.getById(teamId);
+        Player p = players.getById(playerId);
+
+        if (p.getTeam() != null) {
+            p.getTeam().getPlayer().remove(p);
+        }
+
+        t.getPlayer().add(p);
+        p.setTeam(t);
+        teams.save(t);
+
+        return TeamTranslator.toUpdateDTO(t);
+    }
+
+    @Transactional
+    public TeamUpdateDTO removePlayer(long teamId, Long playerId) {
+        Team t = teams.getById(teamId);
+        Player p = players.getById(playerId);
+
+        if (p.getTeam() != null) {
+            p.getTeam().getPlayer().remove(p);
+        }
+
+        p.setTeam(null);
+        teams.save(t);
+
+        return TeamTranslator.toUpdateDTO(t);
     }
 
     // endregion Public Methods

@@ -77,6 +77,16 @@ public class TeamAPIController {
         return writer.importViaSportsAPI(keyAPI, league, season);
     }
 
+    @PutMapping("/{id}/player/{playerId}")
+    public TeamUpdateDTO addPlayer(@PathVariable Long id, @PathVariable Long playerId) {
+        return writer.addPlayer(id, playerId);
+    }
+
+    @DeleteMapping("/{id}/player/{playerId}")
+    public TeamUpdateDTO deletePlayer(@PathVariable Long id, @PathVariable Long playerId) {
+        return writer.removePlayer(id, playerId);
+    }
+
     // endregion Public Methods
 
 }
