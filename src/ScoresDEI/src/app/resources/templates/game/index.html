@@ -52,7 +52,7 @@
             <a type="button" class="btn btn-primary" th:href="@{/scoresDEI/game/{id}(id=${game.getId()})}">
                 <i class="far fa-eye"></i>
             </a>
-            <a type="button" class="btn btn-success">
+            <a sec:authorize="hasAuthority('ROLE_ADMIN')" type="button" class="btn btn-success">
                 <i class="fas fa-edit"></i>
             </a>
             <a type="button" class="btn btn-danger">

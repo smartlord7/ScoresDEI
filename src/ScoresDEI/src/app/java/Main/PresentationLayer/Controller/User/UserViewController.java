@@ -55,20 +55,14 @@ public class UserViewController {
     @Autowired
     private AuthHelper authHelper;
 
-    @Autowired
-    private UserAuthDetailsProvider userAuthDetailsProvider;
-
-
     // endregion Private Properties
 
     // region Public Methods
 
     @GetMapping("/login")
-    public ModelAndView login(Model model) {
-        UserDetails session = userAuthDetailsProvider.getSession();
-
-        if (session != null) {
-            return new ModelAndView("general/home");
+    public ModelAndView login(Model model, HttpSession session) {
+        if (session.getAttribute("userInfo") != null) {
+            return new ModelAndView("redirect:/scoresDEI/home#");
         } else {
             model.addAttribute("userLoginDTO", new UserLoginDTO());
 

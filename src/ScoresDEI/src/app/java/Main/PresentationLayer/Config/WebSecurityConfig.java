@@ -136,7 +136,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(authEntryPoint)
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
         httpSecurity.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

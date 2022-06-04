@@ -1,7 +1,6 @@
 package Main.PresentationLayer.Controller.Team;
 
 import Main.BusinessLayer.Player.DTO.PlayerListDTO;
-import Main.BusinessLayer.Player.Import.PlayerImportDataDTO;
 import Main.BusinessLayer.Player.PlayerReader;
 import Main.BusinessLayer.Team.DTO.TeamCreateDTO;
 import Main.BusinessLayer.Team.DTO.TeamImportDataDTO;
@@ -77,14 +76,14 @@ public class TeamViewController {
     }
 
     @PostMapping(path = "/{id}/player")
-    public ModelAndView addPlayer(@PathVariable Long id, PlayerListDTO player, Model model) {
+    public ModelAndView removePlayer(@PathVariable Long id, PlayerListDTO player, Model model) {
         writer.addPlayer(id, player.getId());
 
         return details(id, model);
     }
 
     @GetMapping(path = "/{id}/player/{playerId}")
-    public ModelAndView addPlayer(@PathVariable Long id, @PathVariable Long playerId, Model model) {
+    public ModelAndView removePlayer(@PathVariable Long id, @PathVariable Long playerId, Model model) {
         writer.removePlayer(id, playerId);
 
         return details(id, model);
