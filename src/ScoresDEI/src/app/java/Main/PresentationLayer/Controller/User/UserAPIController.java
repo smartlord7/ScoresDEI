@@ -58,7 +58,7 @@ public class UserAPIController {
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody UserCreateDTO dto) {
-        UserDetails session = userAuthDetailsProvider.getSession();
+        UserDetails session = (UserDetails) userAuthDetailsProvider.getSession();
         Long roleId = dto.getRoleId();
         Role adminRole = roles.getFirstByRoleName("Admin");
 

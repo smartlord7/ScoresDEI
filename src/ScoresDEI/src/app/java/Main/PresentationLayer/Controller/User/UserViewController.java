@@ -17,10 +17,12 @@ import Main.BusinessLayer.User.DTO.UserLoginResultDTO;
 import Main.BusinessLayer.User.UserReader;
 import Main.BusinessLayer.User.UserWriter;
 import Main.PresentationLayer.Auth.AuthHelper;
+import Main.PresentationLayer.Auth.UserAuthDetailsProvider;
 import Main.Util.ApplicationConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -53,32 +55,38 @@ public class UserViewController {
     @Autowired
     private AuthHelper authHelper;
 
+    @Autowired
+    private UserAuthDetailsProvider userAuthDetailsProvider;
+
+
     // endregion Private Properties
 
     // region Public Methods
 
     @GetMapping("/login")
-    public String login(Principal principal, Model model) {
-        if (principal != null && ((Authentication) principal).isAuthenticated()) {
-            return REDIRECT + "general/home";
+    public ModelAndView login(Model model) {
+        UserDetails session = userAuthDetailsProvider.getSession();
+
+        if (session != null) {
+            return new ModelAndView("general/home");
         } else {
             model.addAttribute("userLoginDTO", new UserLoginDTO());
 
-            return "user/login";
+            return new ModelAndView("user/login");
         }
     }
 
-    @PostMapping("/login")
-    public ModelAndView login(UserLoginDTO loginDTO, HttpSession session, Model model) throws IOException {
+    @GetMapping("/processLogin")
+    public ModelAndView login(UserLoginDTO loginDTO, Model model, HttpSession session){
         UserLoginResultDTO loginResultDTO;
         try {
             loginResultDTO = authHelper.authenticate(loginDTO);
+            session.setAttribute("userInfo", loginResultDTO);
         } catch (Exception e) {
             model.addAttribute("error", "Wrong username or password");
 
             return new ModelAndView("user/login");
         }
-        session.setAttribute("user", loginResultDTO);
 
         return new ModelAndView("redirect:/scoresDEI/home#");
     }
@@ -99,9 +107,7 @@ public class UserViewController {
             );
             model.addAttribute("userLoginDTO", loginData);
 
-        return login(loginData,
-                session,
-                model);
+        return new ModelAndView("general/home");
     }
 
     // endregion Public Methods
