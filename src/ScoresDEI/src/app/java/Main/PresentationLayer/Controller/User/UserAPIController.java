@@ -60,7 +60,7 @@ public class UserAPIController {
     public ResponseEntity<?> create(@RequestBody UserCreateDTO dto) {
         UserDetails session = (UserDetails) userAuthDetailsProvider.getSession();
         Long roleId = dto.getRoleId();
-        Role adminRole = roles.getFirstByRoleName("Admin");
+        Role adminRole = roles.getFirstByRoleName("ROLE_ADMIN");
 
         if (roleId != null) {
             Role role = roles.getById(roleId);

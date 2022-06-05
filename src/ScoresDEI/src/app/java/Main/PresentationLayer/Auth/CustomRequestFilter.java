@@ -29,6 +29,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static Main.Util.ApplicationConst.API_PREFIX;
+
 @Component
 public class CustomRequestFilter extends OncePerRequestFilter {
 
@@ -51,17 +53,19 @@ public class CustomRequestFilter extends OncePerRequestFilter {
                                     @NonNull HttpServletResponse response,
                                     @NonNull FilterChain chain)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        UserLoginResultDTO userInfo = (UserLoginResultDTO) session.getAttribute("userInfo");
-        String requestTokenHeader = request.getHeader("Authorization");
+        HttpSession session = request.getSession();
         String username = null;
         String token = null;
 
-        if (userInfo != null) {
-            username = userInfo.getUserName();
-            token = userInfo.getToken();
+        if (!request.getRequestURI().startsWith(API_PREFIX)) {
+            UserLoginResultDTO userInfo = (UserLoginResultDTO) session.getAttribute("userInfo");
+            if (userInfo != null) {
+                username = userInfo.getUserName();
+                token = userInfo.getToken();
+            }
         }
 
+        String requestTokenHeader = request.getHeader("Authorization");
         if (requestTokenHeader != null && requestTokenHeader.startsWith(TOKEN_PREFIX)) {
             token = requestTokenHeader.substring(TOKEN_PREFIX.length());
             try {

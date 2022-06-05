@@ -71,7 +71,7 @@ public class Role extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     @Override
     public String getAuthority() {
-        return "ROLE_" + getRoleName().toUpperCase();
+        return roleName;
     }
 
     // endregion Getters and Setters

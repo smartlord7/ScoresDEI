@@ -70,12 +70,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // region Protected Methods
 
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers( "/error").permitAll()
                 .antMatchers(HttpMethod.PUT, API_PREFIX + "/user/login").permitAll()
                 .antMatchers(HttpMethod.POST, API_PREFIX + "/user").permitAll()
                 .antMatchers(HttpMethod.GET, API_PREFIX + "/user").hasAnyAuthority("ROLE_ADMIN")
@@ -91,7 +93,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, API_PREFIX + "/player/import").hasAnyAuthority("ROLE_ADMIN")
 
                 .antMatchers(HttpMethod.GET, API_PREFIX + "/team/detailed").permitAll()
-                .antMatchers(HttpMethod.GET, API_PREFIX + "/team").permitAll()
+                .antMatchers(HttpMethod.GET, API_PREFIX + "/team").anonymous()
                 .antMatchers(HttpMethod.GET, API_PREFIX + "/team/{id}").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
                 .antMatchers( HttpMethod.PUT, APP_NAME + "/team/{id}/player/{playerId}").permitAll()
                 .antMatchers(HttpMethod.POST, API_PREFIX + "/team").hasAnyAuthority("ROLE_ADMIN")
@@ -118,16 +120,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( APP_NAME + "/game").permitAll()
                 .antMatchers( APP_NAME + "/team").permitAll()
                 .antMatchers( APP_NAME + "/team/{id}").permitAll()
-                .antMatchers( APP_NAME + "/team/{id}/player/{playerId}").permitAll()
-                .antMatchers( APP_NAME + "/team/{id}/player").permitAll()
-                .antMatchers( APP_NAME + "/team/import").permitAll()
+                .antMatchers( APP_NAME + "/team/{id}/player/{playerId}").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers( APP_NAME + "/team/{id}/player").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers( APP_NAME + "/team/import").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers( APP_NAME + "/player").permitAll()
-                .antMatchers( APP_NAME + "/player/import").permitAll()
+                .antMatchers( APP_NAME + "/player/import").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers( APP_NAME + "/player/{id}").permitAll()
                 .antMatchers( APP_NAME + "/game/{id}").permitAll()
-                .antMatchers( APP_NAME + "/game/{id}/createEvent").permitAll()
+                .antMatchers( APP_NAME + "/game/{id}/createEvent").hasAnyAuthority("ROLE_USER")
                 .antMatchers( APP_NAME + "/statistics").permitAll()
-                .anyRequest().fullyAuthenticated()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin(l -> l.loginPage(APP_NAME + "/user/login").permitAll()
                         .loginProcessingUrl(APP_NAME + "/user/processLogin").permitAll()
@@ -136,7 +138,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(authEntryPoint)
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+                .sessionCreationPolicy(SessionCreationPolicy.NEVER);
         httpSecurity.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
