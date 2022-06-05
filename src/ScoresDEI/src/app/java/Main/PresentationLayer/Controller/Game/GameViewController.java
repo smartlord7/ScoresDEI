@@ -63,6 +63,13 @@ public class GameViewController {
         return new ModelAndView("game/details");
     }
 
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable Long id, Model model) {
+        writer.deleteById(id);
+
+        return index(model);
+    }
+
     @PostMapping("/{id}/createEvent")
     public ModelAndView createEvent(@PathVariable Long id, EventCreateDTO dto) throws ParseException {
         dto.setGameId(id);

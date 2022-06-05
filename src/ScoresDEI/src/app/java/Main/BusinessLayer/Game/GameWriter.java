@@ -59,6 +59,7 @@ public class GameWriter {
 
     @Transactional
     public GameUpdateDTO deleteById(long id) {
+        Game g = games.getById(id);
         games.deleteById(id);
 
         return GameTranslator.toUpdateDTO(id);
