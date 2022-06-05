@@ -54,7 +54,7 @@
             <a sec:authorize="hasAuthority('ROLE_ADMIN')" type="button" class="btn btn-success">
                 <i class="fas fa-edit"></i>
             </a>
-            <a sec:authorize="hasAuthority('ROLE_ADMIN')" type="button" class="btn btn-danger">
+            <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/scoresDEI/team/delete/{id}(id=${team.getId()})}" type="button" class="btn btn-danger">
                 <i class="far fa-trash-alt"></i>
             </a>
         </td>

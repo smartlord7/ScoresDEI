@@ -62,6 +62,13 @@ public class TeamViewController {
         return new ModelAndView("team/details");
     }
 
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable Long id, Model model) {
+        writer.deleteById(id);
+
+        return index(model);
+    }
+
     @PostMapping(path = "/import")
     public ModelAndView importViaSportsAPI(TeamImportDataDTO importData, Model model) {
         if (importData != null) {
