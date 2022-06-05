@@ -50,11 +50,18 @@ public class PlayerViewController {
     }
 
     @GetMapping("/{id}")
-    public ModelAndView details(@PathVariable Long id, Model model) throws ParseException {
+    public ModelAndView details(@PathVariable Long id, Model model) {
         PlayerUpdateDTO details = reader.getById(id);
         model.addAttribute("player", details);
 
         return new ModelAndView("player/details");
+    }
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable Long id, Model model) {
+        writer.deleteById(id);
+
+        return index(model);
     }
 
     @PostMapping(path = "/import")

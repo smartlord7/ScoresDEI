@@ -131,6 +131,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( HttpMethod.POST, APP_NAME + "/player").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers( APP_NAME + "/player/import").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers( APP_NAME + "/player/{id}").permitAll()
+                .antMatchers( APP_NAME + "/player/delete/{id}").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers( APP_NAME + "/game/{id}").permitAll()
                 .antMatchers( APP_NAME + "/game/delete/{id}").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers( HttpMethod.GET, APP_NAME + "/game").permitAll()
