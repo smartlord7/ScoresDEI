@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,7 @@
 <nav th:insert="fragments/general/navbar.html :: navbar"> </nav>
 <div class="register-box d-flex justify-content-center m-auto">
     <div class="card" style="margin-top: 5em;">
-        <div class="card-body register-card-body">
+        <div class="card-body w-100">
             <p class="login-box-msg">Register a new account</p>
 
             <form action="#" th:action="@{/scoresDEI/user/create}" th:object="${userCreateDTO}" method="post">
@@ -85,5 +85,6 @@
         </div>
     </div>
 </div>
+<footer th:insert="fragments/general/footer.html :: footer"> </footer>
 </body>
 </html>

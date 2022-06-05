@@ -108,7 +108,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE, API_PREFIX + "/game/{id}").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers(HttpMethod.PUT, API_PREFIX + "/game").hasAnyAuthority("ROLE_ADMIN")
 
-                .antMatchers(HttpMethod.POST, API_PREFIX + "/event").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers(HttpMethod.POST, API_PREFIX + "/event").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
 
                 .antMatchers(HttpMethod.GET, API_PREFIX + "/exception").hasAnyAuthority("ROLE_ADMIN")
 
