@@ -69,6 +69,13 @@ public class UserViewController {
             return new ModelAndView("user/login");
         }
     }
+    @GetMapping("/logout")
+    public ModelAndView logout(HttpSession session) {
+        session.removeAttribute("userInfo");
+        session.invalidate();
+        return new ModelAndView("redirect:/scoresDEI/user/login#");
+    }
+
 
     @GetMapping("/processLogin")
     public ModelAndView login(UserLoginDTO loginDTO, Model model, HttpSession session){
