@@ -5,6 +5,7 @@ import Main.BusinessLayer.Player.DTO.PlayerUpdateDTO;
 import Main.BusinessLayer.Player.Import.PlayerImportDataDTO;
 import Main.BusinessLayer.Player.PlayerReader;
 import Main.BusinessLayer.Player.PlayerWriter;
+import Main.BusinessLayer.Team.TeamReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,9 @@ public class PlayerViewController {
     @Autowired
     private PlayerWriter writer;
 
+    @Autowired
+    private TeamReader teamReader;
+
     @Value("${sports_api.api_key}")
     private String SPORTS_API_KEY;
 
@@ -36,8 +40,8 @@ public class PlayerViewController {
     public ModelAndView index(Model model) {
         model.addAttribute("players", reader.getAll());
         model.addAttribute("player", new PlayerCreateDTO());
-        model.addAttribute("bestScorer", reader.getBestScorer());
         model.addAttribute("importData", new PlayerImportDataDTO());
+        model.addAttribute("teams", teamReader.getAll());
 
         return new ModelAndView("player/index");
     }

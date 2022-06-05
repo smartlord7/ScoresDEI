@@ -74,10 +74,11 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <div>Team id:
-                                <label for="teamId" class="sr-only">Team id</label>
-                                <input type="number" min="0" step="1" id="teamId" name="teamId" class="form-control" th:value="*{teamId}"
-                                       placeholder="Team id" required>
+                            <div>Team:
+                                <label for="teamId" class="sr-only">Team B</label>
+                                <select id="teamId" name="teamId" class="form-select" th:field="*{teamId}" required autofocus>
+                                    <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getTeamName()}"></option>
+                                </select>
                             </div>
                         </div>
                     </div>
