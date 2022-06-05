@@ -6,6 +6,7 @@ import Main.BusinessLayer.Game.DTO.GameCreateDTO;
 import Main.BusinessLayer.Game.DTO.GameUpdateDTO;
 import Main.BusinessLayer.Game.GameReader;
 import Main.BusinessLayer.Game.GameWriter;
+import Main.BusinessLayer.Team.TeamReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,10 +33,14 @@ public class GameViewController {
     @Autowired
     private EventWriter eventWriter;
 
+    @Autowired
+    private TeamReader teamReader;
+
     @GetMapping
     public ModelAndView index(Model model) {
         model.addAttribute("games", reader.getAll());
         model.addAttribute("game", new GameCreateDTO());
+        model.addAttribute("teams", teamReader.getAll());
 
         return new ModelAndView("game/index");
     }

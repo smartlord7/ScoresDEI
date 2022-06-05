@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
+import java.util.Objects;
 
 
 @Service
@@ -51,6 +52,7 @@ public class GameWriter {
 
         games.save(g);
         dto.setId(g.getId());
+
 
         return dto;
     }

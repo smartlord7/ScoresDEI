@@ -24,16 +24,19 @@
                         <input type="datetime-local" id="endTime" name="endTime" class="form-control" th:value="*{endTime}"
                                placeholder="End time" required>
                     </p>
-                    <p>Team A id:
-                        <label for="teamAId" class="sr-only">Team A id</label>
-                        <input type="number" min="0" step="1" id="teamAId" name="teamAId" class="form-control" th:value="*{teamAId}"
-                               placeholder="Team A id" required>
-                    </p>
-                    <p>Team B id:
-                        <label for="teamBId" class="sr-only">Team B id</label>
-                        <input type="number" min="0" step="1" id="teamBId" name="teamBId" class="form-control" th:value="*{teamBId}"
-                               placeholder="Team B id" required>
-                    </p>
+                    <div>Team A:
+                        <label for="teamAId" class="sr-only">Team A</label>
+                        <select id="teamAId" name="teamAId" class="form-select" th:field="*{teamAId}" required autofocus>
+                            <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getTeamName()}"></option>
+                        </select>
+                    </div>
+                    <div>Team B:
+                        <label for="teamBId" class="sr-only">Team B</label>
+                        <select id="teamBId" name="teamBId" class="form-select" th:field="*{teamBId}" required autofocus>
+                            <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.getTeamName()}"></option>
+                        </select>
+                    </div>
+                 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Create</button>

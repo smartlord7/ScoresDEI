@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
         <div class="col-11">
         </div>
         <div class="col-1">
-            <button title="Create" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#createModal">
+            <button sec:authorize="hasAuthority('ROLE_ADMIN')" title="Create" class="btn btn-dark text-light" type="button" data-toggle="modal" data-target="#createModal">
                 <i class="fa-solid fa-plus-circle"></i>
             </button>
         </div>
@@ -55,14 +55,14 @@
             <a sec:authorize="hasAuthority('ROLE_ADMIN')" type="button" class="btn btn-success">
                 <i class="fas fa-edit"></i>
             </a>
-            <a type="button" class="btn btn-danger">
+            <a sec:authorize="hasAuthority('ROLE_ADMIN')" type="button" class="btn btn-danger">
                 <i class="far fa-trash-alt"></i>
             </a>
         </td>
     </tr>
     </tbody>
 </table>
-<div th:insert="fragments/game/create_modal.html :: create_modal"> </div>
+<div sec:authorize="hasAuthority('ROLE_ADMIN')" th:insert="fragments/game/create_modal.html :: create_modal"> </div>
 <footer th:insert="fragments/general/footer.html :: footer"> </footer>
 </div>
 </body>
