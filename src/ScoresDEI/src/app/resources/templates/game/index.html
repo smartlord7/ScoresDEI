@@ -36,26 +36,25 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="game :${games}">
-        <td th:text="${game.getPlace()}"></td>
-        <td th:text="${game.getStartTime()}"></td>
-        <td th:text="${game.getEndTime()}"></td>
-        <td th:text="${game.getTeamAName() + ' vs ' + game.getTeamBName()}"></td>
-        <td th:if="${game.getScoreA() == null || game.getScoreB() == null}">
-            NA
+    <tr th:each="game_ :${games}">
+        <td th:text="${game_.place}"></td>
+        <td th:text="${game_.startTime}"></td>
+        <td th:text="${game_.endTime}"></td>
+        <td>
+            <a th:text="${game_.teamAName}" th:href="@{/scoresDEI/team/{id}(id=${game_.teamAId})}"></a>
+            vs
+            <a th:text="${game_.teamBName}" th:href="@{/scoresDEI/team/{id}(id=${game_.teamBId})}"></a>
         </td>
-        <td th:if="${game.getScoreA() != null && game.getScoreB() != null}">
-            <span th:text="${game.getScoreA()  + ' - ' + game.getScoreB()}">
-            </span>
+        <td th:text="${game_.scoreA  + ' - ' + game_.scoreB}">
         </td>
         <td>
-            <a type="button" class="btn btn-primary" th:href="@{/scoresDEI/game/{id}(id=${game.getId()})}">
+            <a type="button" class="btn btn-primary" th:href="@{/scoresDEI/game/{id}(id=${game_.id})}">
                 <i class="far fa-eye"></i>
             </a>
             <a sec:authorize="hasAuthority('ROLE_ADMIN')" type="button" class="btn btn-success">
                 <i class="fas fa-edit"></i>
             </a>
-            <a sec:authorize="hasAuthority('ROLE_ADMIN')" type="button" class="btn btn-danger" th:href="@{/scoresDEI/game/delete/{id}(id=${game.getId()})}">
+            <a sec:authorize="hasAuthority('ROLE_ADMIN')" type="button" class="btn btn-danger" th:href="@{/scoresDEI/game/delete/{id}(id=${game_.id})}">
                 <i class="far fa-trash-alt"></i>
             </a>
         </td>

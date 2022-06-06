@@ -24,27 +24,26 @@
         <div class="row">
             <div class="col">
                 <h5>Place:</h5>
-                <h6 th:text="${game.getPlace()}"></h6>
+                <h6 th:text="${game.place}"></h6>
             </div>
             <div class="col">
                 <h5>Starts at:</h5>
-                <h6 th:text="${game.getStartTime()}"></h6>
+                <h6 th:text="${game.startTime}"></h6>
             </div>
             <div class="col">
                 <h5>Ends at:</h5>
-                <h6 th:text="${game.getEndTime()}"></h6>
+                <h6 th:text="${game.endTime}"></h6>
             </div>
             <div class="col">
                 <h5>Teams:</h5>
-                <h6 th:text="${game.getTeamAName() + ' vs ' + game.getTeamBName()}"></h6>
+                <a th:text="${game.teamAName}" th:href="@{/scoresDEI/team/{id}(id=${game.teamAId})}"></a>
+                vs
+                <a th:text="${game.teamBName}" th:href="@{/scoresDEI/team/{id}(id=${game.teamBId})}"></a>
+                </td>
             </div>
-            <div class="col" th:if="${game.getScoreTeamA() == null || game.getScoreTeamB() == null}">
+            <div>
                 <h5>Score:</h5>
-                <h6> NA </h6>
-            </div>
-            <div class="col" th:if="${game.getScoreTeamA() != null && game.getScoreTeamB() != null}">
-                <h5>Score:</h5>
-                <h6 th:text="${game.getScoreTeamA()  + ' - ' + game.getScoreTeamB()}"></h6>
+                <h6 th:text="${game.scoreTeamA  + ' - ' + game.scoreTeamB}"></h6>
             </div>
         </div>
         <hr>
