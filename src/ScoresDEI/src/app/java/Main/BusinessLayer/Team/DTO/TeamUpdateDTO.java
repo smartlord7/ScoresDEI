@@ -11,10 +11,8 @@
 
 package Main.BusinessLayer.Team.DTO;
 
-import Main.BusinessLayer.Attachment.DTO.AttachmentUpdateDTO;
 import Main.BusinessLayer.Base.DTO.BaseEntityUpdateDTO;
 import Main.BusinessLayer.Player.DTO.PlayerListDTO;
-
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -27,8 +25,7 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
     private String country;
     private String code;
     private Integer founded;
-    private Long logoId;
-    private AttachmentUpdateDTO logo;
+    private String logoPath;
     private List<PlayerListDTO> players;
 
     // endregion Private Properties
@@ -43,22 +40,13 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
         this.id = id;
     }
 
-    public TeamUpdateDTO(Long id, String teamName, String country, String code, Integer founded, Long logoId) {
+    public TeamUpdateDTO(Long id, String teamName, String country, String code, Integer founded, String logoPath) {
         this.id = id;
         this.teamName = teamName;
         this.country = country;
         this.code = code;
         this.founded = founded;
-        this.logoId = logoId;
-    }
-
-    public TeamUpdateDTO(Long id, String teamName, String country, String code, Integer founded, AttachmentUpdateDTO logo) {
-        this.id = id;
-        this.teamName = teamName;
-        this.country = country;
-        this.code = code;
-        this.founded = founded;
-        this.logo = logo;
+        this.logoPath = logoPath;
     }
 
 
@@ -82,20 +70,12 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
         this.teamName = teamName;
     }
 
-    public Long getLogoId() {
-        return logoId;
+    public String getLogoPath() {
+        return logoPath;
     }
 
-    public void setLogoId(Long logoId) {
-        this.logoId = logoId;
-    }
-
-    public AttachmentUpdateDTO getLogo() {
-        return logo;
-    }
-
-    public void setLogo(AttachmentUpdateDTO logo) {
-        this.logo = logo;
+    public void setLogoPath(String logo) {
+        this.logoPath = logoPath;
     }
 
     public String getCountry() {
@@ -138,8 +118,7 @@ public class TeamUpdateDTO implements BaseEntityUpdateDTO {
                 .add("country='" + country + "'")
                 .add("code='" + code + "'")
                 .add("founded=" + founded)
-                .add("logoId=" + logoId)
-                .add("logo=" + logo)
+                .add("logoPath=" + logoPath)
                 .add("players=" + players)
                 .toString();
     }

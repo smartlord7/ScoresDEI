@@ -11,13 +11,10 @@
 
 package Main.BusinessLayer.Team;
 
-import Main.BusinessLayer.Attachment.DTO.AttachmentUpdateDTO;
 import Main.BusinessLayer.Team.DTO.TeamCreateDTO;
 import Main.BusinessLayer.Team.DTO.TeamListDTO;
 import Main.BusinessLayer.Team.DTO.TeamUpdateDTO;
 import Main.BusinessLayer.Team.Import.TeamSportsAPIImport;
-import Main.DataLayer.Enum.StorageTypeEnum;
-import Main.DataLayer.Model.Attachment;
 import Main.DataLayer.Model.Team;
 
 public class TeamTranslator {
@@ -29,7 +26,8 @@ public class TeamTranslator {
                 dto.getName(),
                 dto.getCountry(),
                 dto.getCode(),
-                dto.getFounded()
+                dto.getFounded(),
+                dto.getLogo()
         );
         t.setImported(true);
 
@@ -41,7 +39,8 @@ public class TeamTranslator {
                 dto.getTeamName(),
                 dto.getCountry(),
                 dto.getCode(),
-                dto.getFounded()
+                dto.getFounded(),
+                dto.getLogoPath()
                 );
     }
 
@@ -58,26 +57,13 @@ public class TeamTranslator {
     }
 
     public static TeamUpdateDTO toUpdateDTO(Team model) {
-        Attachment logo = model.getLogo();
-
-        StorageTypeEnum storageTypeEnum = null;
-        String path = null;
-
-        if (logo != null) {
-            storageTypeEnum = logo.getStorageType();
-            path = logo.getPath();
-        }
-
         return new TeamUpdateDTO(
                 model.getId(),
                 model.getTeamName(),
                 model.getCountry(),
                 model.getCode(),
                 model.getFounded(),
-                new AttachmentUpdateDTO(
-                        storageTypeEnum,
-                        path
-                )
+                model.getLogoPath()
         );
     }
 
@@ -86,6 +72,7 @@ public class TeamTranslator {
         model.setCountry(dto.getCountry());
         model.setCode(dto.getCode());
         model.setFounded(dto.getFounded());
+        model.setLogoPath(dto.getLogoPath());
     }
 
     // endregion Public Methods

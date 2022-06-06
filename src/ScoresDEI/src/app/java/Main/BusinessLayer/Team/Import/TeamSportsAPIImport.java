@@ -21,6 +21,7 @@ public class TeamSportsAPIImport {
     private String code;
     private String country;
     private Integer founded;
+    private String logo;
 
     // endregion Private Properties
 
@@ -29,11 +30,12 @@ public class TeamSportsAPIImport {
     public TeamSportsAPIImport() {
     }
 
-    public TeamSportsAPIImport(String name, String code, String country, Integer founded) {
+    public TeamSportsAPIImport(String name, String code, String country, Integer founded, String logo) {
         this.name = name;
         this.code = code;
         this.country = country;
         this.founded = founded;
+        this.logo = logo;
     }
 
     // endregion Constructors
@@ -72,13 +74,22 @@ public class TeamSportsAPIImport {
         this.founded = founded;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", TeamSportsAPIImport.class.getSimpleName() + "[", "]")
                 .add("name='" + name + "'")
                 .add("code='" + code + "'")
                 .add("country='" + country + "'")
-                .add("founder=" + founded)
+                .add("founded=" + founded)
+                .add("logo='" + logo + "'")
                 .toString();
     }
 

@@ -24,7 +24,7 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
     private String country;
     private String code;
     private Integer founded;
-    private Long logoId;
+    private String logoPath;
 
     // endregion Private Properties
 
@@ -33,12 +33,12 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
     public TeamCreateDTO() {
     }
 
-    public TeamCreateDTO(String teamName, String country, String code, Integer founded, Long logoId) {
+    public TeamCreateDTO(String teamName, String country, String code, Integer founded, String logoPath) {
         this.teamName = teamName;
         this.country = country;
         this.code = code;
         this.founded = founded;
-        this.logoId = logoId;
+        this.logoPath = logoPath;
     }
 
     // endregion Constructors
@@ -61,12 +61,12 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
         this.teamName = teamName;
     }
 
-    public Long getLogoId() {
-        return logoId;
+    public String getLogoPath() {
+        return logoPath;
     }
 
-    public void setLogoId(Long logoId) {
-        this.logoId = logoId;
+    public void setLogoPath(String logoPath) {
+        this.logoPath = logoPath;
     }
 
     public String getCountry() {
@@ -101,7 +101,7 @@ public class TeamCreateDTO implements BaseEntityCreateDTO {
                 .add("country='" + country + "'")
                 .add("code='" + code + "'")
                 .add("founded=" + founded)
-                .add("logoId=" + logoId)
+                .add("logoPath=" + logoPath)
                 .toString();
     }
 

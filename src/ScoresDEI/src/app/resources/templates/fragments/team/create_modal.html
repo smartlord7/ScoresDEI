@@ -26,8 +26,13 @@
                     </p>
                     <p>Founded on:
                         <label for="founded" class="sr-only">Founded on</label>
-                        <input type="text" id="founded" name="founded" class="form-control" th:value="*{founded}"
+                        <input type="number" id="founded" name="founded" class="form-control" th:value="*{founded}"
                                placeholder="Founded on" required>
+                    </p>
+                    <p>Logo path:
+                        <label for="logoPath" class="sr-only">Logo path</label>
+                        <input type="text" id="logoPath" name="logoPath" class="form-control" th:value="*{logoPath}"
+                               placeholder="Logo path">
                     </p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -36,9 +36,7 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
 
     private boolean imported;
 
-    @ManyToOne
-    @JoinColumn(name="logo")
-    private Attachment logo;
+    private String logoPath;
 
     @OneToMany
     private List<Player> player = new ArrayList<Player>();
@@ -50,11 +48,12 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
     public Team() {
     }
 
-    public Team(String teamName, String country, String code, Integer founded) {
+    public Team(String teamName, String country, String code, Integer founded, String logoPath) {
         this.teamName = teamName;
         this.country = country;
         this.code = code;
         this.founded = founded;
+        this.logoPath = logoPath;
     }
 
     // endregion Constructors
@@ -69,12 +68,12 @@ public class Team extends AbstractAuditable<User, Long> implements BaseEntityMod
         this.teamName = teamName;
     }
 
-    public Attachment getLogo() {
-        return logo;
+    public String getLogoPath() {
+        return logoPath;
     }
 
-    public void setLogo(Attachment logo) {
-        this.logo = logo;
+    public void setLogoPath(String logo) {
+        this.logoPath = logoPath;
     }
 
     public String getCountry() {

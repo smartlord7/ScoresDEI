@@ -77,7 +77,7 @@ public class TeamTests {
                 "Portugal",
                 "T" + iid,
                 1983,
-                (long) 0
+                "example/example"
             );
         t = writer.create(t);
         System.out.println(t);
@@ -115,7 +115,7 @@ public class TeamTests {
                 "Spain",
                 "S41",
                 2912,
-                (long) 0);
+                "example/example");
         writer.update(dto);
     }
 

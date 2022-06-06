@@ -15,10 +15,8 @@ import Main.BusinessLayer.Team.DTO.TeamCreateDTO;
 import Main.BusinessLayer.Team.DTO.TeamUpdateDTO;
 import Main.BusinessLayer.Team.Import.TeamImportResultDTO;
 import Main.BusinessLayer.Team.Import.TeamSportsAPIImport;
-import Main.DataLayer.Model.Attachment;
 import Main.DataLayer.Model.Player;
 import Main.DataLayer.Model.Team;
-import Main.DataLayer.Repository.AttachmentRepository;
 import Main.DataLayer.Repository.PlayerRepository;
 import Main.DataLayer.Repository.TeamRepository;
 import com.google.gson.Gson;
@@ -47,9 +45,6 @@ public class TeamWriter {
     @Autowired
     private PlayerRepository players;
 
-    @Autowired
-    private AttachmentRepository attachments;
-
     @Value("${sports_api.base_url}")
     private String SPORTS_API_BASE_URL;
 
@@ -62,10 +57,6 @@ public class TeamWriter {
         Team t;
 
         t = TeamTranslator.toModel(dto);
-        if (dto.getLogoId() != null) {
-            Attachment a = attachments.getById(dto.getLogoId());
-            t.setLogo(a);
-        }
         teams.save(t);
 
         dto.setId(t.getId());
@@ -85,11 +76,7 @@ public class TeamWriter {
        Team t;
 
        t = teams.getById(dto.getId());
-        if (dto.getLogoId() != null) {
-            TeamTranslator.applyChanges(t, dto);
-            Attachment a = attachments.getById(dto.getLogoId());
-            t.setLogo(a);
-        }
+        TeamTranslator.applyChanges(t, dto);
 
        teams.save(t);
 

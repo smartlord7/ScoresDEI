@@ -21,19 +21,25 @@
         <div class="row">
             <div class="col-2">
                 <h5>Name:</h5>
-                <h6 th:text="${team.getTeamName()}"></h6>
+                <h6 th:text="${team.teamName}"></h6>
             </div>
             <div class="col-2">
                 <h5>Code:</h5>
-                <h6 th:text="${team.getCode()}"></h6>
+                <h6 th:text="${team.code}"></h6>
             </div>
             <div class="col-2">
                 <h5>Country:</h5>
-                <h6 th:text="${team.getCountry()}"></h6>
+                <h6 th:text="${team.country}"></h6>
             </div>
             <div class="col-2">
                 <h5>Founded on:</h5>
-                <h6 th:text="${team.getFounded()}"></h6>
+                <h6 th:text="${team.founded}"></h6>
+            </div>
+            <div class="col-2">
+                <h5>Logo:</h5>
+                <div class="img-fluid" style="width: 5em; height: 5em;">
+                    <img class="card-img" alt="Logo" th:src="${team.logoPath}"/>
+                </div>
             </div>
         </div>
         <hr>
