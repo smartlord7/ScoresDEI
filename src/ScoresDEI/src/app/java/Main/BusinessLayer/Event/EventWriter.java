@@ -67,8 +67,14 @@ public class EventWriter {
         }
 
         if (type == EventTypeEnum.START_GAME) {
+            if (g.getEventStartGame() != null) {
+                events.delete(g.getEventStartGame());
+            }
             g.setEventStartGame((EventStartGame) e);
         } else if (type == EventTypeEnum.END_GAME) {
+            if (g.getEventEndGame() != null) {
+                events.delete(g.getEventEndGame());
+            }
             g.setEventEndGame((EventEndGame) e);
         }
 
@@ -82,6 +88,7 @@ public class EventWriter {
     public EventListDTO toggleApprove(Long id) {
         Event e = events.getById(id);
         e.setApproved(!e.isApproved());
+        events.save(e);
 
         return EventTranslator.toListDTO(e);
     }

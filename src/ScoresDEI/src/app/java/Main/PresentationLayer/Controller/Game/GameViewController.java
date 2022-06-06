@@ -82,6 +82,6 @@ public class GameViewController {
     public ModelAndView toggleApproveEvent(@PathVariable Long id, @PathVariable Long eventId, Model model) {
         eventWriter.toggleApprove(eventId);
 
-        return details(id, model);
+        return new ModelAndView("redirect:/scoresDEI/game/" + id);
     }
 }

@@ -70,16 +70,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event :${game.events}">
+                <tr th:each="event :${game.events}" th:if="${event.approved} and ${!#authorization.expression('hasAuthority(''ADMIN'')')}">
                     <td th:text="${event.id}"></td>
                     <td th:text="${event.eventType}"></td>
                     <td th:text="${event.occurrenceTime}"></td>
                     <td>
-                        <a th:if="${event.approved}" sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/scoresDEI/game/{id}/event/{eventId}(id=${game.id}, eventId=${event.id})}" type="button" class="btn btn-success">
-                            <i class="fas fa-check"></i>
-                        </a>
-                        <a th:unless="${event.approved}" sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/scoresDEI/game/{id}/event/{eventId}(id=${game.id}, eventId=${event.id})}" type="button" class="btn btn-danger">
+                        <a title="Reject" th:if="${event.approved}" sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/scoresDEI/game/{id}/event/{eventId}(id=${game.id}, eventId=${event.id})}" type="button" class="btn btn-danger">
                             <i class="fas fa-ban"></i>
+                        </a>
+                        <a title="Approve" th:if="${!event.approved}" sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/scoresDEI/game/{id}/event/{eventId}(id=${game.id}, eventId=${event.id})}" type="button" class="btn btn-success">
+                            <i class="fas fa-check"></i>
                         </a>
                     </td>
                 </tr>
