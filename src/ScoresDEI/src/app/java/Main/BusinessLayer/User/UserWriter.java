@@ -41,6 +41,8 @@ public class UserWriter {
 
         if (dto.getRoleId() != null) {
             u.getRole().add(roles.getById(dto.getRoleId()));
+        } else {
+            u.getRole().add(roles.getFirstByRoleName("ROLE_USER"));
         }
 
         users.save(u);
