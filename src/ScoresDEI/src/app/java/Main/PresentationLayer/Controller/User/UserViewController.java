@@ -108,7 +108,9 @@ public class UserViewController {
             );
             model.addAttribute("userLoginDTO", loginData);
 
-        return new ModelAndView("general/home");
+        return login(new UserLoginDTO(dto.getUserName(), dto.getPassword()),
+                model,
+                session);
     }
 
     // endregion Public Methods
