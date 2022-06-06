@@ -14,14 +14,18 @@ package Main.PresentationLayer.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
+
 import static Main.Util.ApplicationConst.APP_NAME;
 import static Main.Util.ApplicationConst.REDIRECT;
 
 @Controller
-@RequestMapping(path = APP_NAME + "/home")
+@RequestMapping(path = {APP_NAME + "/home", APP_NAME,APP_NAME + "/"})
 public class HomeController {
     @GetMapping
-    public String index() {
-        return REDIRECT + "scoresDEI/game";
+    public ModelAndView index() {
+        return new ModelAndView("redirect:/scoresDEI/game");
     }
 }
