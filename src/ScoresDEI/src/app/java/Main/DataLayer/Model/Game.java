@@ -53,19 +53,19 @@ public class Game extends AbstractAuditable<User, Long> implements BaseEntityMod
     @OneToOne
     private EventEndGame eventEndGame;
 
-    @OneToMany(mappedBy = "game")
+    @OneToMany(mappedBy = "id")
     List<EventInterruptGame> eventInterruptGame = new ArrayList<EventInterruptGame>();
 
-    @OneToMany(mappedBy = "game")
+    @OneToMany(mappedBy = "id")
     List<EventResumeGame> eventResumeGame = new ArrayList<EventResumeGame>();
 
-    @OneToMany(mappedBy = "game")
+    @OneToMany(mappedBy = "id")
     List<EventYellowCard> eventYellowCard = new ArrayList<EventYellowCard>();
 
-    @OneToMany(mappedBy = "game")
+    @OneToMany(mappedBy = "id")
     List<EventRedCard> eventRedCard = new ArrayList<EventRedCard>();
 
-    @OneToMany(mappedBy = "game")
+    @OneToMany(mappedBy = "id")
     List<EventGoal> eventGoal = new ArrayList<EventGoal>();
 
     // endregion Private Properties

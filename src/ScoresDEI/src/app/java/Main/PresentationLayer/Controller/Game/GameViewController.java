@@ -70,11 +70,18 @@ public class GameViewController {
         return index(model);
     }
 
-    @PostMapping("/{id}/createEvent")
-    public ModelAndView createEvent(@PathVariable Long id, EventCreateDTO dto) throws ParseException {
+    @PostMapping("/{id}/event")
+    public ModelAndView createEvent(@PathVariable Long id, EventCreateDTO dto, Model model) throws ParseException {
         dto.setGameId(id);
         dto = eventWriter.create(dto);
 
-        return new ModelAndView("redirect:/scoresDEI/game/" + dto.getGameId());
+        return details(id, model);
+    }
+    
+    @GetMapping("/{id}/event/{eventId}")
+    public ModelAndView toggleApproveEvent(@PathVariable Long id, @PathVariable Long eventId, Model model) {
+        eventWriter.toggleApprove(eventId);
+
+        return details(id, model);
     }
 }

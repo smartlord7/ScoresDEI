@@ -12,6 +12,8 @@
 package Main.PresentationLayer.Controller.Event;
 
 import Main.BusinessLayer.Event.DTO.EventCreateDTO;
+import Main.BusinessLayer.Event.DTO.EventListDTO;
+import Main.BusinessLayer.Event.DTO.EventUpdateDTO;
 import Main.BusinessLayer.Event.EventReader;
 import Main.BusinessLayer.Event.EventWriter;
 import Main.Util.ApplicationConst;
@@ -40,6 +42,11 @@ public class EventAPIController {
     @PostMapping
     public EventCreateDTO create(@RequestBody EventCreateDTO dto) throws ParseException {
         return writer.create(dto);
+    }
+
+    @PutMapping("/{id}")
+    public EventListDTO toggleApprove(@PathVariable Long id) {
+        return writer.toggleApprove(id);
     }
 
     // endregion Public Methods

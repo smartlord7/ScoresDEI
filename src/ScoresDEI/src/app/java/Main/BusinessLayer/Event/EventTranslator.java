@@ -52,7 +52,8 @@ public class EventTranslator {
         return new EventListDTO(
                 model.getId(),
                 getEventType(model),
-                model.getOccurrenceTime()
+                model.getOccurrenceTime(),
+                model.isApproved()
         );
     }
 

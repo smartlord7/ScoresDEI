@@ -25,7 +25,7 @@ public class EventListDTO implements BaseEntityListDTO {
     private Long id;
     private EventTypeEnum eventType;
     private Date occurrenceTime;
-
+    private Boolean approved;
     // endregion Private Properties
 
     // region Constructors
@@ -33,10 +33,11 @@ public class EventListDTO implements BaseEntityListDTO {
     public EventListDTO() {
     }
 
-    public EventListDTO(Long id, EventTypeEnum eventType, Date occurrenceTime) {
+    public EventListDTO(Long id, EventTypeEnum eventType, Date occurrenceTime, Boolean approved) {
         this.id = id;
         this.eventType = eventType;
         this.occurrenceTime = occurrenceTime;
+        this.approved = approved;
     }
 
     // endregion Constructors
@@ -63,15 +64,25 @@ public class EventListDTO implements BaseEntityListDTO {
         return occurrenceTime;
     }
 
-    public void setOccurrenceTime(Timestamp occurrenceTime) {
+    public void setOccurrenceTime(Date occurrenceTime) {
         this.occurrenceTime = occurrenceTime;
+    }
+
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
     }
 
     @Override
     public String toString() {
         return new StringJoiner(", ", EventListDTO.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
                 .add("eventType=" + eventType)
                 .add("occurrenceTime=" + occurrenceTime)
+                .add("approved=" + approved)
                 .toString();
     }
 

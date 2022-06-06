@@ -12,6 +12,7 @@
 package Main.BusinessLayer.Event;
 
 import Main.BusinessLayer.Event.DTO.EventCreateDTO;
+import Main.BusinessLayer.Event.DTO.EventListDTO;
 import Main.DataLayer.Enum.EventTypeEnum;
 import Main.DataLayer.Repository.EventRepository;
 import Main.DataLayer.Repository.GameRepository;
@@ -48,8 +49,8 @@ public class EventWriter {
         }
 
         Event e = EventTranslator.toModel(dto);
+        e.setApproved(false);
         e.setGame(games.getById(dto.getGameId()));
-        e.setApproved(true); // admin approval for events is not yet implemented
         EventTypeEnum type = dto.getEventType();
 
         Game g = e.getGame();
@@ -75,6 +76,14 @@ public class EventWriter {
         dto.setId(e.getId());
 
         return dto;
+    }
+
+    @Transactional
+    public EventListDTO toggleApprove(Long id) {
+        Event e = events.getById(id);
+        e.setApproved(!e.isApproved());
+
+        return EventTranslator.toListDTO(e);
     }
 
     // endregion Public Methods

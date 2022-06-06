@@ -65,13 +65,22 @@
                     <th scope="col">Id</th>
                     <th scope="col">Type</th>
                     <th scope="col">Time</th>
+                    <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event :${game.getEvents()}">
-                    <td th:text="${event.getId()}"></td>
-                    <td th:text="${event.getEventType()}"></td>
-                    <td th:text="${event.getOccurrenceTime()}"></td>
+                <tr th:each="event :${game.events}">
+                    <td th:text="${event.id}"></td>
+                    <td th:text="${event.eventType}"></td>
+                    <td th:text="${event.occurrenceTime}"></td>
+                    <td>
+                        <a th:if="${event.approved}" sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/scoresDEI/game/{id}/event/{eventId}(id=${game.id}, eventId=${event.id})}" type="button" class="btn btn-success">
+                            <i class="fas fa-check"></i>
+                        </a>
+                        <a th:unless="${event.approved}" sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/scoresDEI/game/{id}/event/{eventId}(id=${game.id}, eventId=${event.id})}" type="button" class="btn btn-danger">
+                            <i class="fas fa-ban"></i>
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

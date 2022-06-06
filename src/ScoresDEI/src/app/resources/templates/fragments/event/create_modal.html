@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form" method="POST" th:action="@{/scoresDEI/game/{id}/createEvent(id=${game.getId()})}" th:object="${event}">
+            <form class="form" method="POST" th:action="@{/scoresDEI/game/{id}/event(id=${game.getId()})}" th:object="${event}">
                 <div class="modal-body">
                     <p>Type:
                         <label for="type" class="sr-only">Type</label>
