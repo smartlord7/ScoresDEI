@@ -109,9 +109,13 @@ public class PlayerTests {
     public void update() {
         System.out.println(writer.update(
                 new PlayerUpdateDTO((long) 0, "Sancho Simões",
-                        PlayerPositionEnum.GK,
                         new Date(),
-                        (long) 1)));
+                        PlayerPositionEnum.GK,
+                        (long) 1, null,
+                        "Sancho",
+                        "Simões",
+                        "Portugues",
+                        191.0, 95.0)));
     }
 
     @Test

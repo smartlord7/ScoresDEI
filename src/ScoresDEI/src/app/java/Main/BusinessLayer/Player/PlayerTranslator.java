@@ -149,6 +149,13 @@ public class PlayerTranslator {
     }
 
     public static void applyChanges(Player model, PlayerUpdateDTO dto) {
+        model.setPlayerName(dto.getPlayerName());
+        model.setFirstName(dto.getFirstName());
+        model.setLastName(dto.getLastName());
+        model.setNationality(dto.getNationality());
+        model.setBirthDate(dto.getBirthDate());
+        model.setHeight(dto.getHeight());
+        model.setWeight(dto.getWeight());
         model.setPosition(dto.getPosition());
     }
 

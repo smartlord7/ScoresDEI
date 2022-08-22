@@ -73,7 +73,7 @@ public class GameViewController {
     @PostMapping("/{id}/event")
     public ModelAndView createEvent(@PathVariable Long id, EventCreateDTO dto, Model model) throws ParseException {
         dto.setGameId(id);
-        dto = eventWriter.create(dto);
+        eventWriter.create(dto);
 
         return details(id, model);
     }

@@ -55,14 +55,6 @@ public class PlayerUpdateDTO implements BaseEntityUpdateDTO {
         this.nationality = nationality;
     }
 
-    public PlayerUpdateDTO(Long id, String playerName, PlayerPositionEnum position, Date birthDate, Long teamId) {
-        this.id = id;
-        this.playerName = playerName;
-        this.position = position;
-        this.birthDate = birthDate;
-        this.teamId = teamId;
-    }
-
     public PlayerUpdateDTO(Long id, String playerName, Date birthDate, PlayerPositionEnum position, Long teamId, String teamName, String firstName, String lastName, String nationality, Double height, Double weight) {
         this.id = id;
         this.playerName = playerName;

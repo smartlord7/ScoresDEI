@@ -49,12 +49,13 @@ public class EventWriter {
         }
 
         Event e = EventTranslator.toModel(dto);
-        e.setApproved(false);
+        e.setApproved(true);
         e.setGame(games.getById(dto.getGameId()));
         EventTypeEnum type = dto.getEventType();
 
         Game g = e.getGame();
         if (type == EventTypeEnum.GOAL && e.isApproved() && dto.getPlayerId() != null) {
+            g.getEventGoal().add((EventGoal) e);
             Team tA = g.getTeamA();
             Team tB = g.getTeamB();
             Player p = dto.getPlayer();
@@ -64,9 +65,11 @@ public class EventWriter {
             } else if (tB.getPlayer().contains(p))  {
                 g.setScoreB(g.getScoreB() + 1);
             }
-        }
-
-        if (type == EventTypeEnum.START_GAME) {
+        } else if (type == EventTypeEnum.RED_CARD) {
+            g.getEventRedCard().add((EventRedCard) e);
+        } else if (type == EventTypeEnum.YELLOW_CARD) {
+            g.getEventYellowCard().add((EventYellowCard) e);
+        }  else if (type == EventTypeEnum.START_GAME) {
             if (g.getEventStartGame() != null) {
                 events.delete(g.getEventStartGame());
             }

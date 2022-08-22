@@ -65,15 +65,16 @@
                     <th scope="col">Id</th>
                     <th scope="col">Type</th>
                     <th scope="col">Time</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="event :${game.events}" th:if="${event.approved} and ${!#authorization.expression('hasAuthority(''ADMIN'')')}">
+                <tr th:each="event :${game.events}">
                     <td th:text="${event.id}"></td>
                     <td th:text="${event.eventType}"></td>
                     <td th:text="${event.occurrenceTime}"></td>
                     <td>
+                        <small sec:authorize="!hasAuthority('ROLE_ADMIN')" th:if="${!event.approved}">Not approved</small>
                         <a title="Reject" th:if="${event.approved}" sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/scoresDEI/game/{id}/event/{eventId}(id=${game.id}, eventId=${event.id})}" type="button" class="btn btn-danger">
                             <i class="fas fa-ban"></i>
                         </a>
